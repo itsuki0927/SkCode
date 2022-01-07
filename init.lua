@@ -5,6 +5,7 @@ require "itsuki.colorscheme"
 require "itsuki.cmp"
 require "itsuki.lsp"
 require "itsuki.treesitter"
+require "itsuki.lualine"
 
 vim.cmd [[
 " gray

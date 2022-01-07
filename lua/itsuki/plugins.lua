@@ -61,6 +61,12 @@ return packer.startup(function(use)
   -- treesitter
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
+  -- bufferline
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }
+
   if PACKER_BOOTSTRAP then
     require('packer').sync()
   end
