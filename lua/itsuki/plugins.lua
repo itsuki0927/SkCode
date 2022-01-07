@@ -58,6 +58,9 @@ return packer.startup(function(use)
   use 'L3MON4D3/LuaSnip'
   use "rafamadriz/friendly-snippets"
 
+  -- treesitter
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+
   if PACKER_BOOTSTRAP then
     require('packer').sync()
   end
