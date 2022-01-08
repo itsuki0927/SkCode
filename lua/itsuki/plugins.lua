@@ -87,6 +87,8 @@ return packer.startup(function(use)
 
   use 'norcalli/nvim-colorizer.lua'
 
+  use 'lewis6991/gitsigns.nvim'
+
   if PACKER_BOOTSTRAP then
     require('packer').sync()
   end

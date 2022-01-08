@@ -12,6 +12,7 @@ require "itsuki.nvimtree"
 require "itsuki.autopairs"
 require "itsuki.telescope"
 require "itsuki.colorizer"
+require "itsuki.gitsigns"
 
 vim.cmd [[
 " gray
