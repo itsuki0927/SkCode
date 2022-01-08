@@ -8,6 +8,7 @@ require "itsuki.treesitter"
 require "itsuki.lualine"
 require "itsuki.bufferline"
 require "itsuki.nvimtree"
+require "itsuki.autopairs"
 
 vim.cmd [[
 " gray
@@ -27,4 +28,3 @@ highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
 highlight! CmpItemKindProperty guibg=NONE guifg=#D4D4D4
 highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4
 ]]
-

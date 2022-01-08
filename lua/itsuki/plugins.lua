@@ -60,6 +60,10 @@ return packer.startup(function(use)
 
   -- treesitter
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use 'windwp/nvim-ts-autotag'
+  use 'windwp/nvim-autopairs'
+  use 'p00f/nvim-ts-rainbow'
+
 
   use {
     'nvim-lualine/lualine.nvim',
