@@ -22,7 +22,10 @@ vim.g.nvim_tree_icons = {
 
 vim.g.nvim_tree_quit_on_open = 1 -- 打开文件时关闭nvimtree
 vim.g.nvim_tree_indent_markers = 1 -- 文件夹打开显示缩进
-vim.g.nvim_tree_ignore = {'*.tmp', '.git'}
+
+vim.cmd [[
+nnoremap <leader>e :NvimTreeToggle<CR>
+]]
 
 local status_ok, nvimtree = pcall(require, 'nvim-tree')
 
@@ -38,9 +41,6 @@ end
 
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
-vim.cmd [[
-nnoremap <leader>e :NvimTreeToggle<CR>
-]]
 
 nvimtree.setup ({
   disable_netrw = true,
