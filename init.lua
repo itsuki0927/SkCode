@@ -2,6 +2,7 @@ require "itsuki.options"
 require "itsuki.keymaps"
 require "itsuki.plugins"
 require "itsuki.colorscheme"
+
 require "itsuki.cmp"
 require "itsuki.lsp"
 require "itsuki.treesitter"
@@ -9,6 +10,7 @@ require "itsuki.lualine"
 require "itsuki.bufferline"
 require "itsuki.nvimtree"
 require "itsuki.autopairs"
+require "itsuki.telescope"
 
 vim.cmd [[
 " gray

@@ -79,6 +79,8 @@ return packer.startup(function(use)
     config = function() require'nvim-tree'.setup {} end
   }
 
+  use 'nvim-telescope/telescope.nvim'
+
   if PACKER_BOOTSTRAP then
     require('packer').sync()
   end
