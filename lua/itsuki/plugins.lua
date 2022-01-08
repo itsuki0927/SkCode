@@ -89,6 +89,11 @@ return packer.startup(function(use)
 
   use 'lewis6991/gitsigns.nvim'
 
+  use {
+    'goolord/alpha-nvim',
+    requires = { 'kyazdani42/nvim-web-devicons' },
+  }
+
   if PACKER_BOOTSTRAP then
     require('packer').sync()
   end

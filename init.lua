@@ -13,6 +13,7 @@ require "itsuki.autopairs"
 require "itsuki.telescope"
 require "itsuki.colorizer"
 require "itsuki.gitsigns"
+require "itsuki.alpha"
 
 vim.cmd [[
 " gray
