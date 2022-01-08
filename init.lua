@@ -14,6 +14,7 @@ require "itsuki.telescope"
 require "itsuki.colorizer"
 require "itsuki.gitsigns"
 require "itsuki.alpha"
+require "itsuki.blankline"
 
 vim.cmd [[
 " gray

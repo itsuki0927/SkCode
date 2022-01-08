@@ -94,6 +94,8 @@ return packer.startup(function(use)
     requires = { 'kyazdani42/nvim-web-devicons' },
   }
 
+  use "lukas-reineke/indent-blankline.nvim"
+
   if PACKER_BOOTSTRAP then
     require('packer').sync()
   end
