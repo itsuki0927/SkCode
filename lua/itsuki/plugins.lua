@@ -96,6 +96,9 @@ return packer.startup(function(use)
 
   use "lukas-reineke/indent-blankline.nvim"
 
+  use 'numToStr/Comment.nvim'
+  use 'JoosepAlviste/nvim-ts-context-commentstring'
+
   if PACKER_BOOTSTRAP then
     require('packer').sync()
   end
