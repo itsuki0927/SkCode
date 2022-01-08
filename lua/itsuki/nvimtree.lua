@@ -39,7 +39,7 @@ end
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
 vim.cmd [[
-nnoremap <space>e :NvimTreeToggle<CR>
+nnoremap <leader>e :NvimTreeToggle<CR>
 ]]
 
 nvimtree.setup ({
