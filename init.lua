@@ -7,6 +7,7 @@ require "itsuki.lsp"
 require "itsuki.treesitter"
 require "itsuki.lualine"
 require "itsuki.bufferline"
+require "itsuki.nvimtree"
 
 vim.cmd [[
 " gray
