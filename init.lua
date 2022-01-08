@@ -11,6 +11,7 @@ require "itsuki.bufferline"
 require "itsuki.nvimtree"
 require "itsuki.autopairs"
 require "itsuki.telescope"
+require "itsuki.colorizer"
 
 vim.cmd [[
 " gray
