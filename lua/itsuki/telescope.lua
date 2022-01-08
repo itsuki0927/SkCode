@@ -8,26 +8,26 @@ local action_layout = require("telescope.actions.layout")
 
 telescope.setup({
 	defaults = {
-    initial_mode = "insert", -- telescope 启动模式: 'insert' | 'normal'
-    selection_strategy = "reset", 
-    sorting_strategy = "descending",
-    layout_strategy = "horizontal",
-    layout_config = {
-      width = 0.8, -- 宽度 80%
-      prompt_position = "top",  -- prompt在顶部
-      preview_cutoff = 120,  -- 预览区域
-      horizontal = {mirror = false}, -- 不翻转result/prompt位置
-      vertical = {mirror = false}
-    },
+		initial_mode = "insert", -- telescope 启动模式: 'insert' | 'normal'
+		selection_strategy = "reset",
+		sorting_strategy = "descending",
+		layout_strategy = "horizontal",
+		layout_config = {
+			width = 0.8, -- 宽度 80%
+			prompt_position = "top", -- prompt在顶部
+			preview_cutoff = 120, -- 预览区域
+			horizontal = { mirror = false }, -- 不翻转result/prompt位置
+			vertical = { mirror = false },
+		},
 
---		winblend = 0,
-    prompt_prefix = " ",
-    -- selection_caret = " ",
-    entry_prefix = "  ",
+		--		winblend = 0,
+		prompt_prefix = " ",
+		-- selection_caret = " ",
+		entry_prefix = "  ",
 		path_display = { "smart" },
 		borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
 
-    set_env = {['COLORTERM'] = 'truecolor'},
+		set_env = { ["COLORTERM"] = "truecolor" },
 
 		mappings = {
 			i = {

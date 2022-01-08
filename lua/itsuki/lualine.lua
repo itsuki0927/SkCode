@@ -1,14 +1,13 @@
-local status_ok, configs = pcall(require, 'lualine')
+local status_ok, configs = pcall(require, "lualine")
 
 if not status_ok then
-  return
+	return
 end
 
 configs.setup({
-  options = { theme = 'onedarker',
-
-     section_separators = '', component_separators = ''
-  }
+	options = {
+		theme = "onedarker",
+		section_separators = "",
+		component_separators = "",
+	},
 })
-
-    

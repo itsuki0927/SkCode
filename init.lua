@@ -1,23 +1,24 @@
-require "itsuki.options"
-require "itsuki.keymaps"
-require "itsuki.plugins"
-require "itsuki.colorscheme"
+require("itsuki.options")
+require("itsuki.keymaps")
+require("itsuki.plugins")
+require("itsuki.colorscheme")
 
-require "itsuki.cmp"
-require "itsuki.lsp"
-require "itsuki.treesitter"
-require "itsuki.lualine"
-require "itsuki.bufferline"
-require "itsuki.nvimtree"
-require "itsuki.autopairs"
-require "itsuki.telescope"
-require "itsuki.colorizer"
-require "itsuki.gitsigns"
-require "itsuki.alpha"
-require "itsuki.blankline"
-require "itsuki.comment"
+require("itsuki.cmp")
+require("itsuki.lsp")
+require("itsuki.treesitter")
+require("itsuki.lualine")
+require("itsuki.bufferline")
+require("itsuki.nvimtree")
+require("itsuki.autopairs")
+require("itsuki.telescope")
+require("itsuki.colorizer")
+require("itsuki.gitsigns")
+require("itsuki.alpha")
+require("itsuki.blankline")
+require("itsuki.comment")
+require("itsuki.null-ls")
 
-vim.cmd [[
+vim.cmd([[
 " gray
 highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
 " blue
@@ -34,5 +35,4 @@ highlight! CmpItemKindMethod guibg=NONE guifg=#C586C0
 highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
 highlight! CmpItemKindProperty guibg=NONE guifg=#D4D4D4
 highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4
-]]
-
+]])

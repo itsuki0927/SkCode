@@ -1,2 +1,2 @@
-require 'itsuki.lsp.sign'
-require 'itsuki.lsp.install'
+require("itsuki.lsp.sign")
+require("itsuki.lsp.install")

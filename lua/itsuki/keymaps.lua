@@ -4,9 +4,9 @@ local term_opts = { silent = true }
 
 local keymap = vim.api.nvim_set_keymap
 
-keymap("","<Space>", "<nop>", opts)
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+keymap("", "<Space>", "<nop>", opts)
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- Modes
 --   normal_mode = "n",
@@ -16,8 +16,7 @@ vim.g.maplocalleader = ' '
 --   term_mode = "t",
 --   command_mode = "c",
 
-
--- Normal --  
+-- Normal --
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
@@ -31,15 +30,14 @@ keymap("n", "<C-Down>", ":resize -2<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
-keymap("n", "<S-l>",":bn<CR>", opts)
-keymap("n", "<S-h>",":bp<CR>", opts)
+keymap("n", "<S-l>", ":bn<CR>", opts)
+keymap("n", "<S-h>", ":bp<CR>", opts)
 
-keymap("i", 'jk', "<ESC>", opts)
+keymap("i", "jk", "<ESC>", opts)
 
-keymap("v", '<', "<gv", opts)
-keymap("v", '>', ">gv", opts)
+keymap("v", "<", "<gv", opts)
+keymap("v", ">", ">gv", opts)
 
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
 keymap("v", "p", '"_dP', opts)
-
