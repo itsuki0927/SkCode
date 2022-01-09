@@ -38,11 +38,7 @@ return packer.startup(function(use)
 	use("wbthomason/packer.nvim")
 	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
-	-- use "kyazdani42/nvim-web-devicons"
-	-- use {
-	--   'glepnir/galaxyline.nvim', branch = 'main', config = function() require'my_statusline' end,
-	--   requires = {'kyazdani42/nvim-web-devicons'}
-	-- }
+	use("kyazdani42/nvim-web-devicons")
 
 	-- 主题
 	use("lunarvim/onedarker.nvim")
@@ -69,17 +65,11 @@ return packer.startup(function(use)
 	use("windwp/nvim-autopairs")
 	use("p00f/nvim-ts-rainbow")
 
-	use({
-		"nvim-lualine/lualine.nvim",
-		requires = { "kyazdani42/nvim-web-devicons", opt = true },
-	})
-	use({ "akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons" })
+	use("nvim-lualine/lualine.nvim")
+	use("akinsho/bufferline.nvim")
 
 	use({
 		"kyazdani42/nvim-tree.lua",
-		requires = {
-			"kyazdani42/nvim-web-devicons", -- optional, for file icon
-		},
 		config = function()
 			require("nvim-tree").setup({})
 		end,
@@ -91,10 +81,7 @@ return packer.startup(function(use)
 
 	use("lewis6991/gitsigns.nvim")
 
-	use({
-		"goolord/alpha-nvim",
-		requires = { "kyazdani42/nvim-web-devicons" },
-	})
+	use("goolord/alpha-nvim")
 
 	use("lukas-reineke/indent-blankline.nvim")
 
