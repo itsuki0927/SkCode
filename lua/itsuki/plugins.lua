@@ -48,6 +48,7 @@ return packer.startup(function(use)
 	use("lunarvim/onedarker.nvim")
 
 	use("neovim/nvim-lspconfig")
+	use("williamboman/nvim-lsp-installer")
 
 	-- cmp
 	use("hrsh7th/cmp-nvim-lsp")
