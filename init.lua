@@ -1,2 +1,2 @@
-require('core.mappings').init()
 require('core.options')
+require('core.mappings').init()
