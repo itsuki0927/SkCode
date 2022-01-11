@@ -178,5 +178,8 @@ return packer.startup(function()
     disable = not plugin_settings.status.toggleterm,
     keys = '<C-\\>',
     config = "require('plugins.configs.toggleterm')",
+    setup = function()
+      require('core.mappings').toggleterm()
+    end,
   })
 end)

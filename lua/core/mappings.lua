@@ -88,6 +88,9 @@ M.init = function()
   vim.cmd("silent! command PackerStatus lua require 'plugins' require('packer').status()")
   vim.cmd("silent! command PackerSync lua require 'plugins' require('packer').sync()")
   vim.cmd("silent! command PackerUpdate lua require 'plugins' require('packer').update()")
+M.toggleterm = function()
+  map('n', '<leader>tg', '<cmd>lua _LAZYGIT_TOGGLE()<CR>')
+  map('n', '<leader>tr', '<cmd>lua _RANGER_TOGGLE()<CR>')
 end
 
 return M
