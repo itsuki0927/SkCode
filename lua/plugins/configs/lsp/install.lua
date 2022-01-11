@@ -28,15 +28,28 @@ local opts = {
   },
 }
 
-local setup_lsp = function()
-  local lspconfig = require('lspconfig')
-
-  local servers = { 'html', 'cssls', 'jsonls', 'tsserver' }
-
-  for _, lsp in ipairs(servers) do
-    lspconfig[lsp].setup(opts)
+local setup_teserver = function(lspconfig)
+  -- 设置OrganizeImports
+  local function organize_imports()
+    local params = {
+      command = '_typescript.organizeImports',
+      arguments = { vim.api.nvim_buf_get_name(0) },
+      title = '',
+    }
+    vim.lsp.buf.execute_command(params)
   end
 
+  lspconfig.tsserver.setup(vim.tbl_deep_extend('force', {
+    commands = {
+      OrganizeImports = {
+        organize_imports,
+        description = 'Organize Imports',
+      },
+    },
+  }, opts))
+end
+
+local setup_lua = function(lspconfig)
   lspconfig.sumneko_lua.setup(vim.tbl_deep_extend('force', {
     settings = {
       Lua = {
@@ -54,6 +67,23 @@ local setup_lsp = function()
       },
     },
   }, opts))
+end
+
+local setup_normal = function(lspconfig)
+  local servers = { 'html', 'eslint', 'cssls', 'jsonls', 'emmet_ls', 'vuels', 'tailwindcss' }
+
+  -- html、eslint、cssls、jsonls、emmet_ls、vuels、tailwindcss
+  for _, lsp in ipairs(servers) do
+    lspconfig[lsp].setup(opts)
+  end
+end
+
+local setup_lsp = function()
+  local lspconfig = require('lspconfig')
+
+  setup_normal(lspconfig)
+  setup_teserver(lspconfig)
+  setup_lua(lspconfig)
 end
 
 setup_lsp()
