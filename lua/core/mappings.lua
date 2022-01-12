@@ -26,24 +26,6 @@ M.bufferline = function()
   map('n', m.prev_buffer, ':BufferLineCyclePrev <CR>')
 end
 
-M.lspconfig = function()
-  local m = plugin_maps.lspconfig
-
-  map('n', m.declaration, '<cmd>lua vim.lsp.buf.declaration()<CR>')
-  map('n', m.definition, '<cmd>lua vim.lsp.buf.definition()<CR>')
-  map('n', m.hover, '<cmd>lua vim.lsp.buf.hover()<CR>')
-  map('n', m.implementation, '<cmd>lua vim.lsp.buf.implementation()<CR>')
-  map('n', m.signature_help, '<cmd>lua vim.lsp.buf.signature_help()<CR>')
-  map('n', m.type_definition, '<cmd>lua vim.lsp.buf.type_definition()<CR>')
-  map('n', m.rename, '<cmd>lua vim.lsp.buf.rename()<CR>')
-  map('n', m.code_action, '<cmd>lua vim.lsp.buf.code_action()<CR>')
-  map('n', m.references, '<cmd>lua vim.lsp.buf.references()<CR>')
-  map('n', m.float_diagnostics, '<cmd>lua vim.diagnostic.open_float()<CR>')
-  map('n', m.goto_prev, '<cmd>lua vim.diagnostic.goto_prev()<CR>')
-  map('n', m.goto_next, '<cmd>lua vim.diagnostic.goto_next()<CR>')
-  map('n', m.set_loclist, '<cmd>lua vim.diagnostic.setloclist()<CR>')
-end
-
 M.comment = function()
   local m = plugin_maps.comment.toggle
 

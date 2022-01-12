@@ -92,10 +92,9 @@ M.mappings.plugins = {
     rename = '<leader>rn',
     code_action = '<leader>ca',
     references = 'gr',
-    float_diagnostics = 'ge',
+    show_line = 'gl',
     goto_prev = '[d',
     goto_next = ']d',
-    set_loclist = '<leader>sl',
   },
   comment = {
     toggle = '<leader>/',

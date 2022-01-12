@@ -1,79 +1,8 @@
+local maps = require('core.default_config').mappings.plugins.lspconfig
+
 local M = {}
 
-M.set_up = function()
-  local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
-
-  for type, icon in pairs(signs) do
-    local hl = 'DiagnosticSign' .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
-  end
-
-  local config = {
-    -- disable virtual text
-    virtual_text = false,
-    -- show signs
-    signs = {
-      active = signs,
-    },
-    update_in_insert = false,
-    underline = true,
-    severity_sort = true,
-    float = {
-      focusable = false,
-      style = 'minimal',
-      border = 'single',
-      source = 'always',
-      header = '',
-      prefix = '',
-    },
-  }
-
-  vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = 'single',
-  })
-
-  vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-    border = 'single',
-  })
-
-  vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-    border = 'single',
-  })
-
-  vim.diagnostic.config(config)
-
-  -- 配置 lsp 的图标
-  require('vim.lsp.protocol').CompletionItemKind = {
-    '',
-    '',
-    'ƒ',
-    ' ',
-    '',
-    '',
-    '',
-    'ﰮ',
-    '',
-    '',
-    '',
-    '',
-    '了',
-    ' ',
-    '﬌ ',
-    ' ',
-    ' ',
-    '',
-    ' ',
-    ' ',
-    ' ',
-    ' ',
-    '',
-    '',
-    '<>',
-  }
-end
-
 local function lsp_highlight_document(client)
-  -- Set autocommands conditional on server_capabilities
   if client.resolved_capabilities.document_highlight then
     vim.api.nvim_exec(
       [[
@@ -92,18 +21,40 @@ local function lsp_keymaps(bufnr)
   local function buf_set_option(...)
     vim.api.nvim_buf_set_option(bufnr, ...)
   end
-  -- Enable completion triggered by <c-x><c-o>
+  local function buf_set_keymap(...)
+    vim.api.nvim_buf_set_keymap(bufnr, ...)
+  end
+  local opts = { noremap = true, silent = true }
+
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
+  buf_set_keymap('n', maps.declaration, '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', maps.definition, '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', maps.hover, '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', maps.implementation, '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', maps.signature_help, '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', maps.rename, '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', maps.references, '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', maps.code_action, '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap(
+    'n',
+    maps.show_line,
+    '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "single" })<CR>',
+    opts
+  )
+  buf_set_keymap('n', maps.goto_prev, '<cmd>lua vim.diagnostic.goto_prev({ border = "single" })<CR>', opts)
+  buf_set_keymap('n', maps.goto_next, '<cmd>lua vim.diagnostic.goto_next({ border = "single" })<CR>', opts)
 
-  require('core.mappings').lspconfig()
+  vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 end
 
 M.on_attach = function(client, bufnr)
-  if client.name == 'tsserver' then
+  -- 因为 null_ls 设置了prettier, 所以不需要tsserver、jsonls、cssls的默认格式化
+  local close_formattings = { tsserver = true, jsonls = true, cssls = true }
+  if close_formattings[client.name] then
     client.resolved_capabilities.document_formatting = false
   end
+
   lsp_keymaps(bufnr)
   lsp_highlight_document(client)
 end
