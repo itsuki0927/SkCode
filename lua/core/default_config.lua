@@ -67,7 +67,36 @@ M.plugins = {
 
 --  --
 
-M.mappings = {}
+M.mappings = {
+  misc = {
+    close_buffer = '<leader>x',
+    save = '<leader>w',
+    quit = '<leader>q',
+    nohightlight = '<leader><CR>',
+    esc = 'jk',
+  },
+
+  window_nav = {
+    moveLeft = '<C-h>',
+    moveRight = '<C-l>',
+    moveUp = '<C-k>',
+    moveDown = '<C-j>',
+
+    resizeUp = '<M-Up>',
+    resizeDown = '<M-Down>',
+    resizeLeft = '<M-Left>',
+    resizeRight = '<M-Right>',
+  },
+
+  insert_nav = {
+    backward = '<C-h>',
+    end_of_line = '<C-e>',
+    forward = '<C-l>',
+    next_line = '<C-k>',
+    prev_line = '<C-j>',
+    beginning_of_line = '<C-a>',
+  },
+}
 
 -- 插件mappings --
 
@@ -77,6 +106,10 @@ M.mappings.plugins = {
   },
   telescope = {
     find_files = '<leader>f',
+    live_grep = '<leader>F',
+    buffers = '<leader>sb',
+    keymaps = '<leader>sk',
+    commands = '<leader>sc',
   },
   bufferline = {
     next_buffer = '<TAB>',

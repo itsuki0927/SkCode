@@ -54,25 +54,14 @@ bg('PmenuSbar', one_bg2)
 bg('PmenuSel', pmenu_bg)
 bg('PmenuThumb', nord_blue)
 
--- vim.cmd([[
--- " gray
--- highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
--- " blue
--- highlight! CmpItemAbbrMatch guibg=NONE guifg=#569CD6
--- highlight! CmpItemAbbrMatchFuzzy guibg=NONE guifg=#569CD6
--- " light blue
--- highlight! CmpItemKindVariable guibg=NONE guifg=#9CDCFE
--- highlight! CmpItemKindInterface guibg=NONE guifg=#9CDCFE
--- highlight! CmpItemKindText guibg=NONE guifg=#9CDCFE
--- " pink
--- highlight! CmpItemKindFunction guibg=NONE guifg=#C586C0
--- highlight! CmpItemKindMethod guibg=NONE guifg=#C586C0
--- " front
--- highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
--- highlight! CmpItemKindProperty guibg=NONE guifg=#D4D4D4
--- highlight! CmpItemKindUnit guibg=NONE guifg=#D4D4D4
--- ]])
---
+-- IndentBlankline
+fg('IndentBlanklineIndent1', '#E06C75')
+fg('IndentBlanklineIndent2', '#E5C07B')
+fg('IndentBlanklineIndent3', '#98C379')
+fg('IndentBlanklineIndent4', '#56B6C2')
+fg('IndentBlanklineIndent5', '#61AFEF')
+fg('IndentBlanklineIndent6', '#C678DD')
+
 -- Cmp
 cmd([[
 highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
@@ -87,11 +76,7 @@ fg_bg('CmpItemKindMethod', '#C586C0', 'NONE')
 fg_bg('CmpItemKindKeyword', '#d4D4D4', 'NONE')
 fg_bg('CmpItemKindProperty', '#D4D4d4', 'NONE')
 fg_bg('CmpItemKindUnit', '#D4D4d4', 'NONE')
--- fg('CmpItemAbbr', white)
--- fg('CmpItemAbbrMatch', white)
--- fg('CmpItemKind', white)
--- fg('CmpItemMenu', white)
---
+
 -- misc
 
 -- inactive statuslines as thin lines
