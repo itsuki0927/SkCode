@@ -55,7 +55,12 @@ M.null_ls = function()
       },
       on_attach = function(client)
         if client.resolved_capabilities.document_formatting then
-          vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()')
+          vim.cmd([[
+            augroup LspFormatting
+                autocmd! * <buffer>
+                autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+            augroup END
+            ]])
         end
       end,
     })
@@ -123,7 +128,7 @@ M.colorizer = function()
     colorizer.setup({ '*' }, {
       RGB = true, -- #RGB hex codes
       RRGGBB = true, -- #RRGGBB hex codes
-      names = false, -- "Name" codes like Blue
+      names = true, -- "Name" codes like Blue
       RRGGBBAA = true, -- #RRGGBBAA hex codes
       rgb_fn = true, -- CSS rgb() and rgba() functions
       hsl_fn = true, -- CSS hsl() and hsla() functions
