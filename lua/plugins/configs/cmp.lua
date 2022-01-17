@@ -16,6 +16,10 @@ cmp.setup({
       require('luasnip').lsp_expand(args.body)
     end,
   },
+  experimental = {
+    native_menu = false,
+    ghost_text = true,
+  },
   mapping = {
     ['<C-k>'] = cmp.mapping.select_prev_item(),
     ['<C-j>'] = cmp.mapping.select_next_item(),
@@ -62,17 +66,20 @@ cmp.setup({
 
       vim_item.menu = ({
         nvim_lsp = '[LSP]',
-        nvim_lua = '[Lua]',
-        buffer = '[BUF]',
+        nvim_lua = '[api]',
+        buffer = '[buf]',
+        path = '[path]',
+        luasnip = '[snip]',
       })[entry.source.name]
 
       return vim_item
     end,
   },
   sources = {
+    { name = 'nvim_lua' },
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
-    { name = 'buffer' },
     { name = 'path' },
+    { name = 'buffer', keyword_length = 5 },
   },
 })

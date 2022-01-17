@@ -29,17 +29,9 @@ local setup_lua = function(lspconfig)
   lspconfig.sumneko_lua.setup(vim.tbl_deep_extend('force', {
     settings = {
       Lua = {
-        runtime = {
-          version = 'LuaJIT',
-          path = runtime_path,
-        },
         diagnostics = {
           globals = { 'vim' },
         },
-        workspace = {
-          library = vim.api.nvim_get_runtime_file('', true),
-        },
-        telemetry = { enable = false },
       },
     },
   }, opts))

@@ -82,6 +82,12 @@ return packer.startup(function()
     after = 'cmp-nvim-lsp',
   })
 
+  use({
+    'hrsh7th/cmp-nvim-lua',
+    disable = not plugin_settings.status.cmp,
+    after = 'cmp_luasnip',
+  })
+
   -- treesitter
   use({
     'nvim-treesitter/nvim-treesitter',
