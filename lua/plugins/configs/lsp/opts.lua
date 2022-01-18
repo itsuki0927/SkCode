@@ -25,6 +25,7 @@ M.on_attach = handlers.on_attach
 
 M.flags = {
   debounce_text_changes = 150,
+  allow_incremental_sync = true,
 }
 
 return M

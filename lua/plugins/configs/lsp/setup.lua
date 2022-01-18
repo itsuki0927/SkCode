@@ -37,6 +37,7 @@ M.set_up = function()
     virtual_text = false,
     underline = true,
     severity_sort = true,
+    update_in_insert = true,
   })
 
   vim.diagnostic.config(config)
