@@ -5,7 +5,7 @@ M.init = function(theme)
     theme = require('core.utils').load_config().ui.theme
   end
 
-  vim.g.itsuki_theme = theme
+  vim.g.skcode_theme = theme
 
   local present, base16 = pcall(require, 'base16')
 
@@ -21,7 +21,7 @@ end
 
 M.get = function(theme)
   if theme == nil then
-    theme = vim.g.itsuki_theme
+    theme = vim.g.skcode_theme
   end
   return require('hl_themes.' .. theme)
 end
