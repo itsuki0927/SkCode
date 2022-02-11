@@ -11,7 +11,7 @@ M.set_up = function()
   local config = {
     virtual_text = false,
     signs = true,
-    update_in_insert = true, -- 希望在插入模式进行更新
+    update_in_insert = false, -- 希望在插入模式进行更新
     underline = true,
     severity_sort = true,
     float = {
@@ -32,13 +32,13 @@ M.set_up = function()
     border = 'single',
   })
 
-  vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-    border = 'single',
-    virtual_text = false,
-    underline = true,
-    severity_sort = true,
-    update_in_insert = true,
-  })
+  -- vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+  --   border = 'single',
+  --   virtual_text = false,
+  --   underline = true,
+  --   severity_sort = true,
+  --   update_in_insert = false,
+  -- })
 
   vim.diagnostic.config(config)
 

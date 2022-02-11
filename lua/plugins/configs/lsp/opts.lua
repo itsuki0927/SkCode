@@ -22,10 +22,9 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 
 M.capabilities = capabilities
 M.on_attach = handlers.on_attach
-
 M.flags = {
-  debounce_text_changes = 150,
-  allow_incremental_sync = true,
+  debounce_text_changes = 500,
+  allow_incremental_sync = false,
 }
 
 return M

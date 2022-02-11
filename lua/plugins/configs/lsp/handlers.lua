@@ -50,7 +50,7 @@ end
 
 M.on_attach = function(client, bufnr)
   -- 因为 null_ls 设置了prettier, 所以不需要tsserver、jsonls、cssls的默认格式化
-  local close_formattings = { tsserver = true, jsonls = true, cssls = true }
+  local close_formattings = { tsserver = true, jsonls = true, cssls = true, html = true }
   if close_formattings[client.name] then
     client.resolved_capabilities.document_formatting = false
   end
