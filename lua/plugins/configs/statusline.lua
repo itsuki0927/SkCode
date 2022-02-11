@@ -132,7 +132,7 @@ local diff = {
       fg = colors.grey_fg2,
       bg = colors.statusline_bg,
     },
-    icon = '   ',
+    icon = '  ',
   },
 
   remove = {

@@ -81,11 +81,15 @@ return packer.startup(function()
     disable = not plugin_settings.status.cmp,
     after = 'cmp-nvim-lsp',
   })
-
   use({
     'hrsh7th/cmp-nvim-lua',
     disable = not plugin_settings.status.cmp,
     after = 'cmp_luasnip',
+  })
+  use({
+    'hrsh7th/cmp-path',
+    disable = not plugin_settings.status.cmp,
+    after = 'cmp-buffer',
   })
 
   -- treesitter
@@ -125,6 +129,7 @@ return packer.startup(function()
 
   use({
     'nvim-telescope/telescope.nvim',
+    module = 'telescope',
     cmd = 'Telescope',
     config = "require('plugins.configs.telescope')",
     setup = function()
@@ -171,6 +176,13 @@ return packer.startup(function()
       require('core.mappings').comment()
     end,
   })
+
+  -- use({
+  --   'mhartington/formatter.nvim',
+  --   disable = not plugin_settings.status.format,
+  --   event = 'InsertEnter',
+  --   config = "require('plugins.configs.others').formatter()",
+  -- })
 
   use({
     'jose-elias-alvarez/null-ls.nvim',
