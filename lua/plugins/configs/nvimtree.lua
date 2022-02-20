@@ -1,15 +1,8 @@
 local present, nvimtree = pcall(require, 'nvim-tree')
-local config_status_ok, nvim_tree_config = pcall(require, 'nvim-tree.config')
 
 if not present then
   return
 end
-
-if not config_status_ok then
-  return
-end
-
-local tree_cb = nvim_tree_config.nvim_tree_callback
 
 local conf = require('core.utils').load_config().plugins.options.nvimtree
 
@@ -86,9 +79,9 @@ nvimtree.setup({
     mappings = {
       custom_only = false,
       list = {
-        { key = { 'l', '<CR>', 'o' }, cb = tree_cb('edit') },
-        { key = 'h', cb = tree_cb('close_node') },
-        { key = 'v', cb = tree_cb('vsplit') },
+        { key = { 'l', '<CR>', 'o' }, action = 'edit' },
+        { key = 'h', action = 'close_node' },
+        { key = 'v', action = 'vsplit' },
       },
     },
     number = false,
