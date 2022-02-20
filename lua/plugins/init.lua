@@ -138,7 +138,7 @@ return packer.startup(function()
   })
 
   use({
-    'norcalli/nvim-colorizer.lua',
+    'NvChad/nvim-colorizer.lua',
     disable = not plugin_settings.status.colorizer,
     event = 'BufRead',
     config = "require('plugins.configs.others').colorizer()",
