@@ -1,5 +1,6 @@
 local M = {}
 
+-- vim配置
 M.options = {
   cmdheight = 1,
   mapleader = ' ',
@@ -9,15 +10,14 @@ M.options = {
   },
 }
 
+-- UI配置
 M.ui = {
-  hl_override = '', -- path of your file that contains highlights
   theme = 'onedark',
   italic_comments = false,
   transparency = false,
 }
 
--- plugin 设置 --
-
+-- 插件配置
 M.plugins = {
   status = {
     bufferline = true,
@@ -36,14 +36,7 @@ M.plugins = {
   },
   options = {
     nvimtree = {
-      enable_git = 0,
       lazy_load = true,
-      ui = {
-        allow_resize = true,
-        side = 'left',
-        width = 25,
-        hide_root_folder = true,
-      },
     },
     statusline = {
       -- hide, show on specific filetypes
@@ -54,19 +47,14 @@ M.plugins = {
         'terminal',
       },
       shown = {},
-
       -- truncate statusline on small screens
       shortline = true,
       style = 'block', -- default, round , slant , block , arrow
     },
   },
-  defualt_plugin_config_replace = {},
 }
 
--- mappings --
-
---  --
-
+-- 键位配置
 M.mappings = {
   misc = {
     close_buffer = '<leader>x',
@@ -98,8 +86,7 @@ M.mappings = {
   },
 }
 
--- 插件mappings --
-
+-- 插件键位配置
 M.mappings.plugins = {
   nvimtree = {
     toggle = '<leader>e',
@@ -132,7 +119,6 @@ M.mappings.plugins = {
   comment = {
     toggle = '<leader>/',
   },
-
   gitsigns = {
     next_hunk = ']c',
     prev_hunk = '[c',

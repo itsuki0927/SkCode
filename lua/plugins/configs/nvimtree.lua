@@ -4,11 +4,6 @@ if not present then
   return
 end
 
-local conf = require('core.utils').load_config().plugins.options.nvimtree
-
-local git_status = conf.enable_git
-local ui = conf.ui
-
 -- 设置图标
 vim.g.nvim_tree_icons = {
   default = '',

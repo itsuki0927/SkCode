@@ -1,6 +1,5 @@
 local cmd = vim.cmd
 
-local override = require('core.utils').load_config().ui.hl_override
 local colors = require('colors').get()
 local ui = require('core.utils').load_config().ui
 
@@ -46,8 +45,8 @@ fg('cursorlinenr', white)
 fg('EndOfBuffer', black)
 
 -- For floating windows
-fg_bg('FloatBorder', darker_black, darker_black)
 bg('NormalFloat', darker_black)
+fg_bg('FloatBorder', darker_black, darker_black)
 
 -- Pmenu
 bg('Pmenu', one_bg)
@@ -55,46 +54,15 @@ bg('PmenuSbar', one_bg2)
 bg('PmenuSel', pmenu_bg)
 bg('PmenuThumb', nord_blue)
 
--- IndentBlankline
-fg('IndentBlanklineIndent1', '#E06C75')
-fg('IndentBlanklineIndent2', '#E5C07B')
-fg('IndentBlanklineIndent3', '#98C379')
-fg('IndentBlanklineIndent4', '#56B6C2')
-fg('IndentBlanklineIndent5', '#61AFEF')
-fg('IndentBlanklineIndent6', '#C678DD')
-
--- Cmp
-cmd([[
-highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080
-]])
-fg_bg('CmpItemAbbrMatch', '#569CD6', 'NONE')
-fg_bg('CmpItemAbbrMatchFuzzy', '#569CD6', 'NONE')
-fg_bg('CmpItemKindVariable', '#9CDCFE', 'NONE')
-fg_bg('CmpItemKindInterface', '#9CDCFE', 'NONE')
-fg_bg('CmpItemKindText', '#9CDCFE', 'NONE')
-fg_bg('CmpItemKindFunction', '#C586c0', 'NONE')
-fg_bg('CmpItemKindMethod', '#C586C0', 'NONE')
-fg_bg('CmpItemKindKeyword', '#d4D4D4', 'NONE')
-fg_bg('CmpItemKindProperty', '#D4D4d4', 'NONE')
-fg_bg('CmpItemKindUnit', '#D4D4d4', 'NONE')
-
 -- misc
 
 -- inactive statuslines as thin lines
 fg('StatusLineNC', one_bg3 .. ' gui=underline')
-
 fg('LineNr', grey)
 fg('NvimInternalError', red)
 fg('VertSplit', one_bg2)
 
-if ui.transparency then
-  bg('Normal', 'NONE')
-  bg('Folded', 'NONE')
-  fg('Folded', 'NONE')
-  fg('Comment', grey)
-end
-
--- [[ Plugin Highlights
+-- Plugin Highlights
 
 -- Dashboard
 fg('AlphaHeader', light_grey)
@@ -109,12 +77,30 @@ fg_bg('DiffModified', red, 'NONE')
 fg_bg('DiffDelete', red, 'NONE')
 fg_bg('GitSignsCurrentLineBlame', grey_fg, 'NONE')
 
--- Indent blankline plugin
+-- Indent blankline
 fg('IndentBlanklineChar', line)
 fg('IndentBlanklineSpaceChar', line)
+fg('IndentBlanklineIndent1', '#E06C75')
+fg('IndentBlanklineIndent2', '#E5C07B')
+fg('IndentBlanklineIndent3', '#98C379')
+fg('IndentBlanklineIndent4', '#56B6C2')
+fg('IndentBlanklineIndent5', '#61AFEF')
+fg('IndentBlanklineIndent6', '#C678DD')
+
+-- Cmp
+fg_bg('CmpItemAbbrDeprecated', '#808080', 'NONE' .. ' gui=strikethrough')
+fg_bg('CmpItemAbbrMatch', '#569CD6', 'NONE')
+fg_bg('CmpItemAbbrMatchFuzzy', '#569CD6', 'NONE')
+fg_bg('CmpItemKindVariable', '#9CDCFE', 'NONE')
+fg_bg('CmpItemKindInterface', '#9CDCFE', 'NONE')
+fg_bg('CmpItemKindText', '#9CDCFE', 'NONE')
+fg_bg('CmpItemKindFunction', '#C586c0', 'NONE')
+fg_bg('CmpItemKindMethod', '#C586C0', 'NONE')
+fg_bg('CmpItemKindKeyword', '#d4D4D4', 'NONE')
+fg_bg('CmpItemKindProperty', '#D4D4d4', 'NONE')
+fg_bg('CmpItemKindUnit', '#D4D4d4', 'NONE')
 
 -- Lsp diagnostics
-
 fg('DiagnosticHint', purple)
 fg('DiagnosticError', red)
 fg('DiagnosticWarn', yellow)
@@ -131,28 +117,23 @@ bg('NvimTreeNormal', darker_black)
 bg('NvimTreeNormalNC', darker_black)
 fg('NvimTreeOpenedFolderName', folder_bg)
 fg('NvimTreeRootFolder', red .. ' gui=underline') -- enable underline for root folder in nvim tree
-fg_bg('NvimTreeStatuslineNc', darker_black, darker_black)
 fg('NvimTreeVertSplit', darker_black)
 bg('NvimTreeVertSplit', darker_black)
+fg_bg('NvimTreeStatuslineNc', darker_black, darker_black)
 fg_bg('NvimTreeWindowPicker', red, black2)
 
 -- Telescope
 fg_bg('TelescopeBorder', darker_black, darker_black)
 fg_bg('TelescopePromptBorder', black2, black2)
-
 fg_bg('TelescopePromptNormal', white, black2)
 fg_bg('TelescopePromptPrefix', red, black2)
-
-bg('TelescopeNormal', darker_black)
-
 fg_bg('TelescopePreviewTitle', black, green)
 fg_bg('TelescopePromptTitle', black, red)
 fg_bg('TelescopeResultsTitle', darker_black, yellow)
-
+bg('TelescopeNormal', darker_black)
 bg('TelescopeSelection', black2)
 
 -- keybinds cheatsheet
-
 fg_bg('CheatsheetBorder', black, black)
 bg('CheatsheetSectionContent', black)
 fg('CheatsheetHeading', white)
@@ -172,6 +153,10 @@ end
 
 -- Disable some highlight in nvim tree if transparency enabled
 if ui.transparency then
+  bg('Normal', 'NONE')
+  bg('Folded', 'NONE')
+  fg('Folded', 'NONE')
+  fg('Comment', grey)
   bg('NormalFloat', 'NONE')
   bg('NvimTreeNormal', 'NONE')
   bg('NvimTreeNormalNC', 'NONE')
@@ -189,8 +174,4 @@ if ui.transparency then
   bg('TelescopePromptPrefix', 'NONE')
   fg('TelescopeBorder', one_bg)
   fg_bg('TelescopeResultsTitle', black, blue)
-end
-
-if #override ~= 0 then
-  require(override)
 end
