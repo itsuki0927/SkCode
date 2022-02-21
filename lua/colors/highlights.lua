@@ -107,6 +107,7 @@ fg_bg('DiffChange', grey_fg, 'NONE')
 fg_bg('DiffChangeDelete', red, 'NONE')
 fg_bg('DiffModified', red, 'NONE')
 fg_bg('DiffDelete', red, 'NONE')
+fg_bg('GitSignsCurrentLineBlame', grey_fg, 'NONE')
 
 -- Indent blankline plugin
 fg('IndentBlanklineChar', line)
