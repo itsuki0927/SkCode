@@ -61,8 +61,8 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 
 -- lsp opts
 local M = {
-  capabilities,
-  on_attach,
+  capabilities = capabilities,
+  on_attach = on_attach,
   flags = {
     debounce_text_changes = 500,
     allow_incremental_sync = false,
