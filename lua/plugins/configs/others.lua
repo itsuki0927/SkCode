@@ -87,12 +87,11 @@ M.blankline = function()
       'IndentBlanklineIndent6',
     },
     filetype_exculde = {
-      'alhpa',
+      'alpha',
       'packer',
       'NvimTree',
       'lsp-install',
       'help',
-      'dashboard',
       'TelescopePrompt',
       'TelescopeResults',
     },
