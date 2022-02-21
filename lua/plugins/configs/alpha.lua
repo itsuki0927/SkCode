@@ -6,32 +6,45 @@ end
 
 local dashboard = require('alpha.themes.dashboard')
 
-dashboard.section.header.val = {
-  [[                               __                ]],
-  [[  ___     ___    ___   __  __ /\_\    ___ ___    ]],
-  [[ / _ `\  / __`\ / __`\/\ \/\ \\/\ \  / __` __`\  ]],
-  [[/\ \/\ \/\  __//\ \_\ \ \ \_/ |\ \ \/\ \/\ \/\ \ ]],
-  [[\ \_\ \_\ \____\ \____/\ \___/  \ \_\ \_\ \_\ \_\]],
-  [[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
+-- 高亮按钮组
+local button = function(...)
+  local result = dashboard.button(...)
+  result.opts.hl = 'AlphaButtons'
+  result.opts.hl_shortcut = ''
+  return result
+end
+
+local header = {
+  '      ▄▄▄▄▄███████████████████▄▄▄▄▄       ',
+  '    ▄██████████▀▀▀▀▀▀▀▀▀▀██████▀████▄     ',
+  '  ▄██▀████████▄             ▀▀████ ▀██▄   ',
+  ' ▀██▄▄██████████████████▄▄▄         ▄██▀  ',
+  '   ▀█████████████████████████▄    ▄██▀    ',
+  '     ▀████▀▀▀▀▀▀▀▀▀▀▀▀█████████▄▄██▀      ',
+  '       ▀███▄              ▀██████▀        ',
+  '         ▀██████▄         ▄████▀          ',
+  '            ▀█████▄▄▄▄▄▄▄███▀             ',
+  '              ▀████▀▀▀████▀               ',
+  '                ▀███▄███▀                 ',
+  '                   ▀█▀                    ',
 }
-
-dashboard.section.buttons.val = {
-  dashboard.button('f', '  Find file', ':Telescope find_files <CR>'),
-  dashboard.button('e', '  New file', ':ene <BAR> startinsert <CR>'),
-  dashboard.button('r', '  Recently used files', ':Telescope oldfiles <CR>'),
-  dashboard.button('F', '  Find text', ':Telescope live_grep <CR>'),
-  dashboard.button('c', '  Configuration', ':e ~/.config/nvim/init.lua <CR>'),
-  dashboard.button('q', '  Quit Neovim', ':qa<CR>'),
+local buttons = {
+  button('f', '  Find file', ':Telescope find_files <CR>'),
+  button('e', '  New file', ':ene <BAR> startinsert <CR>'),
+  button('r', '  Recently used files', ':Telescope oldfiles <CR>'),
+  button('F', '  Find text', ':Telescope live_grep <CR>'),
+  button('c', '  Configuration', ':e ~/.config/nvim/init.lua <CR>'),
+  button('q', '  Quit Neovim', ':qa<CR>'),
 }
+local footer = 'itsuki.cn'
 
-dashboard.section.footer.opts.hl = 'Type'
-dashboard.section.header.opts.hl = 'Include'
-dashboard.section.buttons.opts.hl = 'Keyword'
+-- 布局
+dashboard.section.header.val = header
+dashboard.section.buttons.val = buttons
+dashboard.section.footer.val = footer
 
-dashboard.opts.opts.noautocmd = true
+-- 高亮
+dashboard.section.footer.opts.hl = 'AlphaType'
+dashboard.section.header.opts.hl = 'AlphaHeader'
 
 alpha.setup(dashboard.opts)
-
-vim.cmd([[
-  autocmd FileType alpha setlocal nofoldenable
-]])
