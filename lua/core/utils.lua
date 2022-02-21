@@ -2,12 +2,18 @@ local M = {}
 
 local cmd = vim.cmd
 
+-- 加载默认配置
 M.load_config = function()
   local conf = require('core.default_config')
 
   return conf
 end
 
+-- 键位定义函数
+-- @param mode 模式
+-- @param keys 键位
+-- @param command 命令
+-- @param opt 其他参数
 M.map = function(mode, keys, command, opt)
   local options = { noremap = true, silent = true }
   if opt then
@@ -56,6 +62,7 @@ M.map = function(mode, keys, command, opt)
   map_wrapper(mode, keys, command, options)
 end
 
+-- 懒加载包
 M.packer_lazy_load = function(plugin, timer)
   if plugin then
     timer = timer or 0
@@ -68,15 +75,23 @@ end
 -- 高亮函数
 
 -- 定义背景
--- @param
+-- @param group 高亮名
+-- @param col 颜色
 M.bg = function(group, col)
   cmd('hi ' .. group .. ' guibg=' .. col)
 end
 
+-- 定义前景
+-- @param group 高亮名
+-- @param col 颜色
 M.fg = function(group, col)
   cmd('hi ' .. group .. ' guifg=' .. col)
 end
 
+-- 定义前景和背景
+-- @param group 高亮名
+-- @param fgcol 前景
+-- @param bgcol 背景
 M.fg_bg = function(group, fgcol, bgcol)
   cmd('hi ' .. group .. ' guifg=' .. fgcol .. ' guibg=' .. bgcol)
 end
