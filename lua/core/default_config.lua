@@ -132,6 +132,23 @@ M.mappings.plugins = {
   comment = {
     toggle = '<leader>/',
   },
+
+  gitsigns = {
+    next_hunk = ']c',
+    prev_hunk = '[c',
+    stage_hunk = '<leader>hs',
+    reset_hunk = '<leader>hr',
+    stage_buffer = '<leader>hS',
+    undo_stage_hunk = '<leader>hu',
+    preview_hunk = '<leader>hp',
+    reset_buffer = '<leader>hR',
+    blame_line = '<leader>hb',
+    toggle_current_line_blame = '<leader>tb',
+    diffthis = '<leader>hd',
+    diffThis = '<leader>hD',
+    toggle_deleted = '<leader>td',
+    select_hunk = 'ih',
+  },
 }
 
 return M
