@@ -1,10 +1,6 @@
 local opts = require('plugins.configs.lsp.opts')
 
-local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, 'lua/?.lua')
-table.insert(runtime_path, 'lua/?/init.lua')
-
-local setup_teserver = function(lspconfig)
+local install_tsserver = function(lspconfig)
   -- 设置OrganizeImports
   local function organize_imports()
     local params = {
@@ -25,7 +21,7 @@ local setup_teserver = function(lspconfig)
   }, opts))
 end
 
-local setup_lua = function(lspconfig)
+local install_lua = function(lspconfig)
   lspconfig.sumneko_lua.setup(vim.tbl_deep_extend('force', {
     settings = {
       Lua = {
@@ -37,7 +33,7 @@ local setup_lua = function(lspconfig)
   }, opts))
 end
 
-local setup_normal = function(lspconfig)
+local install_normal = function(lspconfig)
   local servers = { 'html', 'eslint', 'cssls', 'jsonls', 'emmet_ls', 'vuels', 'tailwindcss' }
 
   -- html、eslint、cssls、jsonls、emmet_ls、vuels、tailwindcss
@@ -46,12 +42,12 @@ local setup_normal = function(lspconfig)
   end
 end
 
-local setup_lsp = function()
+local install_lsp = function()
   local lspconfig = require('lspconfig')
 
-  setup_normal(lspconfig)
-  setup_teserver(lspconfig)
-  setup_lua(lspconfig)
+  install_normal(lspconfig)
+  install_tsserver(lspconfig)
+  install_lua(lspconfig)
 end
 
-setup_lsp()
+install_lsp()

@@ -108,4 +108,24 @@ M.toggleterm = function()
   map('n', '<leader>tr', '<cmd>lua _RANGER_TOGGLE()<CR>')
 end
 
+M.lspconfig = function()
+  local m = plugin_maps.lspconfig
+
+  map('n', m.declaration, '<cmd>lua vim.lsp.buf.declaration()<CR>')
+  map('n', m.definition, '<cmd>lua vim.lsp.buf.definition()<CR>')
+  map('n', m.hover, '<cmd>lua vim.lsp.buf.hover()<CR>')
+  map('n', m.implementation, '<cmd>lua vim.lsp.buf.implementation()<CR>')
+  map('n', m.signature_help, '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+  map('n', m.rename, '<cmd>lua vim.lsp.buf.rename()<CR>')
+  map('n', m.references, '<cmd>lua vim.lsp.buf.references()<CR>')
+  map(
+    'n',
+    m.code_action,
+    "<cmd>lua require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_cursor({ borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└' }, results_title = 'Actions Menu', theme = '', layout_strategy = 'horizontal',})) <CR>"
+  )
+  map('n', m.show_line, '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "single" })<CR>')
+  map('n', m.goto_prev, '<cmd>lua vim.diagnostic.goto_prev({ border = "single" })<CR>')
+  map('n', m.goto_next, '<cmd>lua vim.diagnostic.goto_next({ border = "single" })<CR>')
+end
+
 return M
