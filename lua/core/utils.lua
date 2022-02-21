@@ -96,21 +96,26 @@ M.fg_bg = function(group, fgcol, bgcol)
   cmd('hi ' .. group .. ' guifg=' .. fgcol .. ' guibg=' .. bgcol)
 end
 
-M.override_req = function(name, default_req)
-  local override = load_config().plugins.default_plugin_config_replace[name]
+-- 隐藏statusline
+M.hide_statusline = function()
+  local hidden = M.load_config().plugins.options.statusline.hidden
+  local shown = M.load_config().plugins.options.statusline.shown
+  local api = vim.api
+  local buftype = api.nvim_buf_get_option(0, 'ft')
 
-  local result = default_req
-
-  if override ~= nil then
-    result = override
+  -- tbl_contains: 检查列表(t)是否包含`v`
+  if vim.tbl_contains(shown, buftype) then
+    -- 设置全局值laststatus
+    api.nvim_set_option('laststatus', 2)
+    return
   end
 
-  if string.match(result, '^%(') then
-    result = result:sub(2)
-    result = result:gsub('%)%.', "').", 1)
-    return "require('" .. result
+  if vim.tbl_contains(hidden, buftype) then
+    api.nvim_set_option('laststatus', 0)
+    return
   end
-  return "require('" .. result .. "')"
+
+  api.nvim_set_option('laststatus', 2)
 end
 
 return M
