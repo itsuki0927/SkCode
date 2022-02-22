@@ -188,7 +188,7 @@ return packer.startup(function()
   use({
     'jose-elias-alvarez/null-ls.nvim',
     disable = not plugin_settings.status.format,
-    event = 'InsertEnter',
+    event = 'InsertLeave',
     config = "require('plugins.configs.others').null_ls()",
   })
 
