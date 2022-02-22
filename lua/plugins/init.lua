@@ -8,11 +8,11 @@ end
 local use = packer.use
 
 return packer.startup(function()
+  use('nvim-lua/plenary.nvim')
   use({
     'wbthomason/packer.nvim',
     event = 'VimEnter',
   })
-  use('nvim-lua/plenary.nvim')
   use({
     'NvChad/nvim-base16.lua',
     after = 'packer.nvim',
@@ -42,7 +42,7 @@ return packer.startup(function()
   use({
     'rafamadriz/friendly-snippets',
     disable = not plugin_settings.status.cmp,
-    event = 'InsertEnter',
+    event = 'InsertCharPre',
   })
 
   use({
@@ -54,15 +54,15 @@ return packer.startup(function()
 
   use({
     'windwp/nvim-autopairs',
-    after = 'nvim-cmp',
     disable = not plugin_settings.status.autopairs,
+    after = 'nvim-cmp',
     config = "require('plugins.configs.others').autopairs()",
   })
 
   use({
     'L3MON4D3/LuaSnip',
-    wants = 'friendly-snippets',
     disable = not plugin_settings.status.cmp,
+    wants = 'friendly-snippets',
     after = 'nvim-cmp',
     config = "require('plugins.configs.others').luasnip()",
   })
@@ -99,7 +99,6 @@ return packer.startup(function()
     config = "require('plugins.configs.treesitter')",
   })
 
-  -- use("nvim-lualine/lualine.nvim")
   use({
     'feline-nvim/feline.nvim',
     disable = not plugin_settings.status.feline,
