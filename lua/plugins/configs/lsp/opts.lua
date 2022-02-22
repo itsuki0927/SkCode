@@ -1,3 +1,5 @@
+local bg = require('core.utils').bg
+
 -- on_attach
 
 -- 因为 null_ls 设置了prettier, 所以不需要tsserver、jsonls、cssls的默认格式化
@@ -10,6 +12,11 @@ end
 
 local function lsp_highlight_document(client)
   if client.resolved_capabilities.document_highlight then
+    -- 设置高亮背景
+    bg('LspReferenceRead', '#36383F')
+    bg('LspReferenceText', '#36383F')
+    bg('LspReferenceWrite', '#36383F')
+
     vim.api.nvim_exec(
       [[
         augroup lsp_document_highlight
