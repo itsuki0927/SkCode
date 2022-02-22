@@ -171,6 +171,7 @@ return packer.startup(function()
     'numToStr/Comment.nvim',
     disable = not plugin_settings.status.comment,
     module = 'Comment',
+    keys = { 'gcc' },
     config = "require('plugins.configs.others').comment()",
     setup = function()
       require('core.mappings').comment()
