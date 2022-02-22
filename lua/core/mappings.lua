@@ -134,4 +134,30 @@ M.renamer = function()
   map('v', m.rename, '<cmd>lua require("renamer").rename()<cr>')
 end
 
+M.gitsigns = function()
+  local m = plugin_maps.gitsigns
+  -- Navigation
+  map('n', m.next_hunk, "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", { expr = true })
+  map('n', m.prev_hunk, "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", { expr = true })
+
+  -- Actions
+  map('n', m.stage_hunk, ':Gitsigns stage_hunk<CR>')
+  map('v', m.stage_hunk, ':Gitsigns stage_hunk<CR>')
+  map('n', m.reset_hunk, ':Gitsigns reset_hunk<CR>')
+  map('v', m.reset_hunk, ':Gitsigns reset_hunk<CR>')
+  map('n', m.stage_buffer, '<cmd>Gitsigns stage_buffer<CR>')
+  map('n', m.undo_stage_hunk, '<cmd>Gitsigns undo_stage_hunk<CR>')
+  map('n', m.reset_buffer, '<cmd>Gitsigns reset_buffer<CR>')
+  map('n', m.preview_hunk, '<cmd>Gitsigns preview_hunk<CR>')
+  map('n', m.blame_line, '<cmd>lua require"gitsigns".blame_line{full=true}<CR>')
+  map('n', m.toggle_current_line_blame, '<cmd>Gitsigns toggle_current_line_blame<CR>')
+  map('n', m.diffthis, '<cmd>Gitsigns diffthis<CR>')
+  map('n', m.diffThis, '<cmd>lua require"gitsigns".diffthis("~")<CR>')
+  map('n', m.toggle_deleted, '<cmd>Gitsigns toggle_deleted<CR>')
+
+  -- Text object
+  map('o', m.select_hunk, ':<C-U>Gitsigns select_hunk<CR>')
+  map('x', m.select_hunk, ':<C-U>Gitsigns select_hunk<CR>')
+end
+
 return M
