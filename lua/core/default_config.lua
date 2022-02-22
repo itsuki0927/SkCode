@@ -91,16 +91,22 @@ M.mappings.plugins = {
   nvimtree = {
     toggle = '<leader>e',
   },
+  comment = {
+    toggle = '<leader>/',
+  },
+  renamer = {
+    rename = '<leader>rn',
+  },
+  bufferline = {
+    next_buffer = '<TAB>',
+    prev_buffer = '<S-TAB>',
+  },
   telescope = {
     find_files = '<leader>f',
     live_grep = '<leader>F',
     buffers = '<leader>sb',
     keymaps = '<leader>sk',
     commands = '<leader>sc',
-  },
-  bufferline = {
-    next_buffer = '<TAB>',
-    prev_buffer = '<S-TAB>',
   },
   lspconfig = {
     declaration = 'gD',
@@ -109,15 +115,11 @@ M.mappings.plugins = {
     implementation = 'gi',
     signature_help = 'gk',
     type_definition = '<leader>D',
-    rename = '<leader>rn',
     code_action = '<leader>ca',
     references = 'gr',
     show_line = 'gl',
     goto_prev = '[d',
     goto_next = ']d',
-  },
-  comment = {
-    toggle = '<leader>/',
   },
   gitsigns = {
     next_hunk = ']c',

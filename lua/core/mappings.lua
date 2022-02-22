@@ -116,7 +116,6 @@ M.lspconfig = function()
   map('n', m.hover, '<cmd>lua vim.lsp.buf.hover()<CR>')
   map('n', m.implementation, '<cmd>lua vim.lsp.buf.implementation()<CR>')
   map('n', m.signature_help, '<cmd>lua vim.lsp.buf.signature_help()<CR>')
-  map('n', m.rename, '<cmd>lua vim.lsp.buf.rename()<CR>')
   map('n', m.references, '<cmd>lua vim.lsp.buf.references()<CR>')
   map(
     'n',
@@ -126,6 +125,13 @@ M.lspconfig = function()
   map('n', m.show_line, '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "single" })<CR>')
   map('n', m.goto_prev, '<cmd>lua vim.diagnostic.goto_prev({ border = "single" })<CR>')
   map('n', m.goto_next, '<cmd>lua vim.diagnostic.goto_next({ border = "single" })<CR>')
+end
+
+M.renamer = function()
+  local m = plugin_maps.renamer
+
+  map('n', m.rename, '<cmd>lua require("renamer").rename()<cr>')
+  map('v', m.rename, '<cmd>lua require("renamer").rename()<cr>')
 end
 
 return M

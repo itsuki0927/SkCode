@@ -200,4 +200,14 @@ return packer.startup(function()
       require('core.mappings').toggleterm()
     end,
   })
+
+  use({
+    'filipdutescu/renamer.nvim',
+    after = 'nvim-lspconfig',
+    module = 'Renamer',
+    config = "require('plugins.configs.others').renamer()",
+    setup = function()
+      require('core.mappings').renamer()
+    end,
+  })
 end)

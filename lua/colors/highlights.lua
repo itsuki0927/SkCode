@@ -133,6 +133,11 @@ fg_bg('TelescopeResultsTitle', darker_black, yellow)
 bg('TelescopeNormal', darker_black)
 bg('TelescopeSelection', black2)
 
+-- Renamer
+bg('RenamerNormal', darker_black)
+fg_bg('RenamerBorder', darker_black, darker_black)
+fg_bg('RenamerTitle', black, blue)
+
 -- keybinds cheatsheet
 fg_bg('CheatsheetBorder', black, black)
 bg('CheatsheetSectionContent', black)
