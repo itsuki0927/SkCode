@@ -177,13 +177,6 @@ return packer.startup(function()
     end,
   })
 
-  -- use({
-  --   'mhartington/formatter.nvim',
-  --   disable = not plugin_settings.status.format,
-  --   event = 'InsertEnter',
-  --   config = "require('plugins.configs.others').formatter()",
-  -- })
-
   use({
     'jose-elias-alvarez/null-ls.nvim',
     disable = not plugin_settings.status.format,
