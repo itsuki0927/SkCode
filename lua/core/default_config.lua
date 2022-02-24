@@ -33,6 +33,7 @@ M.plugins = {
     nvimtree = true,
     format = true,
     toggleterm = true,
+    renamer = true,
   },
   options = {
     nvimtree = {
