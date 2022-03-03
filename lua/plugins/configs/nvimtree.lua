@@ -10,11 +10,11 @@ vim.g.nvim_tree_icons = {
   symlink = '',
   git = {
     unstaged = '',
-    staged = 'S',
+    staged = '✓',
     unmerged = '',
     renamed = '➜',
     deleted = '',
-    untracked = 'U',
+    untracked = 'u',
     ignored = '◌',
   },
   folder = {
@@ -26,7 +26,6 @@ vim.g.nvim_tree_icons = {
   },
 }
 
-vim.g.nvim_tree_quit_on_open = 1 -- 打开文件时关闭nvimtree
 vim.g.nvim_tree_indent_markers = 1 -- 文件夹打开显示缩进
 
 nvimtree.setup({
@@ -45,15 +44,6 @@ nvimtree.setup({
   update_to_buf_dir = {
     enable = true,
     auto_open = true,
-  },
-  diagnostics = {
-    enable = true,
-    icons = {
-      hint = '',
-      info = '',
-      warning = '',
-      error = '',
-    },
   },
   update_focused_file = {
     enable = true,
@@ -84,11 +74,4 @@ nvimtree.setup({
   },
   disable_window_picker = 0,
   root_folder_modifier = ':t',
-  show_icons = {
-    git = 1,
-    folders = 1,
-    files = 1,
-    folder_arrows = 1,
-    tree_width = 30,
-  },
 })
