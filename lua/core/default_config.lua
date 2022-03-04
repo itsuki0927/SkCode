@@ -63,6 +63,7 @@ M.plugins = {
     format = true,
     toggleterm = true,
     renamer = true,
+    todo_comments = true,
   },
   options = {
     nvimtree = {
@@ -130,6 +131,10 @@ M.mappings.plugins = {
   bufferline = {
     next_buffer = '<TAB>',
     prev_buffer = '<S-TAB>',
+  },
+  todo_comments = {
+    todo_list = '<leader>tl',
+    todo_search = '<leader>ts',
   },
   telescope = {
     find_files = '<leader>f',

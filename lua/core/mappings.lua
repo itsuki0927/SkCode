@@ -160,4 +160,11 @@ M.gitsigns = function()
   map('x', m.select_hunk, ':<C-U>Gitsigns select_hunk<CR>')
 end
 
+M.todo_comments = function()
+  local m = plugin_maps.todo_comments
+
+  map('n', m.todo_list, ':TodoLocList<CR>')
+  map('n', m.todo_search, ':TodoTelescope<CR>')
+end
+
 return M

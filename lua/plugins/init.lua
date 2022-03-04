@@ -204,4 +204,15 @@ return packer.startup(function()
       require('core.mappings').renamer()
     end,
   })
+
+  use({
+    'folke/todo-comments.nvim',
+    disable = not plugin_settings.status.todo_comments,
+    event = 'BufRead',
+    module = 'TodoComments',
+    config = "require('plugins.configs.others').todo_comments()",
+    setup = function()
+      require('core.mappings').todo_comments()
+    end,
+  })
 end)
