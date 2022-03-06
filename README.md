@@ -81,117 +81,117 @@ SkCode 提供了默认的键位配置. 以下是常用的键位配置, 更多的
 
 #### 常用键位
 
-| 键位         | 含义            |
-| ------------ | --------------- |
-| <ctrl>h      | 聚焦到左窗口    |
-| <ctrl>l      | 聚焦到右窗口    |
-| <ctrl>k      | 聚焦到上窗口    |
-| <ctrl>j      | 聚焦到下窗口    |
-| <leader>x    | 关闭当前 Buffer |
-| <leader>w    | 保存当前 Buffer |
-| <leader>q    | 退出当前 Buffer |
-| <leader><CR> | 取消高亮        |
-| jk           | Esc             |
+| 键位           | 含义            |
+| -------------- | --------------- |
+| `<ctrl>h`      | 聚焦到左窗口    |
+| `<ctrl>l`      | 聚焦到右窗口    |
+| `<ctrl>k`      | 聚焦到上窗口    |
+| `<ctrl>j`      | 聚焦到下窗口    |
+| `<leader>x`    | 关闭当前 Buffer |
+| `<leader>w`    | 保存当前 Buffer |
+| `<leader>q`    | 退出当前 Buffer |
+| `<leader><CR>` | 取消高亮        |
+| `jk`           | Esc             |
 
 #### Renamer
 
-| 键位       | 含义       |
-| ---------- | ---------- |
-| <leader>rn | 变量重命名 |
+| 键位         | 含义       |
+| ------------ | ---------- |
+| `<leader>rn` | 变量重命名 |
 
 #### bufferline
 
-| 键位    | 含义          |
-| ------- | ------------- |
-| <tab>   | 下一个 Buffer |
-| <S-tab> | 上一个 Buffer |
+| 键位      | 含义          |
+| --------- | ------------- |
+| `<tab>`   | 下一个 Buffer |
+| `<S-tab>` | 上一个 Buffer |
 
 #### Comment
 
-| 键位      | 含义     |
-| --------- | -------- |
-| <leader>/ | 切换注释 |
-| gcc       | 切换注释 |
+| 键位        | 含义     |
+| ----------- | -------- |
+| `<leader>/` | 切换注释 |
+| `gcc`       | 切换注释 |
 
 #### todo-comments
 
-| 键位       | 含义      |
-| ---------- | --------- |
-| <leader>tl | todo 列表 |
-| <leader>ts | todo 搜索 |
+| 键位         | 含义      |
+| ------------ | --------- |
+| `<leader>tl` | todo 列表 |
+| `<leader>ts` | todo 搜索 |
 
 #### NvimTree
 
-| 键位      | 含义           |
-| --------- | -------------- |
-| <leader>e | 切换 NvimTree  |
-| a         | 创建文件       |
-| d         | 删除文件       |
-| h         | 折叠当前节点树 |
-| l         | 编辑当前文件   |
+| 键位        | 含义           |
+| ----------- | -------------- |
+| `<leader>e` | 切换 NvimTree  |
+| `a`         | 创建文件       |
+| `d`         | 删除文件       |
+| `h`         | 折叠当前节点树 |
+| `l`         | 编辑当前文件   |
 
 #### [Telescope](https://github.com/itsuki0927/SkCode/blob/main/lua/plugins/configs/telescope.lua)
 
-| 键位       | 含义                  |
-| ---------- | --------------------- |
-| <leader>f  | 搜索文件              |
-| <leader>F  | 搜索文件内容          |
-| <leader>sb | 搜索当前打开的 Buffer |
-| <leader>sk | 搜索设置的 keymaps    |
-| <leader>sc | 搜索设置的 commands   |
+| 键位         | 含义                  |
+| ------------ | --------------------- |
+| `<leader>f`  | 搜索文件              |
+| `<leader>F`  | 搜索文件内容          |
+| `<leader>sb` | 搜索当前打开的 Buffer |
+| `<leader>sk` | 搜索设置的 keymaps    |
+| `<leader>sc` | 搜索设置的 commands   |
 
 插入模式:
 
-| 键位      | 含义             |
-| --------- | ---------------- |
-| <ctrl>j   | 移动到下一项     |
-| <ctrl>k   | 移动到上一项     |
-| <esc>     | 关闭 Telescope   |
-| <ctrl-\[> | 关闭 Telescope   |
-| <cr>      | 打开文件         |
-| <ctrl-x>  | 向下分屏打开文件 |
-| <ctrl-v>  | 向右分屏打开文件 |
-| <M-p>     | 切换文件预览     |
+| 键位       | 含义             |
+| ---------- | ---------------- |
+| `<ctrl>j`  | 移动到下一项     |
+| `<ctrl>k`  | 移动到上一项     |
+| `<esc>`    | 关闭 Telescope   |
+| `<ctrl-[>` | 关闭 Telescope   |
+| `<cr>`     | 打开文件         |
+| `<ctrl-x>` | 向下分屏打开文件 |
+| `<ctrl-v>` | 向右分屏打开文件 |
+| `<M-p>`    | 切换文件预览     |
 
 正常模式:
 
 | 键位 | 含义           |
 | ---- | -------------- |
-| j    | 移动到下一项   |
-| k    | 移动到上一项   |
-| gg   | 移动到第一项   |
-| G    | 移动到最后一项 |
+| `j`  | 移动到下一项   |
+| `k`  | 移动到上一项   |
+| `gg` | 移动到第一项   |
+| `G`  | 移动到最后一项 |
 
 #### Lsp
 
-| 键位       | 含义             |
-| ---------- | ---------------- |
-| gD         | 查看类型定义     |
-| gd         | 查看定义         |
-| K          | hover            |
-| gi         | 查看实现         |
-| gk         | 查看当前文档     |
-| gr         | 查看引用         |
-| <leader>ca | 代码操作         |
-| gl         | 显示当前行的诊断 |
-| [d         | 上一个 Lsp       |
-| \]d        | 下一个 Lsp       |
+| 键位         | 含义             |
+| ------------ | ---------------- |
+| `gD`         | 查看类型定义     |
+| `gd`         | 查看定义         |
+| `K`          | hover            |
+| `gi`         | 查看实现         |
+| `gk`         | 查看当前文档     |
+| `gr`         | 查看引用         |
+| `gl`         | 显示当前行的诊断 |
+| `[d`         | 上一个诊断       |
+| `]d`         | 下一个诊断       |
+| `<leader>ca` | Code Actions     |
 
 #### Gitsign
 
-| 键位       | 含义              |
-| ---------- | ----------------- |
-| ]c         | 下一个 hunk       |
-| [c         | 上一个 hunk       |
-| <leader>hr | reset hunk        |
-| <leader>hR | reset buffer hunk |
-| <leader>hs | stage hunk        |
-| <leader>hS | reset buffer hunk |
-| <leader>hu | undo stage hunk   |
-| <leader>hp | preview hunk      |
-| <leader>hb | blame line        |
-| <leader>tb | toggle blame line |
-| <leader>hd | diff              |
+| 键位         | 含义              |
+| ------------ | ----------------- |
+| `]c`         | 下一个 hunk       |
+| `[c`         | 上一个 hunk       |
+| `<leader>hr` | reset hunk        |
+| `<leader>hR` | reset buffer hunk |
+| `<leader>hs` | stage hunk        |
+| `<leader>hS` | reset buffer hunk |
+| `<leader>hu` | undo stage hunk   |
+| `<leader>hp` | preview hunk      |
+| `<leader>hb` | blame line        |
+| `<leader>tb` | toggle blame line |
+| `<leader>hd` | diff              |
 
 ## 目录结构
 
