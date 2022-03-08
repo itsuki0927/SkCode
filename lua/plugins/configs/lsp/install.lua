@@ -33,10 +33,35 @@ local install_lua = function(lspconfig)
   }, opts))
 end
 
-local install_normal = function(lspconfig)
-  local servers = { 'html', 'eslint', 'cssls', 'jsonls', 'emmet_ls', 'vuels', 'tailwindcss' }
+local install_vue = function(lspconfig)
+  local function get_ts_server_path(root_dir)
+    local util = require('lspconfig.util')
+    local project_root = util.find_node_modules_ancestor(root_dir)
 
-  -- html、eslint、cssls、jsonls、emmet_ls、vuels、tailwindcss
+    local local_tsserverlib = project_root ~= nil
+      and util.path.join(project_root, 'node_modules', 'typescript', 'lib', 'tsserverlibrary.js')
+    local global_tsserverlib = '~/.npm/lib/node_modules/typescript/lib/tsserverlibrary.js'
+
+    if local_tsserverlib and util.path.exists(local_tsserverlib) then
+      return local_tsserverlib
+    else
+      return global_tsserverlib
+    end
+  end
+
+  lspconfig.volar.setup(vim.tbl_deep_extend('force', {
+    config = {
+      on_new_config = function(new_config, new_root_dir)
+        new_config.init_options.typescript.serverPath = get_ts_server_path(new_root_dir)
+      end,
+    },
+  }, opts))
+end
+
+local install_normal = function(lspconfig)
+  local servers = { 'html', 'eslint', 'cssls', 'jsonls', 'emmet_ls', 'tailwindcss' }
+
+  -- html、eslint、cssls、jsonls、emmet_ls、tailwindcss
   for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup(opts)
   end
@@ -48,6 +73,7 @@ local install_lsp = function()
   install_normal(lspconfig)
   install_tsserver(lspconfig)
   install_lua(lspconfig)
+  install_vue(lspconfig)
 end
 
 install_lsp()
