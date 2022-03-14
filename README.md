@@ -28,7 +28,7 @@ NvChad 提供了风格统一的主题, SkCode 在此基础上进行了扩展, �
 
 ## 环境
 
-1. [neovim >= 6.0](https://github.com/neovim/neovim): 必须
+1. [neovim >= 0.6](https://github.com/neovim/neovim): 必须
 2. [lazygit](https://github.com/jesseduffield/lazygit): 可选
 
 ## 安装
