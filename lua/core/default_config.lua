@@ -37,6 +37,7 @@ M.options = {
   wrap = false, -- 长行回绕并在下一行继续
   scrolloff = 8, -- 光标上下的最少行数
   sidescrolloff = 8,
+  shadafile = vim.opt.shadafile,
 }
 
 -- UI配置
