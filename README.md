@@ -310,6 +310,7 @@ M.plugins = {
 - 自动补全括号: [nvim-autopairs](https://github.com/windwp/nvim-autopairs).
 - 提供格式化、诊断: [null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim).
 - 管理 tabs、buffers: [bufferline.nvim](https://github.com/akinsho/bufferline.nvim).
+- 调用函数显示函数签名: [lsp_signature.nvim](https://github.com/ray-x/lsp_signature.nvim).
 
 ### UI 插件
 

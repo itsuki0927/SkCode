@@ -40,6 +40,13 @@ return packer.startup(function()
   })
 
   use({
+    'ray-x/lsp_signature.nvim',
+    disable = not plugin_settings.status.lspsignature,
+    after = 'nvim-lspconfig',
+    config = "require('plugins.configs.others').lspsignature()",
+  })
+
+  use({
     'rafamadriz/friendly-snippets',
     disable = not plugin_settings.status.cmp,
     event = 'InsertCharPre',
