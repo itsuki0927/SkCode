@@ -65,6 +65,7 @@ M.plugins = {
     toggleterm = true,
     renamer = true,
     todo_comments = true,
+    lspsignature = true,
   },
   options = {
     nvimtree = {

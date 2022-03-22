@@ -49,6 +49,7 @@ local install_vue = function(lspconfig)
     end
   end
 
+  -- 3.0
   lspconfig.volar.setup(vim.tbl_deep_extend('force', {
     config = {
       on_new_config = function(new_config, new_root_dir)
@@ -56,10 +57,29 @@ local install_vue = function(lspconfig)
       end,
     },
   }, opts))
+
+  -- 2.0
+  lspconfig.vuels.setup(opts)
+end
+
+local install_tailwindcss = function(lspconfig)
+  lspconfig.tailwindcss.setup(vim.tbl_deep_extend('force', {
+    filetypes = {
+      'less',
+      'scss',
+      'css',
+      'stylus',
+      'javascript',
+      'javascriptreact',
+      'typescript',
+      'typescriptreact',
+      'vue',
+    },
+  }, opts))
 end
 
 local install_normal = function(lspconfig)
-  local servers = { 'html', 'eslint', 'cssls', 'jsonls', 'emmet_ls', 'tailwindcss' }
+  local servers = { 'html', 'eslint', 'cssls', 'jsonls', 'emmet_ls' }
 
   -- html、eslint、cssls、jsonls、emmet_ls、tailwindcss
   for _, lsp in ipairs(servers) do
@@ -74,6 +94,7 @@ local install_lsp = function()
   install_tsserver(lspconfig)
   install_lua(lspconfig)
   install_vue(lspconfig)
+  install_tailwindcss(lspconfig)
 end
 
 install_lsp()
