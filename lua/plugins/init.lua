@@ -177,11 +177,18 @@ return packer.startup(function()
     'numToStr/Comment.nvim',
     disable = not plugin_settings.status.comment,
     module = 'Comment',
-    keys = { 'gcc' },
+    after = 'nvim-ts-context-commentstring',
     config = "require('plugins.configs.others').comment()",
     setup = function()
       require('core.mappings').comment()
     end,
+  })
+
+  use({
+    'JoosepAlviste/nvim-ts-context-commentstring',
+    disable = not plugin_settings.status.comment,
+    module = 'Comment',
+    keys = { { 'n', 'gcc' }, { 'v', 'gc' } },
   })
 
   use({
@@ -204,7 +211,7 @@ return packer.startup(function()
   use({
     'filipdutescu/renamer.nvim',
     disable = not plugin_settings.status.renamer,
-    after = 'nvim-lspconfig',
+    keys = '<space>ca',
     module = 'Renamer',
     config = "require('plugins.configs.others').renamer()",
     setup = function()

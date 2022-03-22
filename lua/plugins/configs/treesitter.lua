@@ -17,4 +17,8 @@ configs.setup({
   autopairs = {
     enable = true,
   },
+  context_commentstring = {
+    enable = true,
+    enable_autocmd = false,
+  },
 })
