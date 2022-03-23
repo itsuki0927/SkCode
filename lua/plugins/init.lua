@@ -177,7 +177,7 @@ return packer.startup(function()
     'numToStr/Comment.nvim',
     disable = not plugin_settings.status.comment,
     module = 'Comment',
-    after = 'nvim-ts-context-commentstring',
+    keys = { { 'n', 'gcc' }, { 'v', 'gc' } },
     config = "require('plugins.configs.others').comment()",
     setup = function()
       require('core.mappings').comment()
@@ -186,9 +186,8 @@ return packer.startup(function()
 
   use({
     'JoosepAlviste/nvim-ts-context-commentstring',
+    after = 'nvim-treesitter',
     disable = not plugin_settings.status.comment,
-    module = 'Comment',
-    keys = { { 'n', 'gcc' }, { 'v', 'gc' } },
   })
 
   use({
