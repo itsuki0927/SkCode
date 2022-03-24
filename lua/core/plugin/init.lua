@@ -1,5 +1,5 @@
 local plugin_settings = require('core.utils').load_config().plugins
-local present, packer = pcall(require, 'plugins.packerInit')
+local present, packer = pcall(require, 'core.plugin.packerInit')
 
 if not present then
   return false
@@ -24,12 +24,12 @@ return packer.startup(function()
   use({
     'kyazdani42/nvim-web-devicons',
     after = 'nvim-base16.lua',
-    config = "require('plugins.configs.icons')",
+    config = "require('plugin-configs.icons')",
   })
 
   use({
     'neovim/nvim-lspconfig',
-    config = "require('plugins.configs.lsp')",
+    config = "require('plugin-configs.lsp')",
     opt = true,
     setup = function()
       require('core.utils').packer_lazy_load('nvim-lspconfig')
@@ -43,7 +43,7 @@ return packer.startup(function()
     'ray-x/lsp_signature.nvim',
     disable = not plugin_settings.status.lspsignature,
     after = 'nvim-lspconfig',
-    config = "require('plugins.configs.others').lspsignature()",
+    config = "require('plugin-configs.lspsignature')",
   })
 
   use({
@@ -56,14 +56,14 @@ return packer.startup(function()
     'hrsh7th/nvim-cmp',
     disable = not plugin_settings.status.cmp,
     after = 'friendly-snippets',
-    config = "require('plugins.configs.cmp')",
+    config = "require('plugin-configs.cmp')",
   })
 
   use({
     'windwp/nvim-autopairs',
     disable = not plugin_settings.status.autopairs,
     after = 'nvim-cmp',
-    config = "require('plugins.configs.others').autopairs()",
+    config = "require('plugin-configs.autopairs')",
   })
 
   use({
@@ -71,7 +71,7 @@ return packer.startup(function()
     disable = not plugin_settings.status.cmp,
     wants = 'friendly-snippets',
     after = 'nvim-cmp',
-    config = "require('plugins.configs.others').luasnip()",
+    config = "require('plugin-configs.luasnip')",
   })
   use({
     'saadparwaiz1/cmp_luasnip',
@@ -103,20 +103,20 @@ return packer.startup(function()
   use({
     'nvim-treesitter/nvim-treesitter',
     event = 'BufRead',
-    config = "require('plugins.configs.treesitter')",
+    config = "require('plugin-configs.treesitter')",
   })
 
   use({
     'feline-nvim/feline.nvim',
     disable = not plugin_settings.status.feline,
     after = 'nvim-web-devicons',
-    config = "require('plugins.configs.statusline')",
+    config = "require('plugin-configs.statusline')",
   })
   use({
     'akinsho/bufferline.nvim',
     disable = not plugin_settings.status.bufferline,
     after = 'nvim-web-devicons',
-    config = "require('plugins.configs.bufferline')",
+    config = "require('plugin-configs.bufferline')",
     setup = function()
       require('core.mappings').bufferline()
     end,
@@ -127,7 +127,7 @@ return packer.startup(function()
     disable = not plugin_settings.status.nvimtree,
     after = not plugin_settings.options.nvimtree.lazy_load and 'nvim-web-devicons',
     cmd = plugin_settings.options.nvimtree.lazy_load and { 'NvimTreeToggle', 'NvimTreeFocus' },
-    config = "require('plugins.configs.nvimtree')",
+    config = "require('plugin-configs.nvimtree')",
     setup = function()
       require('core.mappings').nvimtree()
     end,
@@ -137,7 +137,7 @@ return packer.startup(function()
     'nvim-telescope/telescope.nvim',
     module = 'telescope',
     cmd = 'Telescope',
-    config = "require('plugins.configs.telescope')",
+    config = "require('plugin-configs.telescope')",
     setup = function()
       require('core.mappings').telescope()
     end,
@@ -147,14 +147,14 @@ return packer.startup(function()
     'NvChad/nvim-colorizer.lua',
     disable = not plugin_settings.status.colorizer,
     event = 'BufRead',
-    config = "require('plugins.configs.others').colorizer()",
+    config = "require('plugin-configs.colorizer')",
   })
 
   use({
     'lewis6991/gitsigns.nvim',
     disable = not plugin_settings.status.gitsigns,
     opt = true,
-    config = "require('plugins.configs.gitsigns')",
+    config = "require('plugin-configs.gitsigns')",
     setup = function()
       require('core.utils').packer_lazy_load('gitsigns.nvim')
     end,
@@ -163,14 +163,14 @@ return packer.startup(function()
   use({
     'goolord/alpha-nvim',
     disable = not plugin_settings.status.alpha,
-    config = "require('plugins.configs.alpha')",
+    config = "require('plugin-configs.alpha')",
   })
 
   use({
     'lukas-reineke/indent-blankline.nvim',
     disable = not plugin_settings.status.blankline,
     event = 'BufRead',
-    config = "require('plugins.configs.others').blankline()",
+    config = "require('plugin-configs.blankline')",
   })
 
   use({
@@ -178,7 +178,7 @@ return packer.startup(function()
     disable = not plugin_settings.status.comment,
     module = 'Comment',
     keys = { { 'n', 'gcc' }, { 'v', 'gc' } },
-    config = "require('plugins.configs.others').comment()",
+    config = "require('plugin-configs.comment')",
     setup = function()
       require('core.mappings').comment()
     end,
@@ -194,14 +194,14 @@ return packer.startup(function()
     'jose-elias-alvarez/null-ls.nvim',
     disable = not plugin_settings.status.format,
     event = 'InsertLeave',
-    config = "require('plugins.configs.others').null_ls()",
+    config = "require('plugin-configs.null_ls')",
   })
 
   use({
     'akinsho/toggleterm.nvim',
     disable = not plugin_settings.status.toggleterm,
     keys = '<C-\\>',
-    config = "require('plugins.configs.toggleterm')",
+    config = "require('plugin-configs.toggleterm')",
     setup = function()
       require('core.mappings').toggleterm()
     end,
@@ -212,7 +212,7 @@ return packer.startup(function()
     disable = not plugin_settings.status.renamer,
     keys = '<space>ca',
     module = 'Renamer',
-    config = "require('plugins.configs.others').renamer()",
+    config = "require('plugin-configs.renamer')",
     setup = function()
       require('core.mappings').renamer()
     end,
@@ -223,7 +223,7 @@ return packer.startup(function()
     disable = not plugin_settings.status.todo_comments,
     event = 'BufRead',
     module = 'TodoComments',
-    config = "require('plugins.configs.others').todo_comments()",
+    config = "require('plugin-configs.todo_comments')",
     setup = function()
       require('core.mappings').todo_comments()
     end,

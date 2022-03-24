@@ -1,4 +1,4 @@
-local opts = require('plugins.configs.lsp.opts')
+local opts = require('plugin-configs.lsp.opts')
 
 local install_tsserver = function(lspconfig)
   -- 设置OrganizeImports

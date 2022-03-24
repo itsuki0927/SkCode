@@ -4,7 +4,7 @@ local present, packer = pcall(require, 'packer')
 
 if not present then
   print('Cloning packer..')
-  local packer_path = vim.fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
+  local packer_path = vim.fn.stdpath('data') .. '/site/pack/packer/opts/packer.nvim'
 
   vim.fn.delete(packer_path, 'rf')
   vim.fn.system({
