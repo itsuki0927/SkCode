@@ -40,13 +40,13 @@ nvim +PackerSync
 
 ## 效果
 
-### 主题
-
-![nvim-theme](https://static.itsuki.cn/article/nvim-theme.png)
-
 ### 首页
 
 ![nvim-alpha](https://static.itsuki.cn/article/nvim-alpha.png)
+
+### 文件树
+
+![nvim-tree](https://static.itsuki.cn/article/nvim-tree.png)
 
 ### 自动完成
 
@@ -64,13 +64,17 @@ nvim +PackerSync
 
 ![nvim-code-renamer](https://static.itsuki.cn/article/nvim-code-renamer.png)
 
-### 文件树
-
-![nvim-tree](https://static.itsuki.cn/article/nvim-tree.png)
-
 ### 模糊搜索
 
 ![nvim-telescope](https://static.itsuki.cn/article/nvim-telescope.png)
+
+### Todo 高亮
+
+![todo-highlight](https://static.itsuki.cn/article/todo-highlight.png)
+
+### indent-blankline
+
+![indent-blankline](https://static.itsuki.cn/article/indent-line.png)
 
 ## 配置
 
@@ -208,7 +212,7 @@ SkCode 提供了默认的键位配置. 以下是常用的键位配置, 更多的
 │   │   ├── mappings.lua                         # 键位配置
 │   │   ├── options.lua                          # vim 选项配置
 │   │   └── utils.lua                            # 工具函数
-│   └── plugins                                  # 插件配置文件夹
+│   └── plugin-configs                           # 插件配置文件夹
 │       ├── configs                              # 插件配置
 │       │   ├── icons.lua                        # 图标
 │       │   ├── lsp                              # LSP 配置
@@ -232,7 +236,7 @@ SkCode 提供了默认的键位配置. 以下是常用的键位配置, 更多的
 2. 如果有特定的 Lsp, 则需要自行添加.
 
 ```lua
--- plugins/lsp/install.lua
+-- plugin-configs/lsp/install.lua
 
 -- 直接安装的 lsp 示例
 local install_normal = function(lspconfig)
@@ -242,22 +246,25 @@ local install_normal = function(lspconfig)
 end
 
 -- 特定的Lsp
--- 可查看 install_server 函数
+-- 可查看 install_tsserver 函数
 ```
 
 ### 自定义添加插件
 
-1. 在`plugins/init.lua`中添加插件.
+1. 在`core/plugin/init.lua`中添加插件.
 2. 在`core/default_config.lua`添加插件配置参数.
 3. 在`core/mappings.lua`添加插件快捷键(如果需要).
+4. 在`plugin-configs/插件名.lua`添加插件配置.
 
 ```lua
--- plugins/init.lua
+-- plugin-configs/插件名.lua
+
+-- /core/plugin/init.lua
 use({
   '插件名',
   config = function()
     -- 添加插件的配置
-    -- require('plugins.configs.插件名.lua')
+    -- require('plugin-configs.插件名.lua')
   end,
   setup = function()
     -- 插件的前置函数, 一般用来添加键位
