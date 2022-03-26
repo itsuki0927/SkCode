@@ -19,4 +19,9 @@ if present then
       enable_autocmd = false,
     },
   })
+
+  -- 开启折叠
+  vim.o.foldmethod = 'expr'
+  vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
+  vim.wo.foldenable = false
 end

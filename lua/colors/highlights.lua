@@ -40,6 +40,8 @@ end
 cmd('hi clear CursorLine')
 -- Line number
 fg('cursorlinenr', white)
+-- Fold
+bg('Folded', '#252a34')
 
 -- same it bg, so it doesn't appear
 fg('EndOfBuffer', black)

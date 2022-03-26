@@ -1,5 +1,10 @@
 local M = {}
 
+-- SkCode 配置
+M.config = {
+  auto_fold = false,
+}
+
 -- vim配置
 -- 更多配置可以查看文档: https://yianwillis.github.io/vimcdoc/doc/quickref.html#option-list
 M.options = {
