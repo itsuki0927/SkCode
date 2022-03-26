@@ -40,6 +40,20 @@ M.options = {
   shadafile = vim.opt.shadafile,
 }
 
+M.lsp = {
+  servers = {
+    sumneko_lua = true,
+    tailwindcss = true,
+    tsserver = true,
+    volar = true,
+    vuels = true,
+    cssls = true,
+    jsonls = true,
+    emmet_ls = true,
+    html = true,
+  },
+}
+
 -- UI配置
 M.ui = {
   theme = 'onedark',

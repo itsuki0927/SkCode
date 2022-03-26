@@ -15,7 +15,7 @@ local function setupLspDiagnostic()
   local config = {
     virtual_text = false,
     signs = true,
-    update_in_insert = false, -- 希望在插入模式进行更新
+    update_in_insert = false,
     underline = true,
     severity_sort = true,
     float = {

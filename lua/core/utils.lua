@@ -118,4 +118,8 @@ M.hide_statusline = function()
   api.nvim_set_option('laststatus', 2)
 end
 
+M.merge = function(...)
+  return vim.tbl_deep_extend('force', ...)
+end
+
 return M

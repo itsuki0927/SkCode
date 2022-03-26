@@ -29,7 +29,7 @@ return packer.startup(function()
 
   use({
     'neovim/nvim-lspconfig',
-    config = "require('plugin-configs.lsp')",
+    config = "require('core.lsp')",
     opt = true,
     setup = function()
       require('core.utils').packer_lazy_load('nvim-lspconfig')
