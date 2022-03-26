@@ -79,6 +79,7 @@ M.init = function()
     map('n', misc.quit, '<cmd>q!<CR>')
     map('n', misc.nohightlight, '<cmd>noh<CR>')
     map('i', misc.esc, '<ESC>')
+    map('n', misc.run_test, ':lua require("plenary.test_harness").test_directory(vim.fn.expand("%:p"))<CR>')
 
     map('v', '<', '<gv')
     map('v', '>', '>gv')

@@ -108,6 +108,7 @@ M.mappings = {
     save = '<leader>w',
     quit = '<leader>q',
     nohightlight = '<leader><CR>',
+    run_test = '<leader>rt',
     esc = 'jk',
   },
 
