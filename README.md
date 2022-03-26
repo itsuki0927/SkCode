@@ -232,21 +232,24 @@ SkCode 提供了默认的键位配置. 以下是常用的键位配置, 更多的
 
 在添加 Lsp 服务之前, **请确保你安装了 Lsp 服务在本地, 具体可以查看[lspconfig](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md)**. 其次在`plugins/lsp/install.lua`进行添加.
 
-1. 如果是直接安装的 Lsp, 只需要在`install_normal`函数中添加.
-2. 如果有特定的 Lsp, 则需要自行添加.
+1. 如果是直接安装的 Lsp, 只需要在`core/default_config.lsp`中添加即可.
+2. 如果需要对 Lsp 服务传入参数, 需要在第一步基础上, 在`core/lsp/providers`中添加配置, 然后在`core/lsp/install.lua`添加判断即可进行添加.
 
 ```lua
--- plugin-configs/lsp/install.lua
-
 -- 直接安装的 lsp 示例
-local install_normal = function(lspconfig)
-  -- 添加 pyright
-  local servers = {'pyright'}
-  -- ...
-end
+-- core/default_config.lua
+M.lsp = {
+  servers  = {
+    -- 添加
+    newLsp = true,
+    -- 你可以使用false, 禁用某个lsp
+    tailwindcss = false,
+  }
+}
 
--- 特定的Lsp
--- 可查看 install_tsserver 函数
+-- 需要传入参数的Lsp
+-- 查看core/lsp/provider/xxx.lua
+-- 查看core/lsp/install.lua的install_lsp函数
 ```
 
 ### 自定义添加插件
