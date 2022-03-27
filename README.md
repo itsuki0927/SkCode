@@ -76,6 +76,10 @@ nvim +PackerSync
 
 ![indent-blankline](https://static.itsuki.cn/article/indent-line.png)
 
+### 折叠
+
+![nvim-fold](https://static.itsuki.cn/article/nvim-fold.png)
+
 ## 配置
 
 ### 键位配置
