@@ -74,7 +74,7 @@ M.init = function()
     local misc = maps.misc
 
     map('', '<Space>', '<Nop>')
-    map('n', misc.close_buffer, ':bd <CR>')
+    map('n', misc.close_buffer, ':lua require("core.utils").close_buffer() <CR>')
     map('n', misc.save, '<cmd>w!<CR>')
     map('n', misc.quit, '<cmd>q!<CR>')
     map('n', misc.nohightlight, '<cmd>noh<CR>')

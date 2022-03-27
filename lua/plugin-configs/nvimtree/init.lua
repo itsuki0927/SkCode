@@ -1,6 +1,8 @@
 local present, nvimtree = pcall(require, 'nvim-tree')
 
 if present then
+  local nvimtree_default_options = require('core.utils').load_config().plugins.options.nvimtree
+
   -- 设置图标
   vim.g.nvim_tree_icons = {
     default = '',
@@ -74,6 +76,7 @@ if present then
     actions = {
       open_file = {
         resize_window = true,
+        quit_on_open = nvimtree_default_options.quit_on_open,
       },
     },
   })

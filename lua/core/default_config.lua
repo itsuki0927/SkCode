@@ -50,6 +50,7 @@ M.plugins = {
   options = {
     nvimtree = {
       lazy_load = true,
+      quit_on_open = true, -- 打开文件时关闭nvimtree
     },
     statusline = {
       -- hide, show on specific filetypes
