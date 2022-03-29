@@ -49,7 +49,7 @@ return packer.startup(function()
   use({
     'rafamadriz/friendly-snippets',
     disable = not plugin_settings.status.cmp,
-    event = 'InsertCharPre',
+    event = 'InsertEnter',
   })
 
   use({
