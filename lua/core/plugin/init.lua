@@ -42,7 +42,7 @@ return packer.startup(function()
   use({
     'ray-x/lsp_signature.nvim',
     disable = not plugin_settings.status.lspsignature,
-    after = 'nvim-lspconfig',
+    event = 'InsertCharPre',
     config = "require('plugin-configs.lspsignature')",
   })
 
