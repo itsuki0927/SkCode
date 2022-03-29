@@ -26,8 +26,8 @@ local one_bg3 = colors.one_bg3
 
 -- functions for setting highlights
 local fg = require('core.utils').fg
-local fg_bg = require('core.utils').fg_bg
 local bg = require('core.utils').bg
+local fg_bg = require('core.utils').fg_bg
 
 -- Comments
 if ui.italic_comments then
@@ -48,7 +48,7 @@ fg('EndOfBuffer', black)
 
 -- For floating windows
 bg('NormalFloat', darker_black)
-fg_bg('FloatBorder', darker_black, darker_black)
+fg_bg('FloatBorder', white, darker_black)
 
 -- Pmenu
 bg('Pmenu', one_bg)
@@ -125,10 +125,8 @@ fg_bg('NvimTreeStatuslineNc', darker_black, darker_black)
 fg_bg('NvimTreeWindowPicker', red, black2)
 
 -- Telescope
-fg_bg('TelescopeBorder', darker_black, darker_black)
-fg_bg('TelescopePromptBorder', black2, black2)
-fg_bg('TelescopePromptNormal', white, black2)
-fg_bg('TelescopePromptPrefix', red, black2)
+fg_bg('TelescopePromptNormal', white, darker_black)
+fg_bg('TelescopePromptPrefix', red, darker_black)
 fg_bg('TelescopePreviewTitle', black, green)
 fg_bg('TelescopePromptTitle', black, red)
 fg_bg('TelescopeResultsTitle', darker_black, yellow)
@@ -137,12 +135,11 @@ bg('TelescopeSelection', black2)
 
 -- Renamer
 bg('RenamerNormal', darker_black)
-fg_bg('RenamerBorder', darker_black, darker_black)
 fg_bg('RenamerTitle', black, blue)
 
 -- keybinds cheatsheet
 fg_bg('CheatsheetBorder', black, black)
-bg('CheatsheetSectionContent', black)
+bg('CheatsheetSectionContent', red)
 fg('CheatsheetHeading', white)
 
 local section_title_colors = {
@@ -159,7 +156,7 @@ for i, color in ipairs(section_title_colors) do
 end
 
 -- Disable some highlight in nvim tree if transparency enabled
-if ui.transparency then
+if ui.float_style == 'transparency' then
   bg('Normal', 'NONE')
   bg('Folded', 'NONE')
   fg('Folded', 'NONE')
@@ -171,6 +168,13 @@ if ui.transparency then
   bg('NvimTreeVertSplit', 'NONE')
   fg('NvimTreeVertSplit', grey)
 
+  -- renamer
+  bg('RenamerNormal', 'NONE')
+  fg_bg('RenamerBorder', one_bg, 'NONE')
+
+  -- float border
+  fg_bg('FloatBorder', one_bg, 'NONE')
+
   -- telescope
   bg('TelescopeBorder', 'NONE')
   bg('TelescopePrompt', 'NONE')
@@ -181,4 +185,16 @@ if ui.transparency then
   bg('TelescopePromptPrefix', 'NONE')
   fg('TelescopeBorder', one_bg)
   fg_bg('TelescopeResultsTitle', black, blue)
+elseif ui.float_style == 'darker' then
+  -- float border
+  fg_bg('FloatBorder', darker_black, darker_black)
+
+  -- renamer
+  fg_bg('RenamerBorder', darker_black, darker_black)
+
+  -- telescope
+  fg_bg('TelescopeBorder', darker_black, darker_black)
+  fg_bg('TelescopePromptBorder', black2, black2)
+  fg_bg('TelescopePromptNormal', white, black2)
+  fg_bg('TelescopePromptPrefix', red, black2)
 end
