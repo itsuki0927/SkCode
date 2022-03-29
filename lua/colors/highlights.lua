@@ -72,12 +72,14 @@ fg('AlphaButtons', light_grey)
 fg('AlphaType', blue)
 
 -- Git signs
-fg_bg('DiffAdd', blue, 'NONE')
+fg_bg('DiffAdd', green, 'NONE')
 fg_bg('DiffChange', grey_fg, 'NONE')
 fg_bg('DiffChangeDelete', red, 'NONE')
 fg_bg('DiffModified', red, 'NONE')
 fg_bg('DiffDelete', red, 'NONE')
 fg_bg('GitSignsCurrentLineBlame', grey_fg, 'NONE')
+fg('GitSignsDeleteLn', red)
+fg('GitSignsAddLn', green)
 
 -- Indent blankline
 fg('IndentBlanklineChar', line)
