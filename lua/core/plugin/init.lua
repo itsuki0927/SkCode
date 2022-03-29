@@ -210,7 +210,7 @@ return packer.startup(function()
   use({
     'filipdutescu/renamer.nvim',
     disable = not plugin_settings.status.renamer,
-    keys = '<space>ca',
+    after = 'nvim-lspconfig',
     module = 'Renamer',
     config = "require('plugin-configs.renamer')",
     setup = function()
