@@ -308,8 +308,6 @@ M.'插件名' = function()
 end
 ```
 
-https://static.itsuki.cn/article/nvim-floatrem.png
-
 ## 插件列表
 
 你可以在`core/default_config.lua`中进行禁用.
