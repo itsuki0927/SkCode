@@ -168,4 +168,13 @@ M.todo_comments = function()
   map('n', m.todo_search, ':TodoTelescope<CR>')
 end
 
+M.floaterm = function()
+  local m = plugin_maps.floaterm
+
+  vim.g.floaterm_keymap_toggle = m.toggle
+  map('n', m.toggle, ':FloatermToggle --autoclose=2<CR>')
+  map('n', m.lazygit, ':FloatermNew --height=0.99 --width=0.99 --autoclose=2 lazygit<CR>')
+  map('n', m.ranger, ':FloatermNew --height=0.99 --width=0.99 --autoclose=2 ranger<CR>')
+end
+
 return M

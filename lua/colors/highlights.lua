@@ -66,6 +66,10 @@ fg('VertSplit', one_bg2)
 
 -- Plugin Highlights
 
+-- Floaterm
+bg('Floaterm', darker_black)
+fg_bg('FloatermBorder', white, darker_black)
+
 -- Dashboard
 fg('AlphaHeader', light_grey)
 fg('AlphaButtons', light_grey)
@@ -187,6 +191,9 @@ if ui.float_style == 'transparency' then
   bg('TelescopePromptPrefix', 'NONE')
   fg('TelescopeBorder', one_bg)
   fg_bg('TelescopeResultsTitle', black, blue)
+
+  bg('Floaterm', 'NONE')
+  fg_bg('FloatermBorder', one_bg, 'NONE')
 elseif ui.float_style == 'darker' then
   -- float border
   fg_bg('FloatBorder', darker_black, darker_black)
@@ -199,4 +206,8 @@ elseif ui.float_style == 'darker' then
   fg_bg('TelescopePromptBorder', black2, black2)
   fg_bg('TelescopePromptNormal', white, black2)
   fg_bg('TelescopePromptPrefix', red, black2)
+
+  -- Floaterm
+  bg('Floaterm', darker_black)
+  fg_bg('FloatermBorder', darker_black, darker_black)
 end

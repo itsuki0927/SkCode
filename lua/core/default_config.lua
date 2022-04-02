@@ -42,7 +42,7 @@ M.plugins = {
     comment = true,
     nvimtree = true,
     format = true,
-    toggleterm = true,
+    floaterm = true,
     renamer = true,
     todo_comments = true,
     lspsignature = true,
@@ -111,6 +111,11 @@ M.mappings.plugins = {
   },
   renamer = {
     rename = '<leader>rn',
+  },
+  floaterm = {
+    toggle = '<C-\\>',
+    lazygit = '<leader>tg',
+    ranger = '<leader>tr',
   },
   bufferline = {
     next_buffer = '<TAB>',

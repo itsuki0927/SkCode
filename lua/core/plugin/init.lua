@@ -198,12 +198,12 @@ return packer.startup(function()
   })
 
   use({
-    'akinsho/toggleterm.nvim',
-    disable = not plugin_settings.status.toggleterm,
-    keys = '<C-\\>',
-    config = "require('plugin-configs.toggleterm')",
+    'voldikss/vim-floaterm',
+    disable = not plugin_settings.status.floaterm,
+    cmd = { 'FloatermNew', 'FloatermToggle' },
+    config = "require('plugin-configs.floaterm')",
     setup = function()
-      require('core.mappings').toggleterm()
+      require('core.mappings').floaterm()
     end,
   })
 
