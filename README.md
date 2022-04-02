@@ -80,6 +80,10 @@ nvim +PackerSync
 
 ![nvim-fold](https://static.itsuki.cn/article/nvim-fold.png)
 
+### 弹窗 + lazygit
+
+![nvim-floatrem](https://static.itsuki.cn/article/nvim-floatrem.png)
+
 ## 配置
 
 ### 键位配置
@@ -201,6 +205,14 @@ SkCode 提供了默认的键位配置. 以下是常用的键位配置, 更多的
 | `<leader>tb` | toggle blame line |
 | `<leader>hd` | diff              |
 
+#### vim-floatrem
+
+| 键位         | 含义                   |
+| ------------ | ---------------------- |
+| `<ctrl-\>`   | 切换弹窗               |
+| `<leader>tg` | 打开 lazygit(需要安装) |
+| `<leader>tr` | 打开 ranger (需要安装) |
+
 ## 目录结构
 
 ```sh
@@ -296,6 +308,8 @@ M.'插件名' = function()
 end
 ```
 
+https://static.itsuki.cn/article/nvim-floatrem.png
+
 ## 插件列表
 
 你可以在`core/default_config.lua`中进行禁用.
@@ -320,7 +334,7 @@ M.plugins = {
 - 自动完成: [nvim-cmp](https://github.com/hrsh7th/nvim-cmp).
 - 模糊搜索: [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim).
 - 代码片段:[LuaSnip](https://github.com/L3MON4D3/LuaSnip).
-- Terminal: [toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim).
+- 弹窗: [vim-floatrem.nvim](https://github.com/voldikss/vim-floaterm).
 - 自动补全括号: [nvim-autopairs](https://github.com/windwp/nvim-autopairs).
 - 提供格式化、诊断: [null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim).
 - 管理 tabs、buffers: [bufferline.nvim](https://github.com/akinsho/bufferline.nvim).
