@@ -25,8 +25,6 @@ if present then
     },
   }
 
-  vim.g.nvim_tree_indent_markers = 1 -- 文件夹打开显示缩进
-
   nvimtree.setup({
     disable_netrw = true,
     hijack_netrw = true,
@@ -76,6 +74,11 @@ if present then
       open_file = {
         resize_window = true,
         quit_on_open = nvimtree_default_options.quit_on_open,
+      },
+    },
+    renderer = {
+      indent_markers = {
+        enable = true,
       },
     },
   })
