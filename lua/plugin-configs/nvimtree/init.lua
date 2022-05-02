@@ -37,10 +37,6 @@ if present then
     open_on_tab = false,
     hijack_cursor = false,
     update_cwd = true,
-    update_to_buf_dir = {
-      enable = true,
-      auto_open = true,
-    },
     update_focused_file = {
       enable = true,
       update_cwd = true,
@@ -56,7 +52,6 @@ if present then
       height = 30,
       hide_root_folder = false,
       side = 'left',
-      auto_resize = true,
       mappings = {
         custom_only = false,
         list = {
@@ -68,8 +63,8 @@ if present then
       number = false,
       relativenumber = false,
     },
-    disable_window_picker = 0,
-    root_folder_modifier = ':t',
+    -- root_folder_modifier = ':t',
+    -- nvim_tree_root_folder_modifier = ':~',
     actions = {
       open_file = {
         resize_window = true,
