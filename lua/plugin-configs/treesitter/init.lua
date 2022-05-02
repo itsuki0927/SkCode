@@ -2,7 +2,7 @@ local present, treesitter = pcall(require, 'nvim-treesitter.configs')
 
 if present then
   treesitter.setup({
-    ensure_installed = 'maintained',
+    ensure_installed = 'all',
     sync_install = false,
     ignore_install = { '' },
     highlight = {
