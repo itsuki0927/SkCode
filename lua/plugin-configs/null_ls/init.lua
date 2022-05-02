@@ -6,15 +6,17 @@ if present then
   null_ls.setup({
     debug = false,
     sources = {
-      formatting.prettier.with({ extra_args = { '--single-quote', '--jsx-single-quote' } }),
+      formatting.prettier_d_slim.with({
+        extra_args = { '--single-quote', '--jsx-single-quote', '--bracket-spacing' },
+      }),
       formatting.stylua,
     },
     on_attach = function(client)
-      if client.resolved_capabilities.document_formatting then
+      if client.server_capabilities.documentFormattingProvider then
         vim.cmd([[
             augroup LspFormatting
                 autocmd! * <buffer>
-                autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+                autocmd BufWritePre <buffer> lua vim.lsp.buf.format()
             augroup END
             ]])
       end

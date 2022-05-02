@@ -2,16 +2,25 @@ local bg = require('core.utils').bg
 
 -- on_attach
 
--- 因为 null_ls 设置了prettier, 所以不需要tsserver、jsonls、cssls的默认格式化
+-- 因为 null_ls 设置了prettier、stylua, 所以不需要tsserver、jsonls、cssls、sumneko_lua的默认格式化
 local function resolve_format_conflicts(client)
-  local formattings = { tsserver = true, vuels = true, volar = true, jsonls = true, cssls = true, html = true }
+  local formattings = {
+    tsserver = true,
+    vuels = true,
+    volar = true,
+    jsonls = true,
+    cssls = true,
+    html = true,
+    sumneko_lua = true,
+  }
   if formattings[client.name] then
-    client.resolved_capabilities.document_formatting = false
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
   end
 end
 
 local function lsp_highlight_document(client)
-  if client.resolved_capabilities.document_highlight then
+  if client.server_capabilities.documentHighlightProvider then
     -- 设置高亮背景
     bg('LspReferenceRead', '#36383F')
     bg('LspReferenceText', '#36383F')
@@ -44,7 +53,7 @@ local on_attach = function(client, bufnr)
   -- 使用<c-x><c-o>触发Lsp
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
   -- 使用:Format格式化文件
-  vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
+  vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format()' ]])
 end
 
 -- capabilities
