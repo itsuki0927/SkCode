@@ -14,7 +14,7 @@ return packer.startup(function()
     event = 'VimEnter',
   })
   use({
-    'NvChad/nvim-base16.lua',
+    'NvChad/base46',
     after = 'packer.nvim',
     config = function()
       require('colors').init()
@@ -23,7 +23,7 @@ return packer.startup(function()
 
   use({
     'kyazdani42/nvim-web-devicons',
-    after = 'nvim-base16.lua',
+    after = 'base46',
     config = "require('plugin-configs.icons')",
   })
 
