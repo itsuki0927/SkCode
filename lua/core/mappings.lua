@@ -1,8 +1,4 @@
-local config = skcode.load_config()
 local map = skcode.map
-
-local maps = config.mappings
-local plugin_maps = maps.plugins
 
 -- Modes
 --   normal_mode = "n",
@@ -15,69 +11,56 @@ local plugin_maps = maps.plugins
 local M = {}
 
 M.nvimtree = function()
-  local m = plugin_maps.nvimtree
-
-  map('n', m.toggle, ':NvimTreeToggle <CR>')
+  map('n', '<leader>e', ':NvimTreeToggle <CR>')
 end
 
 M.telescope = function()
-  local m = plugin_maps.telescope
+  map('n', '<leader>f', ':Telescope find_files <CR>')
+  map('n', '<leader>F', ':Telescope live_grep <CR>')
 
-  map('n', m.find_files, ':Telescope find_files <CR>')
-  map('n', m.live_grep, ':Telescope live_grep <CR>')
-
-  map('n', m.buffers, ':Telescope buffers <CR>')
-  map('n', m.keymaps, ':Telescope keymaps <CR>')
-  map('n', m.commands, ':Telescope commands <CR>')
+  map('n', '<leader>sb', ':Telescope buffers <CR>')
+  map('n', '<leader>sk', ':Telescope keymaps <CR>')
+  map('n', '<leader>sc', ':Telescope commands <CR>')
 end
 
 M.bufferline = function()
-  local m = plugin_maps.bufferline
-
-  map('n', m.next_buffer, ':BufferLineCycleNext <CR>')
-  map('n', m.prev_buffer, ':BufferLineCyclePrev <CR>')
+  map('n', '<TAB>', ':BufferLineCycleNext <CR>')
+  map('n', '<S-TAB>', ':BufferLineCyclePrev <CR>')
 end
 
 M.comment = function()
-  local m = plugin_maps.comment.toggle
-
-  map('n', m, ':lua require("Comment.api").toggle_current_linewise()<CR>')
-  map('v', m, ':lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>')
+  map('n', '<leader>/', ':lua require("Comment.api").toggle_current_linewise()<CR>')
+  map('v', '<leader>/', ':lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>')
 end
 
 M.init = function()
   local function options_mappings()
-    local inav = maps.insert_nav
-    local wnav = maps.window_nav
+    map('i', '<C-h>', '<Left>')
+    map('i', '<C-e>', '<End>')
+    map('i', '<C-l>', '<Right>')
+    map('i', '<C-k>', '<Up>')
+    map('i', '<C-j>', '<Down>')
+    map('i', '<C-a>', '<ESC>^i')
 
-    map('i', inav.backward, '<Left>')
-    map('i', inav.end_of_line, '<End>')
-    map('i', inav.forward, '<Right>')
-    map('i', inav.next_line, '<Up>')
-    map('i', inav.prev_line, '<Down>')
-    map('i', inav.beginning_of_line, '<ESC>^i')
+    map('n', '<C-h>', '<C-w>h')
+    map('n', '<C-l>', '<C-w>l')
+    map('n', '<C-k>', '<C-w>k')
+    map('n', '<C-j>', '<C-w>j')
 
-    map('n', wnav.moveLeft, '<C-w>h')
-    map('n', wnav.moveRight, '<C-w>l')
-    map('n', wnav.moveUp, '<C-w>k')
-    map('n', wnav.moveDown, '<C-w>j')
-
-    map('n', wnav.resizeUp, ':resize +2<CR>')
-    map('n', wnav.resizeDown, ':resize -2<CR>')
-    map('n', wnav.resizeLeft, ':vertical resize -2<CR>')
-    map('n', wnav.resizeRight, ':vertical resize +2<CR>')
+    map('n', '<M-Up>', ':resize +2<CR>')
+    map('n', '<M-Down>', ':resize -2<CR>')
+    map('n', '<M-Left>', ':vertical resize -2<CR>')
+    map('n', '<M-Right>', ':vertical resize +2<CR>')
   end
 
   local function non_config_mappings()
-    local misc = maps.misc
-
     map('', '<Space>', '<Nop>')
-    map('n', misc.close_buffer, ':lua skcode.close_buffer() <CR>')
-    map('n', misc.save, '<cmd>w!<CR>')
-    map('n', misc.quit, '<cmd>q!<CR>')
-    map('n', misc.nohightlight, '<cmd>noh<CR>')
-    map('i', misc.esc, '<ESC>')
-    map('n', misc.run_test, ':lua require("plenary.test_harness").test_directory(vim.fn.expand("%:p"))<CR>')
+    map('n', '<leader>x', ':lua skcode.close_buffer() <CR>')
+    map('n', '<leader>w', '<cmd>w!<CR>')
+    map('n', '<leader>q', '<cmd>q!<CR>')
+    map('n', '<space><cr>', '<cmd>noh<CR>')
+    map('i', 'jk', '<ESC>')
+    map('n', '<leader>rt', ':lua require("plenary.test_harness").test_directory(vim.fn.expand("%:p"))<CR>')
 
     map('v', '<', '<gv')
     map('v', '>', '>gv')
@@ -108,67 +91,60 @@ M.toggleterm = function()
 end
 
 M.lspconfig = function()
-  local m = plugin_maps.lspconfig
-
-  map('n', m.declaration, '<cmd>lua vim.lsp.buf.declaration()<CR>')
-  map('n', m.definition, '<cmd>lua vim.lsp.buf.definition()<CR>')
-  map('n', m.hover, '<cmd>lua vim.lsp.buf.hover()<CR>')
-  map('n', m.implementation, '<cmd>lua vim.lsp.buf.implementation()<CR>')
-  map('n', m.signature_help, '<cmd>lua vim.lsp.buf.signature_help()<CR>')
-  map('n', m.references, '<cmd>lua vim.lsp.buf.references()<CR>')
-  map('n', m.code_action, '<cmd>lua vim.lsp.buf.code_action()<CR>')
-  map('n', m.show_line, '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "single" })<CR>')
-  map('n', m.goto_prev, '<cmd>lua vim.diagnostic.goto_prev({ border = "single" })<CR>')
-  map('n', m.goto_next, '<cmd>lua vim.diagnostic.goto_next({ border = "single" })<CR>')
+  map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
+  map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
+  map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
+  map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
+  map('n', 'gk', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+  map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
+  map('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
+  map('n', 'gl', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "single" })<CR>')
+  map('n', '[d', '<cmd>lua vim.diagnostic.goto_prev({ border = "single" })<CR>')
+  map('n', ']d', '<cmd>lua vim.diagnostic.goto_next({ border = "single" })<CR>')
 end
 
 M.renamer = function()
-  local m = plugin_maps.renamer
-
-  map('n', m.rename, '<cmd>lua require("renamer").rename()<cr>')
-  map('v', m.rename, '<cmd>lua require("renamer").rename()<cr>')
+  map('n', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>')
+  map('v', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>')
 end
 
 M.gitsigns = function()
-  local m = plugin_maps.gitsigns
   -- Navigation
-  map('n', m.next_hunk, "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", { expr = true })
-  map('n', m.prev_hunk, "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", { expr = true })
+  map('n', ']c', "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", { expr = true })
+  map('n', '[c', "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", { expr = true })
 
   -- Actions
-  map('n', m.stage_hunk, ':Gitsigns stage_hunk<CR>')
-  map('v', m.stage_hunk, ':Gitsigns stage_hunk<CR>')
-  map('n', m.reset_hunk, ':Gitsigns reset_hunk<CR>')
-  map('v', m.reset_hunk, ':Gitsigns reset_hunk<CR>')
-  map('n', m.stage_buffer, '<cmd>Gitsigns stage_buffer<CR>')
-  map('n', m.undo_stage_hunk, '<cmd>Gitsigns undo_stage_hunk<CR>')
-  map('n', m.reset_buffer, '<cmd>Gitsigns reset_buffer<CR>')
-  map('n', m.preview_hunk, '<cmd>Gitsigns preview_hunk<CR>')
-  map('n', m.blame_line, '<cmd>lua require"gitsigns".blame_line{full=true}<CR>')
-  map('n', m.toggle_current_line_blame, '<cmd>Gitsigns toggle_current_line_blame<CR>')
-  map('n', m.diffthis, '<cmd>Gitsigns diffthis<CR>')
-  map('n', m.diffThis, '<cmd>lua require"gitsigns".diffthis("~")<CR>')
-  map('n', m.toggle_deleted, '<cmd>Gitsigns toggle_deleted<CR>')
+  map('n', '<leader>hs', ':Gitsigns stage_hunk<CR>')
+  map('v', '<leader>hs', ':Gitsigns stage_hunk<CR>')
+  map('n', '<leader>hS', '<cmd>Gitsigns stage_buffer<CR>')
+
+  map('n', '<leader>hr', ':Gitsigns reset_hunk<CR>')
+  map('v', '<leader>hr', ':Gitsigns reset_hunk<CR>')
+  map('n', '<leader>hR', '<cmd>Gitsigns reset_buffer<CR>')
+
+  map('n', '<leader>hu', '<cmd>Gitsigns undo_stage_hunk<CR>')
+  map('n', '<leader>hp', '<cmd>Gitsigns preview_hunk<CR>')
+  map('n', '<leader>hb', '<cmd>lua require"gitsigns".blame_line{full=true}<CR>')
+  map('n', '<leader>tb', '<cmd>Gitsigns toggle_current_line_blame<CR>')
+  map('n', '<leader>hd', '<cmd>Gitsigns diffthis<CR>')
+  map('n', '<leader>hD', '<cmd>lua require"gitsigns".diffthis("~")<CR>')
+  map('n', '<leader>td', '<cmd>Gitsigns toggle_deleted<CR>')
 
   -- Text object
-  map('o', m.select_hunk, ':<C-U>Gitsigns select_hunk<CR>')
-  map('x', m.select_hunk, ':<C-U>Gitsigns select_hunk<CR>')
+  map('o', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+  map('x', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
 end
 
 M.todo_comments = function()
-  local m = plugin_maps.todo_comments
-
-  map('n', m.todo_list, ':TodoLocList<CR>')
-  map('n', m.todo_search, ':TodoTelescope<CR>')
+  map('n', '<leader>tl', ':TodoLocList<CR>')
+  map('n', '<leader>ts', ':TodoTelescope<CR>')
 end
 
 M.floaterm = function()
-  local m = plugin_maps.floaterm
-
-  vim.g.floaterm_keymap_toggle = m.toggle
-  map('n', m.toggle, ':FloatermToggle --autoclose=2<CR>')
-  map('n', m.lazygit, ':FloatermNew --height=0.99 --width=0.99 --autoclose=2 lazygit<CR>')
-  map('n', m.ranger, ':FloatermNew --height=0.99 --width=0.99 --autoclose=2 ranger<CR>')
+  vim.g.floaterm_keymap_toggle = '<C-\\>'
+  map('n', '<C-\\>', ':FloatermToggle --autoclose=2<CR>')
+  map('n', '<leader>tg', ':FloatermNew --height=0.99 --width=0.99 --autoclose=2 lazygit<CR>')
+  map('n', '<leader>tr', ':FloatermNew --height=0.99 --width=0.99 --autoclose=2 ranger<CR>')
 end
 
 return M
