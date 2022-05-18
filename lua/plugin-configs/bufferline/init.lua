@@ -1,6 +1,5 @@
-local colors = require('colors').get()
-
 local present, configs = pcall(require, 'bufferline')
+local colors = require('base46').get_colors('base_30')
 
 if present then
   configs.setup({

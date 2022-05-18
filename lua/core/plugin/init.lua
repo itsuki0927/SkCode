@@ -14,10 +14,14 @@ return packer.startup(function()
     event = 'VimEnter',
   })
   use({
-    'NvChad/base46',
+    'itsuki0927/base46',
     after = 'packer.nvim',
     config = function()
-      require('colors').init()
+      local ok, base46 = pcall(require, 'base46')
+
+      if ok then
+        base46.load_theme()
+      end
     end,
   })
 
