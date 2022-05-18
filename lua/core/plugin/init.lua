@@ -133,6 +133,7 @@ return packer.startup(function()
   })
   use({
     'akinsho/bufferline.nvim',
+    branch = 'main',
     disable = not plugin_settings.status.bufferline,
     after = 'nvim-web-devicons',
     config = function()
