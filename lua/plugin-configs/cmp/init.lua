@@ -1,4 +1,4 @@
-vim.g.completeopt = 'menu,menuone,noselect'
+vim.g.completeopt = 'menu,menuone,noselect,noinsert'
 
 local present, cmp = pcall(require, 'cmp')
 
