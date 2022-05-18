@@ -1,7 +1,7 @@
-local default_configs = require('core.utils').load_config()
+local default_configs = skcode.load_config()
 
 -- 在某些窗口上禁止statusline
-vim.cmd([[ autocmd BufEnter,BufRead,BufWinEnter,FileType,WinEnter * lua require("core.utils").hide_statusline() ]])
+vim.cmd([[ autocmd BufEnter,BufRead,BufWinEnter,FileType,WinEnter * lua skcode.hide_statusline() ]])
 
 -- 是否文件打开时自动折叠: 默认禁止
 -- 个人建议允许自动折叠, 再打开之后直接使用zo、zc的时候可能会出现no fold foun的问题导致无法折叠

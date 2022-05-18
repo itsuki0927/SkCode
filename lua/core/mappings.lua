@@ -1,7 +1,5 @@
-local utils = require('core.utils')
-
-local config = utils.load_config()
-local map = utils.map
+local config = skcode.load_config()
+local map = skcode.map
 
 local maps = config.mappings
 local plugin_maps = maps.plugins
@@ -74,7 +72,7 @@ M.init = function()
     local misc = maps.misc
 
     map('', '<Space>', '<Nop>')
-    map('n', misc.close_buffer, ':lua require("core.utils").close_buffer() <CR>')
+    map('n', misc.close_buffer, ':lua skcode.close_buffer() <CR>')
     map('n', misc.save, '<cmd>w!<CR>')
     map('n', misc.quit, '<cmd>q!<CR>')
     map('n', misc.nohightlight, '<cmd>noh<CR>')

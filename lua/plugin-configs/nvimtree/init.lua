@@ -1,7 +1,7 @@
 local present, nvimtree = pcall(require, 'nvim-tree')
 
 if present then
-  local nvimtree_default_options = require('core.utils').load_config().plugins.options.nvimtree
+  local nvimtree_default_options = skcode.load_config().plugins.options.nvimtree
 
   -- 设置图标
   vim.g.nvim_tree_icons = {

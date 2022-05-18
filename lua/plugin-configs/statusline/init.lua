@@ -43,19 +43,7 @@ local icon_styles = {
   },
 }
 
-local config = require('core.utils').load_config().plugins.options.statusline
-
--- statusline style
-local user_statusline_style = config.style
-local statusline_style = icon_styles[user_statusline_style]
-
--- show short statusline on small screens
-local shortline = config.shortline == false and true
-
--- Initialize the components table
-local components = {
-  active = {},
-}
+options.separator_style = options.icon_styles[skcode.load_config().plugins.options.statusline.style]
 
 local main_icon = {
   provider = statusline_style.main_icon,

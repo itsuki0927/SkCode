@@ -1,5 +1,7 @@
 local options = require('core.default_config').options
 
+vim.g.skcode_theme = skcode.load_config().ui.theme
+
 -- :help options
 vim.g.mapleader = options.mapleader
 vim.opt.backup = options.backup
@@ -36,8 +38,9 @@ vim.opt.wrap = options.wrap
 vim.opt.scrolloff = options.scrolloff
 vim.opt.sidescrolloff = options.sidescrolloff
 
+-- 不可见的字符显示点
 vim.opt.list = true
-vim.opt.listchars:append('space:⋅')
+vim.opt.listchars = 'space:⋅'
 
 vim.opt.shortmess:append('c')
 
@@ -73,6 +76,6 @@ end
 -- 启动以后再加载Shada
 vim.opt.shadafile = 'NONE'
 vim.schedule(function()
-  vim.opt.shadafile = require('core.utils').load_config().options.shadafile
+  vim.opt.shadafile = skcode.load_config().options.shadafile
   vim.cmd([[ silent! rsh ]])
 end)

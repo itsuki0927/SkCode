@@ -1,9 +1,7 @@
-local M = {}
-
 local cmd = vim.cmd
 
 -- 加载默认配置
-M.load_config = function()
+skcode.load_config = function()
   local conf = require('core.default_config')
 
   return conf
@@ -14,7 +12,7 @@ end
 -- @param keys 键位
 -- @param command 命令
 -- @param opt 其他参数
-M.map = function(mode, keys, command, opt)
+skcode.map = function(mode, keys, command, opt)
   local options = { noremap = true, silent = true }
   if opt then
     options = vim.tbl_extend('force', options, opt)
@@ -63,7 +61,7 @@ M.map = function(mode, keys, command, opt)
 end
 
 -- 懒加载包
-M.packer_lazy_load = function(plugin, timer)
+skcode.packer_lazy_load = function(plugin, timer)
   if plugin then
     timer = timer or 0
     vim.defer_fn(function()
@@ -72,34 +70,10 @@ M.packer_lazy_load = function(plugin, timer)
   end
 end
 
--- 高亮函数
-
--- 定义背景
--- @param group 高亮名
--- @param col 颜色
-M.bg = function(group, col)
-  cmd('hi ' .. group .. ' guibg=' .. col)
-end
-
--- 定义前景
--- @param group 高亮名
--- @param col 颜色
-M.fg = function(group, col)
-  cmd('hi ' .. group .. ' guifg=' .. col)
-end
-
--- 定义前景和背景
--- @param group 高亮名
--- @param fgcol 前景
--- @param bgcol 背景
-M.fg_bg = function(group, fgcol, bgcol)
-  cmd('hi ' .. group .. ' guifg=' .. fgcol .. ' guibg=' .. bgcol)
-end
-
 -- 隐藏statusline
-M.hide_statusline = function()
-  local hidden = M.load_config().plugins.options.statusline.hidden
-  local shown = M.load_config().plugins.options.statusline.shown
+skcode.hide_statusline = function()
+  local hidden = skcode.load_config().plugins.options.statusline.hidden
+  local shown = skcode.load_config().plugins.options.statusline.shown
   local api = vim.api
   local buftype = api.nvim_buf_get_option(0, 'ft')
 
@@ -118,11 +92,11 @@ M.hide_statusline = function()
   api.nvim_set_option('laststatus', 2)
 end
 
-M.merge = function(...)
+skcode.merge = function(...)
   return vim.tbl_deep_extend('force', ...)
 end
 
-M.close_buffer = function()
+skcode.close_buffer = function()
   local fn = vim.fn
 
   -- 获取当前所有的buffer列表
@@ -140,5 +114,3 @@ M.close_buffer = function()
   local is_terminal = fn.getbufvar(cur_bufnr, '&buftype') == 'terminal'
   cmd(is_terminal and 'bd! #' or 'silent! confirm bd #')
 end
-
-return M

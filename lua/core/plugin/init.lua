@@ -1,4 +1,4 @@
-local plugin_settings = require('core.utils').load_config().plugins
+local plugin_settings = skcode.load_config().plugins
 local present, packer = pcall(require, 'core.plugin.packerInit')
 
 if not present then
@@ -34,7 +34,7 @@ return packer.startup(function()
     config = "require('core.lsp')",
     opt = true,
     setup = function()
-      require('core.utils').packer_lazy_load('nvim-lspconfig')
+      skcode.packer_lazy_load('nvim-lspconfig')
       vim.defer_fn(function()
         vim.cmd('if &ft == "packer" | echo "" | else | silent! e %')
       end, 0)
@@ -181,7 +181,7 @@ return packer.startup(function()
       require('plugin-configs.gitsigns')
     end,
     setup = function()
-      require('core.utils').packer_lazy_load('gitsigns.nvim')
+      skcode.packer_lazy_load('gitsigns.nvim')
     end,
   })
 
