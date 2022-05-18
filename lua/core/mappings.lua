@@ -116,11 +116,7 @@ M.lspconfig = function()
   map('n', m.implementation, '<cmd>lua vim.lsp.buf.implementation()<CR>')
   map('n', m.signature_help, '<cmd>lua vim.lsp.buf.signature_help()<CR>')
   map('n', m.references, '<cmd>lua vim.lsp.buf.references()<CR>')
-  map(
-    'n',
-    m.code_action,
-    "<cmd>lua require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_cursor({ borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└' }, results_title = 'Actions Menu', theme = '', layout_strategy = 'horizontal',})) <CR>"
-  )
+  map('n', m.code_action, '<cmd>lua vim.lsp.buf.code_action()<CR>')
   map('n', m.show_line, '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "single" })<CR>')
   map('n', m.goto_prev, '<cmd>lua vim.diagnostic.goto_prev({ border = "single" })<CR>')
   map('n', m.goto_next, '<cmd>lua vim.diagnostic.goto_next({ border = "single" })<CR>')
