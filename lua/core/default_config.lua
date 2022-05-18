@@ -7,7 +7,7 @@ M.config = {
 
 -- UI配置
 M.ui = {
-  theme = 'onedark',
+  theme = 'onedark', -- default theme
   italic_comments = false,
   float_style = 'border', -- 'transparency' | 'border' | 'darker'
 }
@@ -18,12 +18,13 @@ M.lsp = {
     sumneko_lua = true,
     tailwindcss = true,
     tsserver = true,
-    volar = true,
+    volar = false,
     vuels = true,
     cssls = true,
     jsonls = true,
     emmet_ls = true,
     html = true,
+    eslint = true,
   },
 }
 
