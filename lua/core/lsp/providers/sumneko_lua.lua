@@ -9,6 +9,7 @@ return {
           'it',
           'before_each',
           'after_each',
+          'skcode',
         },
       },
       workspace = {
