@@ -329,7 +329,7 @@ M.plugins = {
 
 ### UI 插件
 
-- 主题: [nvim-base16.lua](https://github.com/NvChad/nvim-base16.lua).
+- 主题: [base64](https://github.com/itsuki0927/base64.lua).
 - 图标:[nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons).
 - 缩进线: [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim).
 - 状态栏: [feline.nvim](https://github.com/feline-nvim/feline.nvim).
