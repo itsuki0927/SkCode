@@ -271,7 +271,6 @@ M.lsp = {
 ### 自定义添加插件
 
 1. 在`core/plugin/init.lua`中添加插件.
-2. 在`core/default_config.lua`添加插件配置参数.
 3. 在`core/mappings.lua`添加插件快捷键(如果需要).
 4. 在`plugin-configs/插件名.lua`添加插件配置.
 
@@ -291,16 +290,6 @@ use({
   end,
   -- 其他配置
 })
-
--- core/default_config.lua
--- 插件配置
-M.plugins = {
-  '插件名' = { }
-}
--- 插件键位常量
-M.mappings.plugins = {
-  '插件名' = { }
-}
 
 -- core/mappings.lua
 M.'插件名' = function()
