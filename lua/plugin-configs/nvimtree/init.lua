@@ -22,6 +22,7 @@ if present then
       empty = '',
       empty_open = '',
       symlink = '',
+      symlink_open = '',
     },
   }
 
