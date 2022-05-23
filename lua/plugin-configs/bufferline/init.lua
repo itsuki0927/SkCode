@@ -4,9 +4,6 @@ local colors = require('base46').get_colors('base_30')
 if present then
   configs.setup({
     options = {
-      numbers = function(opts)
-        return string.format('%s', opts.raise(opts.ordinal))
-      end,
       buffer_close_icon = '',
       modified_icon = '',
       close_icon = '',
