@@ -1,4 +1,5 @@
 local default_configs = skcode.load_config()
+local autocmd = vim.api.nvim_create_autocmd
 
 -- 在某些窗口上禁止statusline
 vim.cmd([[ autocmd BufEnter,BufRead,BufWinEnter,FileType,WinEnter * lua skcode.hide_statusline() ]])
@@ -12,3 +13,10 @@ vim.cmd([[ autocmd BufEnter,BufRead,BufWinEnter,FileType,WinEnter * lua skcode.h
 if default_configs.config.auto_fold then
   vim.cmd([[autocmd BufRead * autocmd BufWinEnter * ++once normal! zx zM]])
 end
+
+autocmd('FileType', {
+  pattern = 'alpha',
+  callback = function()
+    vim.opt.laststatus = 0
+  end,
+})
