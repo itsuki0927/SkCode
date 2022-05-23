@@ -30,24 +30,6 @@ M.lsp = {
 
 -- 插件配置
 M.plugins = {
-  status = {
-    bufferline = true,
-    feline = true,
-    blankline = true,
-    colorizer = true,
-    gitsigns = true,
-    better_escapse = true,
-    cmp = true,
-    autopairs = true,
-    alpha = true,
-    comment = true,
-    nvimtree = true,
-    format = true,
-    floaterm = true,
-    renamer = true,
-    todo_comments = true,
-    lspsignature = true,
-  },
   options = {
     nvimtree = {
       lazy_load = true,

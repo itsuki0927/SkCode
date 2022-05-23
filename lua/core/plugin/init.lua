@@ -14,7 +14,8 @@ return packer.startup(function()
     event = 'VimEnter',
   })
   use({
-    'itsuki0927/base46',
+    -- 'itsuki0927/base46',
+    '~/projects/nvim/base46',
     after = 'packer.nvim',
     config = function()
       local ok, base46 = pcall(require, 'base46')
@@ -47,7 +48,6 @@ return packer.startup(function()
 
   use({
     'ray-x/lsp_signature.nvim',
-    disable = not plugin_settings.status.lspsignature,
     event = 'InsertCharPre',
     config = function()
       require('plugin-configs.lspsignature')
@@ -56,13 +56,11 @@ return packer.startup(function()
 
   use({
     'rafamadriz/friendly-snippets',
-    disable = not plugin_settings.status.cmp,
     event = 'InsertEnter',
   })
 
   use({
     'hrsh7th/nvim-cmp',
-    disable = not plugin_settings.status.cmp,
     after = 'friendly-snippets',
     config = function()
       require('plugin-configs.cmp')
@@ -71,7 +69,6 @@ return packer.startup(function()
 
   use({
     'windwp/nvim-autopairs',
-    disable = not plugin_settings.status.autopairs,
     after = 'nvim-cmp',
     config = function()
       require('plugin-configs.autopairs')
@@ -80,7 +77,6 @@ return packer.startup(function()
 
   use({
     'L3MON4D3/LuaSnip',
-    disable = not plugin_settings.status.cmp,
     wants = 'friendly-snippets',
     after = 'nvim-cmp',
     config = function()
@@ -89,27 +85,22 @@ return packer.startup(function()
   })
   use({
     'saadparwaiz1/cmp_luasnip',
-    disable = not plugin_settings.status.cmp,
     after = 'LuaSnip',
   })
   use({
     'hrsh7th/cmp-nvim-lsp',
-    disable = not plugin_settings.status.cmp,
     after = 'cmp_luasnip',
   })
   use({
     'hrsh7th/cmp-buffer',
-    disable = not plugin_settings.status.cmp,
     after = 'cmp-nvim-lsp',
   })
   use({
     'hrsh7th/cmp-nvim-lua',
-    disable = not plugin_settings.status.cmp,
     after = 'cmp_luasnip',
   })
   use({
     'hrsh7th/cmp-path',
-    disable = not plugin_settings.status.cmp,
     after = 'cmp-buffer',
   })
 
@@ -125,7 +116,6 @@ return packer.startup(function()
 
   use({
     'feline-nvim/feline.nvim',
-    disable = not plugin_settings.status.feline,
     after = 'nvim-web-devicons',
     config = function()
       require('plugin-configs.statusline')
@@ -134,7 +124,6 @@ return packer.startup(function()
   use({
     'akinsho/bufferline.nvim',
     branch = 'main',
-    disable = not plugin_settings.status.bufferline,
     after = 'nvim-web-devicons',
     config = function()
       require('plugin-configs.bufferline')
@@ -146,7 +135,6 @@ return packer.startup(function()
 
   use({
     'kyazdani42/nvim-tree.lua',
-    disable = not plugin_settings.status.nvimtree,
     after = not plugin_settings.options.nvimtree.lazy_load and 'nvim-web-devicons',
     cmd = plugin_settings.options.nvimtree.lazy_load and { 'NvimTreeToggle', 'NvimTreeFocus' },
     config = function()
@@ -171,7 +159,6 @@ return packer.startup(function()
 
   use({
     'NvChad/nvim-colorizer.lua',
-    disable = not plugin_settings.status.colorizer,
     event = 'BufRead',
     config = function()
       require('plugin-configs.colorizer')
@@ -180,7 +167,6 @@ return packer.startup(function()
 
   use({
     'lewis6991/gitsigns.nvim',
-    disable = not plugin_settings.status.gitsigns,
     opt = true,
     config = function()
       require('plugin-configs.gitsigns')
@@ -192,7 +178,6 @@ return packer.startup(function()
 
   use({
     'goolord/alpha-nvim',
-    disable = not plugin_settings.status.alpha,
     config = function()
       require('plugin-configs.alpha')
     end,
@@ -200,7 +185,6 @@ return packer.startup(function()
 
   use({
     'lukas-reineke/indent-blankline.nvim',
-    disable = not plugin_settings.status.blankline,
     event = 'BufRead',
     config = function()
       require('plugin-configs.blankline')
@@ -209,7 +193,6 @@ return packer.startup(function()
 
   use({
     'numToStr/Comment.nvim',
-    disable = not plugin_settings.status.comment,
     module = 'Comment',
     keys = { { 'n', 'gcc' }, { 'v', 'gc' } },
     config = function()
@@ -223,12 +206,10 @@ return packer.startup(function()
   use({
     'JoosepAlviste/nvim-ts-context-commentstring',
     after = 'nvim-treesitter',
-    disable = not plugin_settings.status.comment,
   })
 
   use({
     'jose-elias-alvarez/null-ls.nvim',
-    disable = not plugin_settings.status.format,
     event = 'InsertLeave',
     config = function()
       require('plugin-configs.null_ls')
@@ -237,7 +218,6 @@ return packer.startup(function()
 
   use({
     'voldikss/vim-floaterm',
-    disable = not plugin_settings.status.floaterm,
     cmd = { 'FloatermNew', 'FloatermToggle' },
     config = function()
       require('plugin-configs.floaterm')
@@ -249,7 +229,6 @@ return packer.startup(function()
 
   use({
     'filipdutescu/renamer.nvim',
-    disable = not plugin_settings.status.renamer,
     after = 'nvim-lspconfig',
     module = 'Renamer',
     config = function()
@@ -262,7 +241,6 @@ return packer.startup(function()
 
   use({
     'folke/todo-comments.nvim',
-    disable = not plugin_settings.status.todo_comments,
     event = 'BufRead',
     module = 'TodoComments',
     config = function()
