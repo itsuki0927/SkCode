@@ -14,8 +14,7 @@ return packer.startup(function()
     event = 'VimEnter',
   })
   use({
-    -- 'itsuki0927/base46',
-    '~/projects/nvim/base46',
+    'itsuki0927/base46',
     after = 'packer.nvim',
     config = function()
       local ok, base46 = pcall(require, 'base46')
