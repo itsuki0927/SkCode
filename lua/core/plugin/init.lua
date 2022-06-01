@@ -34,6 +34,18 @@ return packer.startup(function()
   })
 
   use({
+    'iamcco/markdown-preview.nvim',
+    run = 'cd app && yarn',
+    cmd = { 'MarkdownPreview', 'MarkdownPreviewStop' },
+    setup = function()
+      vim.g.mkdp_filetypes = { 'markdown' }
+      vim.g.mkdp_auto_close = 0
+      require('core.mappings').markdown_preview()
+    end,
+    ft = { 'markdown' },
+  })
+
+  use({
     'neovim/nvim-lspconfig',
     config = "require('core.lsp')",
     opt = true,

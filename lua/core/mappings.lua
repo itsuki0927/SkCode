@@ -147,4 +147,9 @@ M.floaterm = function()
   map('n', '<leader>tr', ':FloatermNew --height=0.99 --width=0.99 --autoclose=2 ranger<CR>')
 end
 
+M.markdown_preview = function()
+  map('n', '<leader>mp', ':MarkdownPreview <CR>')
+  map('n', '<leader>ms', ':MarkdownPreviewStop <CR>')
+end
+
 return M
