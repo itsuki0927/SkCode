@@ -3,29 +3,6 @@ local present, nvimtree = pcall(require, 'nvim-tree')
 if present then
   local nvimtree_default_options = skcode.load_config().plugins.options.nvimtree
 
-  -- 设置图标
-  vim.g.nvim_tree_icons = {
-    default = '',
-    symlink = '',
-    git = {
-      unstaged = '',
-      staged = '✓',
-      unmerged = '',
-      renamed = '➜',
-      deleted = '',
-      untracked = 'u',
-      ignored = '◌',
-    },
-    folder = {
-      default = '',
-      open = '',
-      empty = '',
-      empty_open = '',
-      symlink = '',
-      symlink_open = '',
-    },
-  }
-
   nvimtree.setup({
     disable_netrw = true,
     hijack_netrw = true,
@@ -64,8 +41,6 @@ if present then
       number = false,
       relativenumber = false,
     },
-    -- root_folder_modifier = ':t',
-    -- nvim_tree_root_folder_modifier = ':~',
     actions = {
       open_file = {
         resize_window = true,
@@ -75,6 +50,34 @@ if present then
     renderer = {
       indent_markers = {
         enable = true,
+      },
+      icons = {
+        webdev_colors = true,
+        git_placement = 'before',
+        padding = ' ',
+        symlink_arrow = ' ➛ ',
+        glyphs = {
+          default = '',
+          symlink = '',
+
+          git = {
+            unstaged = '',
+            staged = '✓',
+            unmerged = '',
+            renamed = '➜',
+            deleted = '',
+            untracked = 'u',
+            ignored = '◌',
+          },
+          folder = {
+            default = '',
+            open = '',
+            empty = '',
+            empty_open = '',
+            symlink = '',
+            symlink_open = '',
+          },
+        },
       },
     },
   })
