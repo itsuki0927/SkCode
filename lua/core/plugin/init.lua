@@ -13,6 +13,7 @@ return packer.startup(function()
     'wbthomason/packer.nvim',
     event = 'VimEnter',
   })
+  use('b0o/schemastore.nvim')
   use({
     'itsuki0927/base46',
     after = 'packer.nvim',
