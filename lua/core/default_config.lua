@@ -25,6 +25,7 @@ M.lsp = {
     emmet_ls = true,
     html = true,
     eslint = true,
+    marksman = true,
   },
 }
 
