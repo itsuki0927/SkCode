@@ -104,8 +104,8 @@ M.lspconfig = function()
 end
 
 M.renamer = function()
-  map('n', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>')
-  map('v', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>')
+  map('n', '<leader>rn', '<cmd>lua require("ui.renamer").open()<cr>')
+  map('v', '<leader>rn', '<cmd>lua require("ui.renamer").open()<cr>')
 end
 
 M.gitsigns = function()

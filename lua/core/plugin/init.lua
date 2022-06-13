@@ -240,18 +240,6 @@ return packer.startup(function()
   })
 
   use({
-    'filipdutescu/renamer.nvim',
-    after = 'nvim-lspconfig',
-    module = 'Renamer',
-    config = function()
-      require('plugin-configs.renamer')
-    end,
-    setup = function()
-      require('core.mappings').renamer()
-    end,
-  })
-
-  use({
     'folke/todo-comments.nvim',
     event = 'BufRead',
     module = 'TodoComments',
