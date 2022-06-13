@@ -15,6 +15,11 @@ return packer.startup(function()
   })
   use('b0o/schemastore.nvim')
   use({
+    'weilbith/nvim-code-action-menu',
+    cmd = 'CodeActionMenu',
+  })
+
+  use({
     'itsuki0927/base46',
     after = 'packer.nvim',
     config = function()
