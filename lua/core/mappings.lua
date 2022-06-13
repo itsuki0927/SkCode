@@ -152,4 +152,9 @@ M.markdown_preview = function()
   map('n', '<leader>ms', ':MarkdownPreviewStop <CR>')
 end
 
+M.visual_multi = function()
+  map('n', '<c-k>', ':call vm#commands#add_cursor_up(0, v:count1)<cr>')
+  map('n', '<c-j>', ':call vm#commands#add_cursor_down(0, v:count1)<cr>')
+end
+
 return M

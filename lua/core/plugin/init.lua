@@ -257,4 +257,12 @@ return packer.startup(function()
       require('core.mappings').todo_comments()
     end,
   })
+
+  use({
+    'mg979/vim-visual-multi',
+    keys = { { 'n', '<c-n>' }, { 'v', '<c-n>' } },
+    setup = function()
+      require('core.mappings').visual_multi()
+    end,
+  })
 end)
