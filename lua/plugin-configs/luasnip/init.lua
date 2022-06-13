@@ -1,11 +1,12 @@
 local present, luasnip = pcall(require, 'luasnip')
 
 if present then
-  luasnip.config.set_config({
+  local options = {
     history = true,
     updateevents = 'TextChanged,TextChangedI',
-  })
+  }
 
-  require('luasnip/loaders/from_vscode').load({ paths = {} })
-  require('luasnip/loaders/from_vscode').load()
+  luasnip.config.set_config(options)
+
+  require('luasnip.loaders.from_vscode').lazy_load()
 end
