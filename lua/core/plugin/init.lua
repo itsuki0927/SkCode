@@ -133,6 +133,8 @@ return packer.startup(function()
 
   use({
     'feline-nvim/feline.nvim',
+    branch = 'master',
+    tag = 'v1.*',
     after = 'nvim-web-devicons',
     config = function()
       require('plugin-configs.statusline')
