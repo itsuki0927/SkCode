@@ -34,55 +34,40 @@ M.comment = function()
 end
 
 M.init = function()
-  local function options_mappings()
-    map('i', '<C-h>', '<Left>')
-    map('i', '<C-e>', '<End>')
-    map('i', '<C-l>', '<Right>')
-    map('i', '<C-k>', '<Up>')
-    map('i', '<C-j>', '<Down>')
-    map('i', '<C-a>', '<ESC>^i')
+  map('i', '<C-h>', '<Left>')
+  map('i', '<C-e>', '<End>')
+  map('i', '<C-l>', '<Right>')
+  map('i', '<C-k>', '<Up>')
+  map('i', '<C-j>', '<Down>')
+  map('i', '<C-a>', '<ESC>^i')
 
-    map('n', '<C-h>', '<C-w>h')
-    map('n', '<C-l>', '<C-w>l')
-    map('n', '<C-k>', '<C-w>k')
-    map('n', '<C-j>', '<C-w>j')
+  map('n', '<C-h>', '<C-w>h')
+  map('n', '<C-l>', '<C-w>l')
+  map('n', '<C-k>', '<C-w>k')
+  map('n', '<C-j>', '<C-w>j')
 
-    map('n', '<M-Up>', ':resize +2<CR>')
-    map('n', '<M-Down>', ':resize -2<CR>')
-    map('n', '<M-Left>', ':vertical resize -2<CR>')
-    map('n', '<M-Right>', ':vertical resize +2<CR>')
-  end
+  map('n', '<M-Up>', ':resize +2<CR>')
+  map('n', '<M-Down>', ':resize -2<CR>')
+  map('n', '<M-Left>', ':vertical resize -2<CR>')
+  map('n', '<M-Right>', ':vertical resize +2<CR>')
 
-  local function non_config_mappings()
-    map('', '<Space>', '<Nop>')
-    map('n', '<leader>x', ':lua skcode.close_buffer() <CR>')
-    map('n', '<leader>w', '<cmd>w!<CR>')
-    map('n', '<leader>q', '<cmd>q!<CR>')
-    map('n', '<space><cr>', '<cmd>noh<CR>')
-    map('i', 'jk', '<ESC>')
-    map('n', '<leader>rt', ':lua require("plenary.test_harness").test_directory(vim.fn.expand("%:p"))<CR>')
+  map('', '<Space>', '<Nop>')
+  map('n', '<leader>x', ':lua skcode.close_buffer() <CR>')
+  map('n', '<leader>w', '<cmd>w!<CR>')
+  map('n', '<leader>q', '<cmd>q!<CR>')
+  map('n', '<space><cr>', '<cmd>noh<CR>')
+  map('i', 'jk', '<ESC>')
 
-    map('v', '<', '<gv')
-    map('v', '>', '>gv')
+  map('v', '<', '<gv')
+  map('v', '>', '>gv')
 
-    map('v', '<A-j>', ':m .+1<CR>==')
-    map('v', '<A-k>', ':m .-2<CR>==')
-    map('v', 'p', '"_dP')
-  end
+  map('v', '<A-j>', ':m .+1<CR>==')
+  map('v', '<A-k>', ':m .-2<CR>==')
+  map('v', 'p', '"_dP')
 
-  local function require_mappings()
-    -- Add Packer commands because we are not loading it at startup
-    vim.cmd("silent! command PackerClean lua require('core.plugin') require('packer').clean()")
-    vim.cmd("silent! commakd PackerCompile lua require('core.plugin') require('packer').compile()")
-    vim.cmd("silent! command PackerInstall lua require('core.plugin') require('packer').install()")
-    vim.cmd("silent! command PackerStatus lua require('core.plugin') require('packer').status()")
-    vim.cmd("silent! command PackerSync lua require('core.plugin') require('packer').sync()")
-    vim.cmd("silent! command PackerUpdate lua require('core.plugin') require('packer').update()")
-  end
-
-  non_config_mappings()
-  options_mappings()
-  require_mappings()
+  map('n', '<leader>rn', '<cmd>lua require("ui.renamer").open()<cr>')
+  map('v', '<leader>rn', '<cmd>lua require("ui.renamer").open()<cr>')
+  map('n', '<leader>rt', ':lua require("plenary.test_harness").test_directory(vim.fn.expand("%:p"))<CR>')
 end
 
 M.toggleterm = function()
@@ -101,11 +86,6 @@ M.lspconfig = function()
   map('n', 'gl', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "single" })<CR>')
   map('n', '[d', '<cmd>lua vim.diagnostic.goto_prev({ border = "single" })<CR>')
   map('n', ']d', '<cmd>lua vim.diagnostic.goto_next({ border = "single" })<CR>')
-end
-
-M.renamer = function()
-  map('n', '<leader>rn', '<cmd>lua require("ui.renamer").open()<cr>')
-  map('v', '<leader>rn', '<cmd>lua require("ui.renamer").open()<cr>')
 end
 
 M.gitsigns = function()
