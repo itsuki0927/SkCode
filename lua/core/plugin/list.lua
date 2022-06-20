@@ -10,19 +10,23 @@ local plugins = {
   },
 
   ['itsuki0927/base46'] = {
-
     config = function()
       local ok, base46 = pcall(require, 'base46')
-
       if ok then
         base46.load_theme()
       end
     end,
   },
 
+  ['goolord/alpha-nvim'] = {
+    after = 'base46',
+    config = function()
+      require('plugin-configs.alpha')
+    end,
+  },
+
   ['kyazdani42/nvim-web-devicons'] = {
     after = 'base46',
-    -- module = 'nvim-web-icons',
     config = function()
       require('plugin-configs.icons')
     end,
@@ -164,16 +168,6 @@ local plugins = {
     end,
     setup = function()
       require('core.lazy_load').gitsigns()
-      -- skcode.packer_lazy_load('gitsigns.nvim')
-      -- require("core.lazy_load").on_file_open "gitsigns.nvim"
-    end,
-  },
-
-  ['goolord/alpha-nvim'] = {
-    after = 'base46',
-    disable = true,
-    config = function()
-      require('plugin-configs.alpha')
     end,
   },
 
