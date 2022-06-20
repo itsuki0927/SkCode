@@ -9,7 +9,6 @@ M.config = {
 M.ui = {
   theme = 'onedark', -- default theme
   italic_comments = false,
-  float_style = 'border', -- 'transparency' | 'border' | 'darker'
 }
 
 -- Lsp 配置
