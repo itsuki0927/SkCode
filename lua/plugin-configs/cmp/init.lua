@@ -20,6 +20,15 @@ if present then
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
   end
 
+  local cmp_window = require('cmp.utils.window')
+
+  cmp_window.info_ = cmp_window.info
+  cmp_window.info = function(self)
+    local info = self:info_()
+    info.scrollable = false
+    return info
+  end
+
   cmp.setup({
     snippet = {
       expand = function(args)
