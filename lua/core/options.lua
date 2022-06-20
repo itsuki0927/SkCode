@@ -37,6 +37,7 @@ vim.opt.signcolumn = options.signcolumn
 vim.opt.wrap = options.wrap
 vim.opt.scrolloff = options.scrolloff
 vim.opt.sidescrolloff = options.sidescrolloff
+vim.opt.statusline = "%!v:lua.require'plugin-configs.statusline'.run()"
 
 -- 不可见的字符显示点
 vim.opt.list = true
