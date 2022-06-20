@@ -1,6 +1,7 @@
 local present, configs = pcall(require, 'bufferline')
 
 if present then
+  require('base46').load_highlight('bufferline')
   configs.setup({
     options = {
       buffer_close_icon = '',

@@ -47,4 +47,5 @@ dashboard.section.footer.val = footer
 dashboard.section.footer.opts.hl = 'AlphaType'
 dashboard.section.header.opts.hl = 'AlphaHeader'
 
+require('base46').load_highlight('alpha')
 alpha.setup(dashboard.opts)

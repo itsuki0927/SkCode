@@ -1,17 +1,10 @@
 local present, indent_blankline = pcall(require, 'indent_blankline')
 
 if present then
+  require('base46').load_highlight('blankline')
   indent_blankline.setup({
     use_treesitter = true,
     show_current_context = true,
-    context_highlight_list = {
-      'IndentBlanklineIndent1',
-      'IndentBlanklineIndent2',
-      'IndentBlanklineIndent3',
-      'IndentBlanklineIndent4',
-      'IndentBlanklineIndent5',
-      'IndentBlanklineIndent6',
-    },
     filetype_exculde = {
       'alpha',
       'packer',

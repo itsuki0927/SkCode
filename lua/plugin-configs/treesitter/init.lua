@@ -1,6 +1,8 @@
 local present, treesitter = pcall(require, 'nvim-treesitter.configs')
 
 if present then
+  require('base46').load_highlight('syntax')
+  require('base46').load_highlight('treesitter')
   treesitter.setup({
     ensure_installed = 'all',
     sync_install = false,

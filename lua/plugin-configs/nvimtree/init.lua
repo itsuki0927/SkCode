@@ -1,6 +1,7 @@
 local present, nvimtree = pcall(require, 'nvim-tree')
 
 if present then
+  require('base46').load_highlight('nvimtree')
   local nvimtree_default_options = skcode.load_config().plugins.options.nvimtree
 
   nvimtree.setup({

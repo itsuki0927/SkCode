@@ -1,17 +1,17 @@
 local present, gitsigns = pcall(require, 'gitsigns')
 
 if present then
+  require('base46').load_highlight('git')
   gitsigns.setup({
     signs = {
-      add = { hl = 'DiffAdd', text = '▎', numhl = 'GitSignsAddNr', linehl = 'GitSignsAddLn' },
-      change = { hl = 'DiffChange', text = '▎', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
-      delete = { hl = 'DiffDelete', text = '契', numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn' },
-      topdelete = { hl = 'DiffDelete', text = '契', numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn' },
+      add = { hl = 'DiffAdd', text = '▎', numhl = 'GitSignsAddNr' },
+      change = { hl = 'DiffChange', text = '▎', numhl = 'GitSignsChangeNr' },
+      delete = { hl = 'DiffDelete', text = '契', numhl = 'GitSignsDeleteNr' },
+      topdelete = { hl = 'DiffDelete', text = '契', numhl = 'GitSignsDeleteNr' },
       changedelete = {
         hl = 'DiffChangeDelete',
         text = '▎',
         numhl = 'GitSignsChangeNr',
-        linehl = 'GitSignsChangeLn',
       },
     },
     watch_gitdir = {

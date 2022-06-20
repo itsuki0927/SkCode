@@ -33,6 +33,7 @@ function telescope_custom_actions.multi_selection_open(prompt_bufnr)
 end
 
 if present then
+  require('base46').load_highlight('telescope')
   telescope.setup({
     defaults = {
       vimgrep_arguments = {

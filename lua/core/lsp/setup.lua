@@ -79,6 +79,7 @@ local function setupLspIcons()
   }
 end
 
+require('base46').load_highlight('lsp')
 setupLspDiagnostic()
 setupLspHandlers()
 setupLspIcons()

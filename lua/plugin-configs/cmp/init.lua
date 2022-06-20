@@ -3,6 +3,7 @@ vim.g.completeopt = 'menu,menuone,noselect,noinsert'
 local present, cmp = pcall(require, 'cmp')
 
 if present then
+  require('base46').load_highlight('cmp')
   local function border(hl_name)
     return {
       { '┌', hl_name },
@@ -38,6 +39,7 @@ if present then
     window = {
       completion = {
         border = border('CmpBorder'),
+        winhighlight = 'Normal:CmpPmenu,CursorLine:PmenuSel,Search:None',
       },
       documentation = {
         border = border('CmpDocBorder'),
