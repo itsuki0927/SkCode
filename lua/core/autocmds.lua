@@ -11,14 +11,6 @@ if default_configs.config.auto_fold then
   vim.cmd([[autocmd BufRead * autocmd BufWinEnter * ++once normal! zx zM]])
 end
 
-autocmd('VimEnter', {
-  callback = function()
-    vim.cmd(
-      "command! -nargs=* -complete=customlist,v:lua.require'packer'.plugin_complete PackerSync lua require('core.utils').packer_sync(<f-args>)"
-    )
-  end,
-})
-
 autocmd('FileType', {
   pattern = 'alpha',
   callback = function()
