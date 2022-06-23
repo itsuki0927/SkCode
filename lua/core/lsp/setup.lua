@@ -42,7 +42,7 @@ local function setupLspHandlers()
   vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
     border = 'single',
     virtual_text = false,
-    underline = false,
+    underline = true,
     severity_sort = true,
     update_in_insert = false,
   })
