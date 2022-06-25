@@ -1,49 +1,53 @@
-local options = require('core.default_config').options
-
-vim.g.skcode_theme = skcode.load_config().ui.theme
+local g = vim.g
+local opt = vim.opt
 
 -- :help options
-vim.g.mapleader = options.mapleader
-vim.opt.backup = options.backup
-vim.opt.clipboard = options.clipboard
-vim.opt.cmdheight = options.cmdheight
-vim.opt.completeopt = options.completeopt
-vim.opt.conceallevel = options.conceallevel
-vim.opt.fileencoding = options.fileencoding
-vim.opt.hlsearch = options.hlsearch
-vim.opt.ignorecase = options.ignorecase
-vim.opt.mouse = options.mouse
-vim.opt.pumheight = options.pumheight
-vim.opt.showmode = options.showmode
-vim.opt.showtabline = options.showtabline
-vim.opt.smartcase = options.smartcase
-vim.opt.smartindent = options.smartindent
-vim.opt.splitbelow = options.splitbelow
-vim.opt.splitright = options.splitright
-vim.opt.swapfile = options.swapfile
-vim.opt.termguicolors = options.termguicolors
-vim.opt.timeoutlen = options.timeoutlen
-vim.opt.undofile = options.undofile
-vim.opt.updatetime = options.updatetime
-vim.opt.writebackup = options.writebackup
-vim.opt.expandtab = options.expandtab
-vim.opt.shiftwidth = options.shiftwidth
-vim.opt.tabstop = options.tabstop
-vim.opt.cursorline = options.cursorline
-vim.opt.number = options.number
-vim.opt.relativenumber = options.relativenumber
-vim.opt.numberwidth = options.numberwidth
-vim.opt.signcolumn = options.signcolumn
-vim.opt.wrap = options.wrap
-vim.opt.scrolloff = options.scrolloff
-vim.opt.sidescrolloff = options.sidescrolloff
-vim.opt.statusline = "%!v:lua.require'plugin-configs.statusline'.run()"
+g.mapleader = ' '
+g.skcode_theme = skcode.load_config().ui.theme
+
+-- 更多配置可以查看文档: https://yianwillis.github.io/vimcdoc/doc/quickref.html#option-list
+opt.backup = false -- 覆盖文件时保留备份文件
+opt.clipboard = 'unnamedplus' -- 允许nvim访问系统剪切板
+opt.cmdheight = 1 -- 命令行高度
+opt.completeopt = { 'menuone', 'noselect' } -- 插入模式补全使用的选项
+opt.conceallevel = 0 -- ``在markdown文件中可见
+opt.fileencoding = 'utf-8' --  多字节文本的文件编码
+opt.hlsearch = true -- 高亮搜索结果
+opt.ignorecase = true -- 搜索时忽略大小写
+opt.mouse = 'a' -- 允许使用鼠标点击
+opt.pumheight = 20 -- 决定用于插入模式补全的弹出菜单显示项目的最大数目
+opt.showmode = false -- 不显示当前模式
+opt.showtabline = 2 -- 显示带有标签页标签的行
+opt.smartcase = true -- 大写的自动转行
+opt.smartindent = true -- 打开智能缩进
+opt.splitbelow = true -- 如果打开，窗口的分割会把新窗口放到当前窗口下边
+opt.splitright = true -- 如果打开, 窗口的分割会把新窗口放到当前窗口右边
+opt.swapfile = false -- 缓冲区是否使用交换文件
+opt.termguicolors = true -- 终端使用 GUI 颜色
+opt.timeoutlen = 1000 -- 等待映射序列完成的时间(以毫秒为单位)
+opt.undofile = true -- 把撤销信息写入一个文件里
+opt.updatetime = 300 --  刷新交换文件所需的毫秒数(默认4000ms)
+opt.writebackup = false -- 如果一个文件正在被另一个程序编辑(或在另一个程序编辑时写入文件), 则不允许编辑
+opt.expandtab = true -- 将tab转换为空格
+opt.shiftwidth = 2 -- 1 tab = 2 空格
+opt.tabstop = 2 -- 1 tab = 2 空格
+opt.cursorline = true -- 高亮当前行
+opt.number = true -- 显示行号
+opt.relativenumber = false -- 不使用相对行号
+opt.numberwidth = 3 -- 行号宽度: 3
+opt.signcolumn = 'yes' -- 始终显示符号列，否则每次都会移动文本
+opt.wrap = false -- 长行回绕并在下一行继续
+opt.scrolloff = 8 -- 光标上下的最少行数
+opt.sidescrolloff = 8
+
+opt.laststatus = 3 -- global statusline
+opt.statusline = "%!v:lua.require'plugin-configs.statusline'.run()"
 
 -- 不可见的字符显示点
-vim.opt.list = true
-vim.opt.listchars = 'space:⋅'
+opt.list = true
+opt.listchars = 'space:⋅'
 
-vim.opt.shortmess:append('c')
+opt.shortmess:append('c')
 
 vim.cmd('set whichwrap+=<,>,[,],h,l')
 vim.cmd([[set iskeyword+=-]])
@@ -74,9 +78,7 @@ for _, plugin in pairs(disabled_built_ins) do
   vim.g['loaded_' .. plugin] = 1
 end
 
--- 启动以后再加载Shada
-vim.opt.shadafile = 'NONE'
 vim.schedule(function()
-  vim.opt.shadafile = skcode.load_config().options.shadafile
+  vim.opt.shadafile = vim.fn.expand('$HOME') .. '/.local/share/nvim/shada/main.shada'
   vim.cmd([[ silent! rsh ]])
 end)
