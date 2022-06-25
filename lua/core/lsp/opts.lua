@@ -1,20 +1,3 @@
--- 因为 null_ls 设置了prettier、stylua, 所以不需要tsserver、jsonls、cssls、sumneko_lua的默认格式化
-local function resolve_format_conflicts(client)
-  local formattings = {
-    tsserver = true,
-    vuels = true,
-    volar = true,
-    jsonls = true,
-    cssls = true,
-    html = true,
-    sumneko_lua = true,
-  }
-  if formattings[client.name] then
-    client.server_capabilities.documentFormattingProvider = false
-    client.server_capabilities.documentRangeFormattingProvider = false
-  end
-end
-
 local function lsp_highlight_document(client)
   if client.server_capabilities.documentHighlightProvider then
     vim.api.nvim_exec(
@@ -35,8 +18,6 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, ...)
   end
 
-  -- 解决格式化冲突
-  resolve_format_conflicts(client)
   -- 添加lsp文档高亮
   lsp_highlight_document(client)
   -- 添加lsp键位
