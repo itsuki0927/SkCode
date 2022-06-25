@@ -43,8 +43,6 @@ local on_attach = function(client, bufnr)
   require('core.mappings').lspconfig()
   -- 使用<c-x><c-o>触发Lsp
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-  -- 使用:Format格式化文件
-  vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format()' ]])
 end
 
 -- capabilities

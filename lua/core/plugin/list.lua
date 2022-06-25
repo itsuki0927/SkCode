@@ -2,6 +2,11 @@ vim.cmd('packadd packer.nvim')
 
 local plugins = {
 
+  ['mhartington/formatter.nvim'] = {
+    config = function()
+      require('plugin-configs.formatter')
+    end,
+  },
   ['nvim-lua/plenary.nvim'] = {},
   ['wbthomason/packer.nvim'] = {},
   ['b0o/schemastore.nvim'] = {},
@@ -195,13 +200,6 @@ local plugins = {
 
   ['JoosepAlviste/nvim-ts-context-commentstring'] = {
     after = 'nvim-treesitter',
-  },
-
-  ['jose-elias-alvarez/null-ls.nvim'] = {
-    event = 'InsertLeave',
-    config = function()
-      require('plugin-configs.null_ls')
-    end,
   },
 
   ['voldikss/vim-floaterm'] = {
