@@ -4,10 +4,10 @@ if present then
   require('base46').load_highlight('git')
   gitsigns.setup({
     signs = {
-      add = { hl = 'DiffAdd', text = '▎', numhl = 'GitSignsAddNr' },
-      change = { hl = 'DiffChange', text = '▎', numhl = 'GitSignsChangeNr' },
-      delete = { hl = 'DiffDelete', text = '契', numhl = 'GitSignsDeleteNr' },
-      topdelete = { hl = 'DiffDelete', text = '契', numhl = 'GitSignsDeleteNr' },
+      add = { hl = 'DiffAdd', text = '│', numhl = 'GitSignsAddNr' },
+      change = { hl = 'DiffChange', text = '│', numhl = 'GitSignsChangeNr' },
+      delete = { hl = 'DiffDelete', text = '_', numhl = 'GitSignsDeleteNr' },
+      topdelete = { hl = 'DiffDelete', text = '‾', numhl = 'GitSignsDeleteNr' },
       changedelete = {
         hl = 'DiffChangeDelete',
         text = '▎',
