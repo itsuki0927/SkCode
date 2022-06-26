@@ -72,6 +72,19 @@ local disabled_built_ins = {
   'vimballPlugin',
   'zip',
   'zipPlugin',
+  'python3_provider',
+  'python_provider',
+  'node_provider',
+  'ruby_provider',
+  'perl_provider',
+  'tutor',
+  'rplugin',
+  'syntax',
+  'synmenu',
+  'optwin',
+  'compiler',
+  'bugreport',
+  'ftplugin',
 }
 
 for _, plugin in pairs(disabled_built_ins) do
