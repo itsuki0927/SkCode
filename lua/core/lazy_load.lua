@@ -75,14 +75,6 @@ M.lsp_cmds = {
   'LspStart',
   'LspRestart',
   'LspStop',
-  'LspInstall',
-  'LspUnInstall',
-  'LspUnInstallAll',
-  'LspInstall',
-  'LspInstallInfo',
-  'LspInstallLog',
-  'LspLog',
-  'LspPrintInstalled',
 }
 
 M.treesitter_cmds = {
