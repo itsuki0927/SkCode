@@ -180,10 +180,7 @@ local plugins = {
 
   ['lukas-reineke/indent-blankline.nvim'] = {
     opt = true,
-    event = 'BufRead',
-    setup = function()
-      require('core.lazy_load').on_file_open('indent-blankline.nvim')
-    end,
+    after = 'nvim-treesitter',
     config = function()
       require('plugin-configs.blankline')
     end,
