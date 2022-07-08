@@ -1,5 +1,3 @@
-local fn = vim.fn
-
 local sep_style = {
   default = {
     left = '',
@@ -24,6 +22,7 @@ local sep_style = {
 
 local user_sep = 'block'
 
+local fn = vim.fn
 local sep_l = sep_style[user_sep]['left']
 local sep_r = sep_style[user_sep]['right']
 
@@ -41,7 +40,6 @@ local modes = {
   ['v'] = { 'VISUAL', 'St_VisualMode' },
   ['V'] = { 'V-LINE', 'St_VisualMode' },
   [''] = { 'V-BLOCK', 'St_VisualMode' },
-  ['V-M'] = { 'V-M', 'St_VisualMode' },
   ['R'] = { 'REPLACE', 'St_ReplaceMode' },
   ['Rv'] = { 'V-REPLACE', 'St_ReplaceMode' },
   ['s'] = { 'SELECT', 'St_SelectMode' },
@@ -66,34 +64,22 @@ M.mode = function()
   return current_mode .. mode_sep1 .. '%#ST_EmptySpace#' .. sep_r
 end
 
-M.fileicon = function()
+M.fileInfo = function()
   local icon = '  '
+  local filename = (fn.expand('%') == '' and 'Empty ') or fn.expand('%:t')
 
-  local filename = fn.fnamemodify(fn.expand('%:t'), ':r')
-  local extension = fn.expand('%:e')
-
-  if filename ~= '' then
+  if filename ~= 'Empty ' then
     local devicons_present, devicons = pcall(require, 'nvim-web-devicons')
 
     if devicons_present then
-      local ft_icon = devicons.get_icon(filename, extension)
+      local ft_icon = devicons.get_icon(filename)
       icon = (ft_icon ~= nil and ' ' .. ft_icon) or ''
     end
-  end
 
-  return '%#St_file_info#' .. icon
-end
-
-M.filename = function()
-  local filename = fn.fnamemodify(fn.expand('%:t'), ':r')
-
-  if filename == '' then
-    filename = 'Empty '
-  else
     filename = ' ' .. filename .. ' '
   end
 
-  return '%#St_file_info#' .. filename .. '%#St_file_sep#' .. sep_r
+  return '%#St_file_info#' .. icon .. filename .. '%#St_file_sep#' .. sep_r
 end
 
 M.git = function()
@@ -107,9 +93,8 @@ M.git = function()
   local changed = (git_status.changed and git_status.changed ~= 0) and ('  ' .. git_status.changed) or ''
   local removed = (git_status.removed and git_status.removed ~= 0) and ('  ' .. git_status.removed) or ''
   local branch_name = '   ' .. git_status.head .. ' '
-  local git_info = branch_name .. added .. changed .. removed
 
-  return '%#St_gitIcons#' .. git_info
+  return '%#St_gitIcons#' .. branch_name .. added .. changed .. removed
 end
 
 -- LSP STUFF
@@ -132,10 +117,6 @@ M.LSP_progress = function()
 end
 
 M.LSP_Diagnostics = function()
-  if not #vim.diagnostic.get(0) then
-    return ''
-  end
-
   local errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
   local warnings = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
   local hints = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT })
@@ -150,59 +131,30 @@ M.LSP_Diagnostics = function()
 end
 
 M.LSP_status = function()
-  local clients = vim.lsp.get_active_clients()
-  local name = false
-  for _, client in ipairs(clients) do
+  for _, client in ipairs(vim.lsp.get_active_clients()) do
     if client.attached_buffers[vim.api.nvim_get_current_buf()] then
-      name = client.name
-      break
+      return (vim.o.columns > 70 and '%#St_LspStatus#' .. '   LSP ~ ' .. client.name .. ' ') or '   LSP '
     end
   end
-
-  local content = name and '   LSP ~ ' .. name .. ' ' or false
-  return content and ('%#St_LspStatus#' .. content) or ''
 end
 
 M.cwd = function()
-  local left_sep = '%#St_cwd_sep#' .. sep_l
   local dir_icon = '%#St_cwd_icon#' .. ' '
   local dir_name = '%#St_cwd_text#' .. ' ' .. fn.fnamemodify(fn.getcwd(), ':t') .. ' '
-  return (vim.o.columns > 120 and left_sep .. dir_icon .. dir_name) or ''
+  return (vim.o.columns > 120 and ('%#St_cwd_sep#' .. sep_l .. dir_icon .. dir_name)) or ''
 end
 
 M.cursor_position = function()
-  local left_sep = '%#St_pos_sep#' .. sep_l
-  local icon = '%#St_pos_icon#' .. ' '
+  local left_sep = '%#St_pos_sep#' .. sep_l .. '%#St_pos_icon#' .. ' '
 
   local current_line = fn.line('.')
   local total_line = fn.line('$')
   local text = math.modf((current_line / total_line) * 100) .. tostring('%%')
 
-  if current_line == 1 then
-    text = 'Top'
-  elseif current_line == total_line then
-    text = 'Bot'
-  end
+  text = (current_line == 1 and 'Top') or text
+  text = (current_line == total_line and 'Bot') or text
 
-  return left_sep .. icon .. '%#St_pos_text#' .. ' ' .. text .. ' '
-end
-
-M.run = function()
-  return table.concat({
-    M.mode(),
-    M.fileicon(),
-    M.filename(),
-    M.git(),
-
-    '%=',
-    M.LSP_progress(),
-    '%=',
-
-    M.LSP_Diagnostics(),
-    M.LSP_status(),
-    M.cwd(),
-    M.cursor_position(),
-  })
+  return left_sep .. '%#St_pos_text#' .. ' ' .. text .. ' '
 end
 
 return M

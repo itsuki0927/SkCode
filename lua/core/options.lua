@@ -41,7 +41,7 @@ opt.scrolloff = 8 -- 光标上下的最少行数
 opt.sidescrolloff = 8
 
 opt.laststatus = 3 -- global statusline
-opt.statusline = "%!v:lua.require'plugin-configs.statusline'.run()"
+opt.statusline = "%!v:lua.require('ui.statusline').run()"
 
 -- 不可见的字符显示点
 opt.list = true
