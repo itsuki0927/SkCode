@@ -43,6 +43,11 @@ if present then
         quit_on_open = nvimtree_default_options.quit_on_open,
       },
     },
+    filters = {
+      dotfiles = false,
+      custom = { '^.git$' },
+      exclude = { 'node_modules' },
+    },
     renderer = {
       indent_markers = {
         enable = true,
