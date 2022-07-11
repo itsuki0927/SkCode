@@ -4,6 +4,10 @@ if present then
   require('base46').load_highlight('devicons')
   icons.setup({
     override = {
+      default_icon = {
+        icon = '',
+        name = 'Default',
+      },
       c = {
         icon = '',
         name = 'c',
