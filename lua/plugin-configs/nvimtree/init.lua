@@ -58,10 +58,15 @@ if present then
         git_placement = 'before',
         padding = ' ',
         symlink_arrow = ' ➛ ',
+        show = {
+          file = true,
+          folder = true,
+          git = true,
+          folder_arrow = false,
+        },
         glyphs = {
-          default = '',
+          default = '',
           symlink = '',
-
           git = {
             unstaged = '',
             staged = '✓',
