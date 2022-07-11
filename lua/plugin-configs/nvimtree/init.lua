@@ -49,6 +49,7 @@ if present then
       exclude = { 'node_modules' },
     },
     renderer = {
+      highlight_git = true,
       indent_markers = {
         enable = true,
       },
