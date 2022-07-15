@@ -53,7 +53,7 @@ local plugins = {
   },
 
   ['neovim/nvim-lspconfig'] = {
-    event = { 'BufRead', 'BufNewFile', 'BufWinEnter' },
+    event = { 'BufRead' },
     config = "require('core.lsp')",
   },
 
