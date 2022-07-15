@@ -1,4 +1,5 @@
 local map = skcode.map
+local buf_map = skcode.buf_map
 
 -- Modes
 --   normal_mode = "n",
@@ -75,17 +76,20 @@ M.toggleterm = function()
   map('n', '<leader>tr', '<cmd>lua _RANGER_TOGGLE()<CR>')
 end
 
-M.lspconfig = function()
-  map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
-  map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
-  map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
-  map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
-  map('n', 'gk', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
-  map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
-  map('n', '<leader>ca', '<cmd>CodeActionMenu <CR>')
-  map('n', 'gl', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "single" })<CR>')
-  map('n', '[d', '<cmd>lua vim.diagnostic.goto_prev({ border = "single" })<CR>')
-  map('n', ']d', '<cmd>lua vim.diagnostic.goto_next({ border = "single" })<CR>')
+M.lspconfig = function(bufnr)
+  buf_map(bufnr, 'n', 'gi', '<cmd>lua require("telescope.builtin").lsp_implementations()<cr>')
+  buf_map(bufnr, 'n', 'gt', '<cmd>lua require("telescope.builtin").lsp_type_definitions()<cr>')
+  buf_map(bufnr, 'n', 'gr', '<cmd>lua require("telescope.builtin").lsp_references()<cr>')
+  buf_map(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
+  buf_map(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
+  buf_map(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
+  -- buf_map(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
+  -- buf_map(bufnr, 'n', 'gk', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+  -- buf_map(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
+  buf_map(bufnr, 'n', '<leader>ca', '<cmd>CodeActionMenu <CR>')
+  buf_map(bufnr, 'n', 'gl', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = "single" })<CR>')
+  buf_map(bufnr, 'n', '[d', '<cmd>lua vim.diagnostic.goto_prev({ border = "single" })<CR>')
+  buf_map(bufnr, 'n', ']d', '<cmd>lua vim.diagnostic.goto_next({ border = "single" })<CR>')
 end
 
 M.gitsigns = function()

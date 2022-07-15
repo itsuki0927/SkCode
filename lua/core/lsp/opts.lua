@@ -21,7 +21,7 @@ local on_attach = function(client, bufnr)
   -- 添加lsp文档高亮
   lsp_highlight_document(client)
   -- 添加lsp键位
-  require('core.mappings').lspconfig()
+  require('core.mappings').lspconfig(bufnr)
   -- 使用<c-x><c-o>触发Lsp
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 end
