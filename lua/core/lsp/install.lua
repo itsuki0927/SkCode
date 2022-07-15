@@ -29,9 +29,6 @@ local install_lsp = function(lspconfig)
         opts = default_opts
       end
 
-      -- TODO: 如果用户有自定义lsp需要调用
-      -- TODO: 如果用户禁用了默认的lsp需要禁用
-      -- TODO: 如果用户覆盖率默认的lsp需要覆盖
       lspconfig[server].setup(opts)
     end
   end

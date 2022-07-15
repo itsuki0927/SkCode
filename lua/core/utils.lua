@@ -2,9 +2,7 @@ local cmd = vim.cmd
 
 -- 加载默认配置
 skcode.load_config = function()
-  local conf = require('core.default_config')
-
-  return conf
+  return require('core.default_config')
 end
 
 -- 键位定义函数
