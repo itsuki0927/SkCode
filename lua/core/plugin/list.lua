@@ -4,7 +4,9 @@ local plugins = {
 
   ['nvim-lua/plenary.nvim'] = {},
   ['wbthomason/packer.nvim'] = {},
-  ['b0o/schemastore.nvim'] = {},
+  ['b0o/schemastore.nvim'] = {
+    module = 'schemastore',
+  },
   ['weilbith/nvim-code-action-menu'] = {
     cmd = 'CodeActionMenu',
   },
@@ -51,11 +53,8 @@ local plugins = {
   },
 
   ['neovim/nvim-lspconfig'] = {
+    event = { 'BufRead', 'BufNewFile', 'BufWinEnter' },
     config = "require('core.lsp')",
-    opt = true,
-    setup = function()
-      require('core.lazy_load').on_file_open('nvim-lspconfig')
-    end,
   },
 
   ['ray-x/lsp_signature.nvim'] = {
@@ -112,24 +111,28 @@ local plugins = {
   },
 
   ['nvim-treesitter/nvim-treesitter'] = {
-    cmd = require('core.lazy_load').treesitter_cmds,
+    cmd = {
+      'TSInstall',
+      'TSBufEnable',
+      'TSBufDisable',
+      'TSEnable',
+      'TSDisable',
+      'TSModuleInhfo',
+    },
+    event = { 'BufRead', 'BufWinEnter', 'BufNewFile' },
     config = function()
       require('plugin-configs.treesitter')
-    end,
-    setup = function()
-      require('core.lazy_load').on_file_open('nvim-treesitter')
     end,
     run = ':TSUpdate',
   },
 
   ['akinsho/bufferline.nvim'] = {
     branch = 'main',
-    opt = true,
+    event = { 'BufNewFile', 'BufRead', 'TabEnter' },
     config = function()
       require('plugin-configs.bufferline')
     end,
     setup = function()
-      require('core.lazy_load').bufferline()
       require('core.mappings').bufferline()
     end,
   },
@@ -157,11 +160,7 @@ local plugins = {
   },
 
   ['NvChad/nvim-colorizer.lua'] = {
-    event = 'BufRead',
-    opt = true,
-    setup = function()
-      require('core.lazy_load').colorizer()
-    end,
+    event = { 'BufRead', 'BufNewFile' },
     config = function()
       require('plugin-configs.colorizer')
     end,
@@ -169,12 +168,9 @@ local plugins = {
 
   ['lewis6991/gitsigns.nvim'] = {
     after = 'base46',
-    opt = true,
+    event = { 'BufRead' },
     config = function()
       require('plugin-configs.gitsigns')
-    end,
-    setup = function()
-      require('core.lazy_load').gitsigns()
     end,
   },
 
