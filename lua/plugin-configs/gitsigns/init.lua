@@ -19,11 +19,11 @@ if present then
       follow_files = true,
     },
     attach_to_untracked = true,
-    current_line_blame = false,
+    current_line_blame = true,
     current_line_blame_opts = {
       virt_text = true,
       virt_text_pos = 'eol',
-      delay = 200,
+      delay = 300,
       ignore_whitespace = false,
     },
     current_line_blame_formatter_opts = {
