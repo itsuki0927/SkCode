@@ -1,7 +1,14 @@
+local present, schemastore = pcall(require, 'schemastore')
+print(present)
+
+if not present then
+  return {}
+end
+
 local M = {
   settings = {
     json = {
-      schemas = require('schemastore').json.schemas({
+      schemas = schemastore.json.schemas({
         select = {
           '.eslintrc',
           'package.json',
