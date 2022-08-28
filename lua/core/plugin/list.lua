@@ -159,6 +159,14 @@ local plugins = {
     end,
   },
 
+  ['nvim-telescope/telescope-fzf-native.nvim'] = {
+    after = 'telescope.nvim',
+    run = 'make',
+    config = function()
+      require('telescope').load_extension('fzf')
+    end,
+  },
+
   ['NvChad/nvim-colorizer.lua'] = {
     event = { 'BufRead', 'BufNewFile' },
     config = function()

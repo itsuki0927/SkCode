@@ -5,3 +5,5 @@ require('core.autocmds')
 require('core.mappings').init()
 require('core.plugin').bootstrap()
 require('core.plugin.list')
+
+local a = 'demo'
