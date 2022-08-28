@@ -119,7 +119,7 @@ local plugins = {
       'TSDisable',
       'TSModuleInhfo',
     },
-    event = { 'BufRead', 'BufWinEnter', 'BufNewFile' },
+    event = 'CursorHold',
     config = function()
       require('plugin-configs.treesitter')
     end,
@@ -168,7 +168,7 @@ local plugins = {
   },
 
   ['NvChad/nvim-colorizer.lua'] = {
-    event = { 'BufRead', 'BufNewFile' },
+    event = { 'CursorHold' },
     config = function()
       require('plugin-configs.colorizer')
     end,
