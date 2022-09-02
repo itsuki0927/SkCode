@@ -238,6 +238,17 @@ local plugins = {
       require('spectre').setup()
     end,
   },
+
+  ['akinsho/git-conflict.nvim'] = {
+    tag = '*',
+    keys = { 'co', 'ct', 'cb', 'c0', ']x', '[x' },
+    setup = function()
+      require('core.mappings').git_conflict()
+    end,
+    config = function()
+      require('git-conflict').setup()
+    end,
+  },
 }
 
 require('core.plugin').run(plugins)

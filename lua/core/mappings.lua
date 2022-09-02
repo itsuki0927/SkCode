@@ -140,4 +140,13 @@ M.spectre = function()
   map('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search()<CR>')
 end
 
+M.git_conflict = function()
+  map('n', 'co', '<Plug>(git-conflict-ours)')
+  map('n', 'ct', '<Plug>(git-conflict-theirs)')
+  map('n', 'cb', '<Plug>(git-conflict-both)')
+  map('n', 'c0', '<Plug>(git-conflict-none)')
+  map('n', ']x', '<Plug>(git-conflict-prev-conflict)')
+  map('n', '[x', '<Plug>(git-conflict-next-conflict)')
+end
+
 return M
