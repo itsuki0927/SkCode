@@ -249,6 +249,22 @@ local plugins = {
       require('git-conflict').setup()
     end,
   },
+
+  ['windwp/nvim-ts-autotag'] = {
+    after = 'nvim-treesitter',
+    config = function()
+      require('nvim-ts-autotag').setup({
+        filetypes = {
+          'javascriptreact',
+          'typescriptreact',
+          'html',
+          'vue',
+          'tsx',
+          'jsx',
+        },
+      })
+    end,
+  },
 }
 
 require('core.plugin').run(plugins)
