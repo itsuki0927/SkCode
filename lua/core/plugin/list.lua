@@ -53,12 +53,12 @@ local plugins = {
   },
 
   ['neovim/nvim-lspconfig'] = {
-    event = { 'BufRead', 'BufNewFile', 'BufWinEnter' },
+    after = 'lsp_signature.nvim',
     config = "require('core.lsp')",
   },
 
   ['ray-x/lsp_signature.nvim'] = {
-    event = 'InsertCharPre',
+    event = { 'BufRead', 'BufNewFile', 'BufWinEnter' },
     config = function()
       require('plugin-configs.lspsignature')
     end,

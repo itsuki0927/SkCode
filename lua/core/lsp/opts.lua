@@ -24,6 +24,7 @@ local on_attach = function(client, bufnr)
   require('core.mappings').lspconfig(bufnr)
   -- 使用<c-x><c-o>触发Lsp
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+  require('lsp_signature').on_attach()
 end
 
 -- capabilities
