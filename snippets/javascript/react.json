@@ -1,0 +1,156 @@
+{
+  "if falsy return null": {
+    "prefix": "ifr",
+    "body": "if (!${1:condition}) {\n\treturn null\n}"
+  },
+  "reactFunctionComponent": {
+    "prefix": "rfc",
+    "body": "\nconst ${TM_FILENAME_BASE} = () => {\n\treturn (\n\t\t<div>\n\t\t\t$0\n\t\t</div>\n\t)\n}\n\nexport default ${TM_FILENAME_BASE}",
+    "description": "Creates a React function component without PropTypes"
+  },
+  "reactFunctionComponentWithCustomName": {
+    "prefix": "rfcn",
+    "body": "\nconst ${1:functionname} = () => {\n\treturn (\n\t\t<div>\n\t\t\t$0\n\t\t</div>\n\t)\n}\n\nexport default ${1:functionname}",
+    "description": "Creates a React function component with custom name"
+  },
+  "reactFunctionComponentWithEmotion": {
+    "prefix": "rfce",
+    "body": "import { css } from '@emotion/core'\n\nexport const ${TM_FILENAME_BASE} = () => {\n\treturn (\n\t\t<div css={css``}>\n\t\t\t$0\n\t\t</div>\n\t)\n}",
+    "description": "Creates a React functional component with emotion"
+  },
+  "classConstructor": {
+    "prefix": "con",
+    "body": "constructor (props) {\n\tsuper(props)\n\t$0\n}\n",
+    "description": "Adds a default constructor for the class that contains props as arguments"
+  },
+  "jsx element": {
+    "prefix": "j",
+    "body": "<${1:elementName}>\n\t$0\n</${1}>",
+    "description": "an element"
+  },
+  "jsx element self closed": {
+    "prefix": "jc",
+    "body": "<${1:elementName} />",
+    "description": "an element self closed"
+  },
+  "jsx elements map": {
+    "prefix": "jm",
+    "body": "{${1:array}.map((item) => <${2:elementName} key={item.id}>\n\t$0\n</${2}>)}",
+    "description": "an element self closed"
+  },
+  "jsx elements map with return": {
+    "prefix": "jmr",
+    "body": "{${1:array}.map((item) => {\n\treturn <${2:elementName} key={item.id}>\n\t$0\n</${2}>\n})}",
+    "description": "an element self closed"
+  },
+  "jsx element wrap selection": {
+    "prefix": "jsx wrap selection with element",
+    "body": "<${1:elementName}>\n\t{$TM_SELECTED_TEXT}\n</${1}>",
+    "description": "an element"
+  },
+  "useState": {
+    "prefix": "us",
+    "body": "const [${1:setterName}, set${1:setterName}] = useState(${2:defVal})$0",
+    "description": "use state hook"
+  },
+  "useEffect": {
+    "prefix": "ue",
+    "body": ["useEffect(() => {", "\t$1", "}, [${3:dependencies}])$0"],
+    "description": "React useEffect() hook"
+  },
+  "useEffect with return": {
+    "prefix": "uer",
+    "body": [
+      "useEffect(() => {",
+      "\t$1",
+      "\n\treturn () => {",
+      "\t\t$2",
+      "\t}",
+      "}, [${3:dependencies}])$0"
+    ],
+    "description": "React useEffect() hook with return statement"
+  },
+  "useContext": {
+    "prefix": "uc",
+    "body": ["const $1 = useContext($2)$0"],
+    "description": "React useContext() hook"
+  },
+  "useRef": {
+    "prefix": "ur",
+    "body": ["const ${1:elName}El = useRef(null)$0"],
+    "description": "React useContext() hook"
+  },
+  "useCallback": {
+    "prefix": "ucb",
+    "body": [
+      "const ${1:memoizedCallback} = useCallback(",
+      "\t() => {",
+      "\t\t${2:doSomething}(${3:a}, ${4:b})",
+      "\t},",
+      "\t[${5:a}, ${6:b}],",
+      ")$0"
+    ],
+    "description": "React useCallback() hook"
+  },
+  "useMemo": {
+    "prefix": "ume",
+    "body": [
+      "const ${1:memoizedValue} = useMemo(() => ${2:computeExpensiveValue}(${3:a}, ${4:b}), [${5:a}, ${6:b}])$0"
+    ],
+    "description": "React useMemo() hook"
+  },
+  "useImperativeHandle": {
+    "key": "useImperativeHandle",
+    "prefix": "uih",
+    "body": [
+      "useImperativeHandle(",
+      "  ${1:first},",
+      "  () => {",
+      "    ${2:second}",
+      "  },",
+      "  [${3:third}],",
+      ")"
+    ]
+  },
+  "reactArrowFunctionComponent": {
+    "key": "reactArrowFunctionComponent",
+    "prefix": "rafc",
+    "body": [
+      "import React from 'react'",
+      "",
+      "export const ${1:${TM_FILENAME_BASE}} = () => {",
+      "  return (",
+      "    <div>${1:first}</div>",
+      "  )",
+      "}",
+      ""
+    ],
+    "description": "Creates a React Arrow Function Component with ES7 module system"
+  },
+  "reactArrowFunctionExportComponent": {
+    "key": "reactArrowFunctionExportComponent",
+    "prefix": "rafce",
+    "body": [
+      "import React from 'react'",
+      "",
+      "const ${1:${TM_FILENAME_BASE}} = () => {",
+      "  return (",
+      "    <div>${1:first}</div>",
+      "  )",
+      "}",
+      "",
+      "export default ${1:${TM_FILENAME_BASE}}"
+    ],
+    "description": "Creates a React Arrow Function Component with ES7 module system"
+  },
+  "importReact": {
+    "key": "importReact",
+    "prefix": "imr",
+    "body": ["import React from 'react'"]
+  },
+  "createRef": {
+    "prefix": "cref",
+    "body": ["this.${1:first}Ref = React.createRef()"],
+    "description": "Create ref statement used inside constructor"
+  }
+}

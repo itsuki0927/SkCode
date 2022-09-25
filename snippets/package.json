@@ -1,0 +1,98 @@
+{
+  "name": "my-snippets",
+  "contributes": {
+    "snippets": [
+      {
+        "language": [
+          "lua"
+        ],
+        "path": "./lua.json"
+      },
+      {
+        "language": [
+          "typescript"
+        ],
+        "path": "./javascript/typescript.json"
+      },
+      {
+        "language": [
+          "typescript"
+        ],
+        "path": "./javascript/javascript.json"
+      },
+      {
+        "language": [
+          "typescriptreact"
+        ],
+        "path": "./javascript/typescript.json"
+      },
+      {
+        "language": [
+          "typescriptreact"
+        ],
+        "path": "./javascript/javascript.json"
+      },
+      {
+        "language": [
+          "typescriptreact"
+        ],
+        "path": "./javascript/react-ts.json"
+      },
+      {
+        "language": [
+          "typescriptreact"
+        ],
+        "path": "./javascript/next-ts.json"
+      },
+      {
+        "language": [
+          "typescriptreact"
+        ],
+        "path": "./javascript/react.json"
+      },
+      {
+        "language": [
+          "javascript",
+          "html"
+        ],
+        "path": "./javascript/javascript.json"
+      },
+      {
+        "language": [
+          "html"
+        ],
+        "path": "./html.json"
+      },
+      {
+        "language": [
+          "javascriptreact"
+        ],
+        "path": "./javascript/react.json"
+      },
+      {
+        "language": [
+          "vue"
+        ],
+        "path": "./vue/vue.json"
+      },
+      {
+        "language": [
+          "vue"
+        ],
+        "path": "./vue/html.json"
+      },
+      {
+        "language": [
+          "vue"
+        ],
+        "path": "./vue/javascript.json"
+      },
+      {
+        "language": [
+          "vue"
+        ],
+        "path": "./javascript/javascript.json"
+      }
+    ]
+  }
+}

@@ -64,12 +64,8 @@ local plugins = {
     end,
   },
 
-  ['rafamadriz/friendly-snippets'] = {
-    event = 'InsertEnter',
-  },
-
   ['hrsh7th/nvim-cmp'] = {
-    after = 'friendly-snippets',
+    event = 'InsertEnter',
     config = function()
       require('plugin-configs.cmp')
     end,
@@ -83,7 +79,6 @@ local plugins = {
   },
 
   ['L3MON4D3/LuaSnip'] = {
-    wants = 'friendly-snippets',
     after = 'nvim-cmp',
     config = function()
       require('plugin-configs.luasnip')
