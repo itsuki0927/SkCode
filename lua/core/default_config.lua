@@ -33,7 +33,6 @@ M.plugins = {
   options = {
     nvimtree = {
       lazy_load = true,
-      quit_on_open = false, -- 打开文件时关闭nvimtree
     },
     statusline = {
       style = 'block', -- default, round , slant , block , arrow

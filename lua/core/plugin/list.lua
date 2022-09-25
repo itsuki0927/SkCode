@@ -138,7 +138,7 @@ local plugins = {
   },
 
   ['kyazdani42/nvim-tree.lua'] = {
-    ft = 'alpha',
+    --[[ ft = 'alpha', ]]
     cmd = { 'NvimTreeToggle', 'NvimTreeFocus' },
     config = function()
       require('plugin-configs.nvimtree')
@@ -274,6 +274,14 @@ local plugins = {
     },
     config = function()
       require('symbols-outline').setup()
+    end,
+  },
+
+  ['kylechui/nvim-surround'] = {
+    tag = '*',
+    keys = { { 'n', 'ys' }, { 'n', 'ds' }, { 'n', 'cs' } },
+    config = function()
+      require('nvim-surround').setup({})
     end,
   },
 }
