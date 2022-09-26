@@ -140,4 +140,27 @@ M.git_conflict = function()
   map('n', '[x', '<Plug>(git-conflict-next-conflict)')
 end
 
+M.hop = function()
+  map(
+    'n',
+    'f',
+    "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>"
+  )
+  map(
+    'n',
+    'F',
+    "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>"
+  )
+  map(
+    'n',
+    't',
+    "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })<cr>"
+  )
+  map(
+    'n',
+    'T',
+    "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })<cr>"
+  )
+end
+
 return M

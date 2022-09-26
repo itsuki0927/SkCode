@@ -279,6 +279,17 @@ local plugins = {
       require('nvim-surround').setup({})
     end,
   },
+
+  ['phaazon/hop.nvim'] = {
+    branch = 'v2',
+    --[[ keys = { { 'n', 'f' }, { 'n', 'F' }, { 'n', 't' }, { 'n', 'T' } }, ]]
+    setup = function()
+      require('core.mappings').hop()
+    end,
+    config = function()
+      require('hop').setup({ keys = 'etovxqpdygfblzhckisuran' })
+    end,
+  },
 }
 
 require('core.plugin').run(plugins)
