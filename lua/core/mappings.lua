@@ -35,11 +35,7 @@ M.comment = function()
 end
 
 M.init = function()
-  map('i', '<C-h>', '<Left>')
   map('i', '<C-e>', '<End>')
-  map('i', '<C-l>', '<Right>')
-  map('i', '<C-k>', '<Up>')
-  map('i', '<C-j>', '<Down>')
   map('i', '<C-a>', '<ESC>^i')
 
   map('n', '<C-h>', '<C-w>h')
@@ -69,11 +65,6 @@ M.init = function()
   map('n', '<leader>rn', '<cmd>lua require("ui.renamer").open()<cr>')
   map('v', '<leader>rn', '<cmd>lua require("ui.renamer").open()<cr>')
   map('n', '<leader>rt', ':lua require("plenary.test_harness").test_directory(vim.fn.expand("%:p"))<CR>')
-end
-
-M.toggleterm = function()
-  map('n', '<leader>tg', '<cmd>lua _LAZYGIT_TOGGLE()<CR>')
-  map('n', '<leader>tr', '<cmd>lua _RANGER_TOGGLE()<CR>')
 end
 
 M.lspconfig = function(bufnr)
