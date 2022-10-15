@@ -1,7 +1,7 @@
 local present, colorizer = pcall(require, 'colorizer')
 
 if present then
-  colorizer.setup({
+  local options = {
     filetype = { '*' },
     user_default_options = {
       RGB = true, -- #RGB hex codes
@@ -21,5 +21,7 @@ if present then
       -- parsers can contain values used in |user_default_options|
       --[[ sass = { enable = false, parsers = { css } }, -- Enable sass colors ]]
     },
-  })
+  }
+  colorizer.setup(options)
+  return vim.tbl_isempty(options.filetypes or {}) or vim.cmd([[do FileType]])
 end
