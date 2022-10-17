@@ -604,5 +604,15 @@
     "prefix": "#endregion",
     "body": ["//#endregion"],
     "description": "Folding Region End"
+  },
+  "Const Arrow Function": {
+    "prefix": "caf",
+    "body": ["const $1 = ($2) => {$0}"],
+    "description": "Const Arrow Function"
+  },
+  "Export Const Arrow Function": {
+    "prefix": "ecaf",
+    "body": ["export const $1 = ($2) => {$0}"],
+    "description": "Export Const Arrow Function"
   }
 }
