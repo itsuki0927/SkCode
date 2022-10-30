@@ -1,25 +1,9 @@
-vim.g.completeopt = 'menu,menuone,noselect,noinsert'
+vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
 local present, cmp = pcall(require, 'cmp')
 
 if present then
   require('base46').load_highlight('cmp')
-  local function border(hl_name)
-    return {
-      { '┌', hl_name },
-      { '─', hl_name },
-      { '┐', hl_name },
-      { '│', hl_name },
-      { '┘', hl_name },
-      { '─', hl_name },
-      { '└', hl_name },
-      { '│', hl_name },
-    }
-  end
-  local has_words_before = function()
-    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
-  end
 
   local cmp_window = require('cmp.utils.window')
 
@@ -36,56 +20,56 @@ if present then
         require('luasnip').lsp_expand(args.body)
       end,
     },
-    window = {
-      completion = {
-        border = border('CmpBorder'),
-        winhighlight = 'Normal:CmpPmenu,CursorLine:PmenuSel,Search:None',
-      },
-      documentation = {
-        border = border('CmpDocBorder'),
-      },
-    },
     experimental = {
       native_menu = false,
-      ghost_text = true,
+      ghost_text = false,
     },
     mapping = {
       ['<C-k>'] = cmp.mapping.select_prev_item(),
       ['<C-j>'] = cmp.mapping.select_next_item(),
       ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-1), { 'i', 'c' }),
       ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(1), { 'i', 'c' }),
-      ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+      --[[ ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }), ]]
       ['<C-e>'] = cmp.mapping({
         i = cmp.mapping.abort(),
         c = cmp.mapping.close(),
       }),
+      ['<c-y>'] = cmp.mapping(
+        cmp.mapping.confirm({
+          behavior = cmp.ConfirmBehavior.Insert,
+          select = true,
+        }),
+        { 'i', 'c' }
+      ),
       ['<CR>'] = cmp.mapping.confirm({ select = true }),
-      ['<Tab>'] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.select_next_item()
-        elseif require('luasnip').expand_or_jumpable() then
-          require('luasnip').expand_or_jump()
-        elseif has_words_before() then
-          cmp.complete()
-        else
-          fallback()
-        end
-      end, {
-        'i',
-        's',
-      }),
-      ['<S-Tab>'] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.select_prev_item()
-        elseif require('luasnip').jumpable(-1) then
-          require('luasnip').jump(-1)
-        else
-          fallback()
-        end
-      end, {
-        'i',
-        's',
-      }),
+
+      ['<TAB>'] = cmp.config.disable,
+      --[[   ['<Tab>'] = cmp.mapping(function(fallback) ]]
+      --[[     if cmp.visible() then ]]
+      --[[       cmp.select_next_item() ]]
+      --[[     elseif require('luasnip').expand_or_jumpable() then ]]
+      --[[       require('luasnip').expand_or_jump() ]]
+      --[[     elseif has_words_before() then ]]
+      --[[       cmp.complete() ]]
+      --[[     else ]]
+      --[[       fallback() ]]
+      --[[     end ]]
+      --[[   end, { ]]
+      --[[     'i', ]]
+      --[[     's', ]]
+      --[[   }), ]]
+      --[[   ['<S-Tab>'] = cmp.mapping(function(fallback) ]]
+      --[[     if cmp.visible() then ]]
+      --[[       cmp.select_prev_item() ]]
+      --[[     elseif require('luasnip').jumpable(-1) then ]]
+      --[[       require('luasnip').jump(-1) ]]
+      --[[     else ]]
+      --[[       fallback() ]]
+      --[[     end ]]
+      --[[   end, { ]]
+      --[[     'i', ]]
+      --[[     's', ]]
+      --[[   }), ]]
     },
     formatting = {
       format = function(entry, vim_item)
@@ -93,8 +77,8 @@ if present then
         vim_item.kind = string.format('%s %s', icons[vim_item.kind], vim_item.kind:lower())
 
         vim_item.menu = ({
-          buffer = '[BUF]',
-          nvim_lsp = '[LSP]',
+          buffer = '[Buf]',
+          nvim_lsp = '[Lsp]',
           nvim_lua = '[Lua]',
           path = '[Path]',
           luasnip = '[Snip]',
@@ -110,5 +94,57 @@ if present then
       { name = 'nvim_lua' },
       { name = 'path' },
     },
+
+    sorting = {
+      -- TODO: Would be cool to add stuff like "See variable names before method names" in rust, or something like that.
+      comparators = {
+        cmp.config.compare.offset,
+        cmp.config.compare.exact,
+        cmp.config.compare.score,
+
+        -- copied from cmp-under, but I don't think I need the plugin for this.
+        -- I might add some more of my own.
+        function(entry1, entry2)
+          local _, entry1_under = entry1.completion_item.label:find('^_+')
+          local _, entry2_under = entry2.completion_item.label:find('^_+')
+          entry1_under = entry1_under or 0
+          entry2_under = entry2_under or 0
+          if entry1_under > entry2_under then
+            return false
+          elseif entry1_under < entry2_under then
+            return true
+          end
+        end,
+
+        cmp.config.compare.kind,
+        cmp.config.compare.sort_text,
+        cmp.config.compare.length,
+        cmp.config.compare.order,
+      },
+    },
+  })
+
+  cmp.setup.cmdline({ '/', '?' }, {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+      { name = 'buffer' },
+    },
+  })
+
+  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+      { name = 'path' },
+    }, {
+      { name = 'cmdline' },
+    }),
   })
 end
+
+_ = vim.cmd([[
+  augroup CmpZsh
+    au!
+    autocmd Filetype zsh lua require'cmp'.setup.buffer { sources = { { name = "zsh" }, } }
+  augroup END
+]])
