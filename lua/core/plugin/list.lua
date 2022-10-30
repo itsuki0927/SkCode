@@ -120,6 +120,9 @@ local plugins = {
     end,
     run = ':TSUpdate',
   },
+  ['nvim-treesitter/nvim-treesitter-textobjects'] = {
+    after = 'nvim-treesitter',
+  },
 
   ['akinsho/bufferline.nvim'] = {
     branch = 'main',
