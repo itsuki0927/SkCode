@@ -237,17 +237,6 @@ local plugins = {
     end,
   },
 
-  ['akinsho/git-conflict.nvim'] = {
-    tag = '*',
-    keys = { 'gco', 'gct', 'gcb', 'gc0', ']x', '[x' },
-    setup = function()
-      require('core.mappings').git_conflict()
-    end,
-    config = function()
-      require('git-conflict').setup()
-    end,
-  },
-
   ['windwp/nvim-ts-autotag'] = {
     after = 'nvim-treesitter',
     config = function()
