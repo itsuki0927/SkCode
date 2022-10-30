@@ -125,10 +125,9 @@ M.markdown_preview = function()
 end
 
 M.spectre = function()
-  map('n', '<leader>S', '<cmd>lua require("spectre").open()<CR>')
-  map('n', '<leader>sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>')
-  map('v', '<leader>s', '<cmd>lua require("spectre").open_visual()<CR>')
-  map('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search()<CR>')
+  map('n', '<leader>R', '<cmd>lua require("spectre").open()<CR>')
+  map('n', '<leader>rw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>')
+  map('n', '<leader>rp', '<cmd>lua require("spectre").open_file_search()<CR>')
 end
 
 M.git_conflict = function()
