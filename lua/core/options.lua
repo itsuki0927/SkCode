@@ -33,7 +33,7 @@ opt.shiftwidth = 2 -- 1 tab = 2 空格
 opt.tabstop = 2 -- 1 tab = 2 空格
 opt.cursorline = true -- 高亮当前行
 opt.number = true -- 显示行号
-opt.relativenumber = false -- 不使用相对行号
+opt.relativenumber = true -- 使用相对行号
 opt.numberwidth = 2 -- 行号宽度: 2
 opt.signcolumn = 'yes' -- 始终显示符号列，否则每次都会移动文本
 opt.wrap = false -- 长行回绕并在下一行继续
