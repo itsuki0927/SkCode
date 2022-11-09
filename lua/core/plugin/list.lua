@@ -282,6 +282,15 @@ local plugins = {
       require('hop').setup({ keys = 'etovxqpdygfblzhckisuran' })
     end,
   },
+
+  ['ThePrimeagen/harpoon'] = {
+    config = function()
+      require('harpoon').setup({})
+    end,
+    setup = function()
+      require('core.mappings').harpoon()
+    end,
+  },
 }
 
 require('core.plugin').run(plugins)

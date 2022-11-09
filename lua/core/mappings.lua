@@ -153,4 +153,13 @@ M.hop = function()
   )
 end
 
+M.harpoon = function()
+  map('n', '<leader>a', "<cmd>lua require('harpoon.mark').add_file()<cr>")
+  map('n', '<C-e>', "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>")
+  map('n', '<C-f>', "<cmd>lua require('harpoon.ui').nav_file(1)<cr>")
+  map('n', '<C-p>', "<cmd>lua require('harpoon.ui').nav_file(2)<cr>")
+  map('n', '<C-t>', "<cmd>lua require('harpoon.ui').nav_file(3)<cr>")
+  map('n', '<C-s>', "<cmd>lua require('harpoon.ui').nav_file(4)<cr>")
+end
+
 return M
