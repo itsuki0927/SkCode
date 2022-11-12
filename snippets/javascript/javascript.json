@@ -189,7 +189,7 @@
   },
   "const statement from destructuring": {
     "prefix": "cd",
-    "body": "const { ${2:prop} } = ${1:value}"
+    "body": "const { ${2:prop} } = ${1:props}"
   },
   "const statement from array destructuring": {
     "prefix": "cad",
