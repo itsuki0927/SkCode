@@ -28,6 +28,9 @@ if present then
       markdown = { prettier },
       json = { prettier },
       jsonc = { prettier },
+      rust = {
+        require('formatter.filetypes.rust').rustfmt,
+      },
     },
   })
 
