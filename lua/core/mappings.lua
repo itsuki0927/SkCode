@@ -22,6 +22,7 @@ M.telescope = function()
   map('n', '<leader>sb', ':Telescope buffers <CR>')
   map('n', '<leader>sk', ':Telescope keymaps <CR>')
   map('n', '<leader>sc', ':Telescope commands <CR>')
+  map('n', '<leader>sg', ':Telescope git_files <CR>')
 end
 
 M.bufferline = function()
@@ -42,6 +43,9 @@ M.init = function()
   map('n', '<C-l>', '<C-w>l')
   map('n', '<C-k>', '<C-w>k')
   map('n', '<C-j>', '<C-w>j')
+
+  map('n', '<C-d>', '<C-d>zz')
+  map('n', '<C-u>', '<C-u>zz')
 
   map('n', '<M-Up>', ':resize +2<CR>')
   map('n', '<M-Down>', ':resize -2<CR>')
