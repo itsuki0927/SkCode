@@ -14,19 +14,19 @@ M.ui = {
 -- Lsp 配置
 M.lsp = {
   servers = {
-    sumneko_lua = true,
-    tailwindcss = true,
-    tsserver = true,
-    vuels = true,
-    cssls = true,
-    cssmodules_ls = true,
-    jsonls = true,
-    html = true,
-    eslint = true,
-    rust_analyzer = false,
-    volar = false,
-    emmet_ls = false,
-    marksman = false,
+    tsserver = true, -- typescript
+    vuels = true, -- vue2
+    cssls = true, -- css
+    cssmodules_ls = true, -- css module
+    jsonls = true, -- json
+    html = true, -- html
+    eslint = true, -- eslint
+    sumneko_lua = false, -- lua
+    tailwindcss = false, -- tailwindcss
+    rust_analyzer = false, -- rust
+    volar = false, -- vue3
+    emmet_ls = false, -- emmet
+    marksman = false, -- markdown
   },
 }
 
