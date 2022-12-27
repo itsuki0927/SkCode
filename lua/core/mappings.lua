@@ -128,12 +128,6 @@ M.markdown_preview = function()
   map('n', '<leader>ms', ':MarkdownPreviewStop <CR>')
 end
 
-M.spectre = function()
-  map('n', '<leader>R', '<cmd>lua require("spectre").open()<CR>')
-  map('n', '<leader>rw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>')
-  map('n', '<leader>rp', '<cmd>lua require("spectre").open_file_search()<CR>')
-end
-
 M.hop = function()
   map(
     'n',

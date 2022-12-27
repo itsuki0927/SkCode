@@ -228,15 +228,6 @@ local plugins = {
     keys = { { 'n', '<c-n>' }, { 'v', '<c-n>' } },
   },
 
-  ['nvim-pack/nvim-spectre'] = {
-    setup = function()
-      require('core.mappings').spectre()
-    end,
-    config = function()
-      require('spectre').setup()
-    end,
-  },
-
   ['windwp/nvim-ts-autotag'] = {
     after = 'nvim-treesitter',
     config = function()
