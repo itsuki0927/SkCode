@@ -34,10 +34,10 @@ if present then
     incremental_selection = {
       enable = true,
       keymaps = {
-        init_selection = 'gnn',
-        node_incremental = '<C-n>',
-        scope_incremental = '<C-s>',
-        node_decremental = '<C-r>',
+        init_selection = '<CR>',
+        node_incremental = '<CR>',
+        scope_incremental = '<S-CR>',
+        node_decremental = '<BS>',
       },
     },
     context_commentstring = {
