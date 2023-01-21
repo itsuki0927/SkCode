@@ -268,7 +268,7 @@ local plugins = {
 
   ['ThePrimeagen/harpoon'] = {
     config = function()
-      require('harpoon').setup({})
+      require('plugin-configs.harpoon')
     end,
     setup = function()
       require('core.mappings').harpoon()
