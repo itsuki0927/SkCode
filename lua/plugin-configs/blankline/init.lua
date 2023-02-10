@@ -5,6 +5,14 @@ if present then
   indent_blankline.setup({
     use_treesitter = true,
     show_current_context = true,
+    context_highlight_list = {
+      'IndentBlanklineContextIndent1',
+      'IndentBlanklineContextIndent2',
+      'IndentBlanklineContextIndent3',
+      'IndentBlanklineContextIndent4',
+      'IndentBlanklineContextIndent5',
+      'IndentBlanklineContextIndent6',
+    },
     filetype_exculde = {
       'alpha',
       'packer',

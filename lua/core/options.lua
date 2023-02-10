@@ -45,7 +45,7 @@ opt.statusline = "%!v:lua.require('ui.statusline').run()"
 
 -- 不可见的字符显示点
 opt.list = true
-opt.listchars = 'space:⋅'
+-- opt.listchars = 'space:⋅'
 
 opt.shortmess:append('c')
 
