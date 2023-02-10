@@ -49,6 +49,7 @@ require('lazy').setup({
 
   {
     'goolord/alpha-nvim',
+    event = 'VimEnter',
     config = function()
       require('plugin-configs.alpha')
     end,
@@ -64,7 +65,7 @@ require('lazy').setup({
 
   {
     'lukas-reineke/indent-blankline.nvim',
-    lazy = true,
+    event = 'BufRead',
     config = function()
       require('plugin-configs.blankline')
     end,
@@ -118,8 +119,7 @@ require('lazy').setup({
   -- 自动完成
   {
     'hrsh7th/nvim-cmp',
-    event = 'InsertEnter',
-    -- event = 'VimEnter',
+    event = 'VeryLazy',
     config = function()
       require('plugin-configs.cmp')
     end,
@@ -201,6 +201,7 @@ require('lazy').setup({
   -- 输入提示函数参数
   {
     'ray-x/lsp_signature.nvim',
+    event = 'VeryLazy',
     config = true,
     opts = {
       bind = true,
