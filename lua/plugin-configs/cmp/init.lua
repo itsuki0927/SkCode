@@ -34,7 +34,7 @@ if present then
         i = cmp.mapping.abort(),
         c = cmp.mapping.close(),
       }),
-      ['<c-y>'] = cmp.mapping(
+      ['<C-y>'] = cmp.mapping(
         cmp.mapping.confirm({
           behavior = cmp.ConfirmBehavior.Insert,
           select = true,
@@ -42,34 +42,6 @@ if present then
         { 'i', 'c' }
       ),
       ['<CR>'] = cmp.mapping.confirm({ select = true }),
-
-      ['<TAB>'] = cmp.config.disable,
-      --[[   ['<Tab>'] = cmp.mapping(function(fallback) ]]
-      --[[     if cmp.visible() then ]]
-      --[[       cmp.select_next_item() ]]
-      --[[     elseif require('luasnip').expand_or_jumpable() then ]]
-      --[[       require('luasnip').expand_or_jump() ]]
-      --[[     elseif has_words_before() then ]]
-      --[[       cmp.complete() ]]
-      --[[     else ]]
-      --[[       fallback() ]]
-      --[[     end ]]
-      --[[   end, { ]]
-      --[[     'i', ]]
-      --[[     's', ]]
-      --[[   }), ]]
-      --[[   ['<S-Tab>'] = cmp.mapping(function(fallback) ]]
-      --[[     if cmp.visible() then ]]
-      --[[       cmp.select_prev_item() ]]
-      --[[     elseif require('luasnip').jumpable(-1) then ]]
-      --[[       require('luasnip').jump(-1) ]]
-      --[[     else ]]
-      --[[       fallback() ]]
-      --[[     end ]]
-      --[[   end, { ]]
-      --[[     'i', ]]
-      --[[     's', ]]
-      --[[   }), ]]
     },
     formatting = {
       format = function(entry, vim_item)

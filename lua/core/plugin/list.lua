@@ -1,17 +1,12 @@
-vim.cmd('packadd packer.nvim')
+require('lazy').setup({
+  { 'nvim-lua/plenary.nvim', lazy = true },
+  { 'b0o/schemastore.nvim', lazy = true },
+  { 'weilbith/nvim-code-action-menu', cmd = 'CodeActionMenu' },
+  { 'nvim-tree/nvim-web-devicons', lazy = true },
 
-local plugins = {
-
-  ['nvim-lua/plenary.nvim'] = {},
-  ['wbthomason/packer.nvim'] = {},
-  ['b0o/schemastore.nvim'] = {
-    module = 'schemastore',
-  },
-  ['weilbith/nvim-code-action-menu'] = {
-    cmd = 'CodeActionMenu',
-  },
-
-  ['itsuki0927/base46'] = {
+  ------------------------------ UI ----------------------------------
+  {
+    'itsuki0927/base46',
     config = function()
       local ok, base46 = pcall(require, 'base46')
       if ok then
@@ -20,245 +15,304 @@ local plugins = {
     end,
   },
 
-  ['goolord/alpha-nvim'] = {
-    after = 'base46',
-    config = function()
-      require('plugin-configs.alpha')
-    end,
-  },
-
-  ['kyazdani42/nvim-web-devicons'] = {
-    after = 'base46',
-    config = function()
-      require('plugin-configs.icons')
-    end,
-  },
-
-  ['iamcco/markdown-preview.nvim'] = {
-    run = 'cd app && yarn',
-    cmd = { 'MarkdownPreview', 'MarkdownPreviewStop' },
-    setup = function()
-      vim.g.mkdp_filetypes = { 'markdown' }
-      vim.g.mkdp_auto_close = 0
-      require('core.mappings').markdown_preview()
-    end,
-    ft = { 'markdown' },
-  },
-
-  ['mhartington/formatter.nvim'] = {
-    event = 'BufWrite',
-    config = function()
-      require('plugin-configs.formatter')
-    end,
-  },
-
-  ['neovim/nvim-lspconfig'] = {
-    after = 'lsp_signature.nvim',
-    config = "require('core.lsp')",
-  },
-
-  ['ray-x/lsp_signature.nvim'] = {
-    event = { 'BufRead', 'BufNewFile', 'BufWinEnter' },
-    config = function()
-      require('plugin-configs.lspsignature')
-    end,
-  },
-
-  ['hrsh7th/nvim-cmp'] = {
-    event = 'InsertEnter',
-    config = function()
-      require('plugin-configs.cmp')
-    end,
-  },
-
-  ['windwp/nvim-autopairs'] = {
-    after = 'nvim-cmp',
-    config = function()
-      require('plugin-configs.autopairs')
-    end,
-  },
-
-  ['L3MON4D3/LuaSnip'] = {
-    after = 'nvim-cmp',
-    config = function()
-      require('plugin-configs.luasnip')
-    end,
-  },
-
-  ['saadparwaiz1/cmp_luasnip'] = {
-    after = 'LuaSnip',
-  },
-
-  ['hrsh7th/cmp-nvim-lsp'] = {
-    after = 'cmp_luasnip',
-  },
-
-  ['hrsh7th/cmp-buffer'] = {
-    after = 'cmp-nvim-lsp',
-  },
-
-  ['hrsh7th/cmp-nvim-lua'] = {
-    after = 'cmp_luasnip',
-  },
-
-  ['hrsh7th/cmp-path'] = {
-    after = 'cmp-buffer',
-  },
-
-  ['nvim-treesitter/nvim-treesitter'] = {
-    cmd = {
-      'TSInstall',
-      'TSBufEnable',
-      'TSBufDisable',
-      'TSEnable',
-      'TSDisable',
-      'TSModuleInhfo',
-    },
-    event = 'CursorHold',
-    config = function()
-      require('plugin-configs.treesitter')
-    end,
-    run = ':TSUpdate',
-  },
-  ['nvim-treesitter/nvim-treesitter-textobjects'] = {
-    after = 'nvim-treesitter',
-  },
-
-  ['akinsho/bufferline.nvim'] = {
-    branch = 'main',
-    event = { 'BufNewFile', 'BufRead', 'TabEnter' },
-    config = function()
-      require('plugin-configs.bufferline')
-    end,
-    setup = function()
-      require('core.mappings').bufferline()
-    end,
-  },
-
-  ['kyazdani42/nvim-tree.lua'] = {
-    --[[ ft = 'alpha', ]]
-    cmd = { 'NvimTreeToggle', 'NvimTreeFocus' },
-    config = function()
-      require('plugin-configs.nvimtree')
-    end,
-    setup = function()
-      require('core.mappings').nvimtree()
-    end,
-  },
-
-  ['nvim-telescope/telescope.nvim'] = {
-    module = 'telescope',
-    cmd = 'Telescope',
-    config = function()
-      require('plugin-configs.telescope')
-    end,
-    setup = function()
-      require('core.mappings').telescope()
-    end,
-  },
-
-  ['NvChad/nvim-colorizer.lua'] = {
+  {
+    'NvChad/nvim-colorizer.lua',
     event = { 'CursorHold' },
     config = function()
       require('plugin-configs.colorizer')
     end,
   },
 
-  ['lewis6991/gitsigns.nvim'] = {
-    after = 'base46',
-    event = { 'BufRead' },
+  {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    event = 'BufRead',
+  },
+  {
+    'nvim-treesitter/nvim-treesitter',
+    event = 'CursorHold',
+    build = ':TSUpdate',
+    config = function()
+      require('plugin-configs.treesitter')
+    end,
+  },
+
+  {
+    'akinsho/bufferline.nvim',
+    event = { 'BufNewFile', 'BufRead', 'TabEnter' },
+    config = function()
+      require('plugin-configs.bufferline')
+    end,
+    init = function()
+      require('core.mappings').bufferline()
+    end,
+  },
+
+  {
+    'goolord/alpha-nvim',
+    config = function()
+      require('plugin-configs.alpha')
+    end,
+  },
+
+  {
+    'lewis6991/gitsigns.nvim',
+    event = 'BufRead',
     config = function()
       require('plugin-configs.gitsigns')
     end,
   },
 
-  ['lukas-reineke/indent-blankline.nvim'] = {
-    opt = true,
-    after = 'nvim-treesitter',
+  {
+    'lukas-reineke/indent-blankline.nvim',
+    lazy = true,
     config = function()
       require('plugin-configs.blankline')
     end,
   },
 
-  ['numToStr/Comment.nvim'] = {
-    module = 'Comment',
-    keys = { { 'n', 'gcc' }, { 'v', 'gc' } },
-    config = function()
-      require('plugin-configs.comment')
-    end,
-    setup = function()
-      require('core.mappings').comment()
-    end,
-  },
-
-  ['JoosepAlviste/nvim-ts-context-commentstring'] = {
-    after = 'nvim-treesitter',
-  },
-
-  ['voldikss/vim-floaterm'] = {
-    cmd = { 'FloatermNew', 'FloatermToggle' },
-    config = function()
-      require('plugin-configs.floaterm')
-    end,
-    setup = function()
-      require('core.mappings').floaterm()
-    end,
-  },
-
-  ['folke/todo-comments.nvim'] = {
+  {
+    'folke/todo-comments.nvim',
     event = 'BufRead',
-    module = 'TodoComments',
+    lazy = true,
     config = function()
       require('plugin-configs.todo_comments')
     end,
-    setup = function()
+    init = function()
       require('core.mappings').todo_comments()
     end,
   },
 
-  ['mg979/vim-visual-multi'] = {
-    keys = { { 'n', '<c-n>' }, { 'v', '<c-n>' } },
-  },
+  ------------------------------ UI ----------------------------------
 
-  ['windwp/nvim-ts-autotag'] = {
-    after = 'nvim-treesitter',
+  ------------------------------ 功能组件 ----------------------------------
+
+  -- 目录树
+  {
+    'kyazdani42/nvim-tree.lua',
+    cmd = { 'NvimTreeToggle', 'NvimTreeFocus' },
     config = function()
-      require('nvim-ts-autotag').setup({
-        filetypes = {
-          'javascriptreact',
-          'typescriptreact',
-          'html',
-          'vue',
-          'tsx',
-          'jsx',
-        },
-      })
+      require('plugin-configs.nvimtree')
+    end,
+    init = function()
+      require('core.mappings').nvimtree()
     end,
   },
 
-  ['simrat39/symbols-outline.nvim'] = {
-    cmd = {
-      'SymbolsOutline',
-      'SymbolsOutlineOpen',
-      'SymbolsOutlineClose',
+  -- lsp
+  {
+    'neovim/nvim-lspconfig',
+    config = function()
+      require('core.lsp')
+    end,
+  },
+
+  -- 片段
+  {
+    'L3MON4D3/LuaSnip',
+    event = 'InsertEnter',
+    config = function()
+      require('plugin-configs.luasnip')
+    end,
+  },
+
+  -- 自动完成
+  {
+    'hrsh7th/nvim-cmp',
+    event = 'InsertEnter',
+    -- event = 'VimEnter',
+    config = function()
+      require('plugin-configs.cmp')
+    end,
+    dependencies = {
+      'saadparwaiz1/cmp_luasnip',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-nvim-lua',
+      'hrsh7th/cmp-path',
     },
+  },
+
+  -- 自动补全括号
+  {
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    dependencies = 'hrsh7th/nvim-cmp',
     config = function()
-      require('symbols-outline').setup()
+      require('plugin-configs.autopairs')
     end,
   },
 
-  ['kylechui/nvim-surround'] = {
-    tag = '*',
-    keys = { { 'n', 'ys' }, { 'n', 'ds' }, { 'n', 'cs' } },
+  -- 自动关闭标签
+  {
+    'windwp/nvim-ts-autotag',
+    event = 'InsertEnter',
+    dependencies = 'hrsh7th/nvim-cmp',
+    opts = {
+      filetypes = { 'javascriptreact', 'typescriptreact', 'html', 'vue', 'tsx', 'jsx' },
+    },
+  },
+
+  -- 格式化
+  {
+    'mhartington/formatter.nvim',
+    event = 'BufWrite',
     config = function()
-      require('nvim-surround').setup({})
+      require('plugin-configs.formatter')
     end,
   },
 
-  ['phaazon/hop.nvim'] = {
-    branch = 'v2',
-    --[[ keys = { { 'n', 'f' }, { 'n', 'F' }, { 'n', 't' }, { 'n', 'T' } }, ]]
-    setup = function()
+  -- 注释
+  {
+    'numToStr/Comment.nvim',
+    -- lazy = true,
+    event = 'VeryLazy',
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    config = function()
+      require('plugin-configs.comment')
+    end,
+    init = function()
+      require('core.mappings').comment()
+    end,
+  },
+
+  -- {
+  --   'zbirenbaum/copilot.lua',
+  --   cmd = 'Copilot',
+  --   event = 'VimEnter',
+  --   config = function()
+  --     vim.defer_fn(function()
+  --       require('copilot').setup()
+  --     end, 100)
+  --   end,
+  --   opts = {
+  --     suggestion = { enabled = false },
+  --     panel = { enabled = false },
+  --   },
+  -- },
+  --
+  -- {
+  --   'zbirenbaum/copilot-cmp',
+  --   dependencies = 'zbirenbaum/copilot.lua',
+  --   config = function()
+  --     require('copilot_cmp').setup()
+  --   end,
+  -- },
+
+  -- 输入提示函数参数
+  {
+    'ray-x/lsp_signature.nvim',
+    config = true,
+    opts = {
+      bind = true,
+      doc_lines = 0,
+      floating_window = true,
+      fix_pos = true,
+      hint_enable = true,
+      hint_prefix = ' ',
+      hint_scheme = 'String',
+      hi_parameter = 'Search',
+      max_height = 22,
+      max_width = 120,
+      handler_opts = {
+        border = 'single',
+      },
+      zindex = 200,
+      padding = '',
+    },
+  },
+
+  -- 几个文件之间快速跳转
+  {
+    'ThePrimeagen/harpoon',
+    event = 'VeryLazy',
+    config = function()
+      require('plugin-configs.harpoon')
+    end,
+    init = function()
+      require('core.mappings').harpoon()
+    end,
+  },
+
+  -- 模糊搜索
+  {
+    'nvim-telescope/telescope.nvim',
+    cmd = 'Telescope',
+    config = function()
+      require('plugin-configs.telescope')
+    end,
+    init = function()
+      require('core.mappings').telescope()
+    end,
+  },
+
+  --
+  {
+    'kylechui/nvim-surround',
+    event = 'VeryLazy',
+    config = true,
+  },
+
+  -- Markdown 预览
+  {
+    'iamcco/markdown-preview.nvim',
+    ft = 'markdown',
+    keys = {
+      {
+        '<leader>mp',
+        ':MarkdownPreview <CR>',
+      },
+      {
+        '<leader>ms',
+        ':MarkdownPreviewStop <CR>',
+      },
+    },
+    build = ':call mkdp#util#install()',
+  },
+
+  -- 快速跳转
+  {
+    'phaazon/hop.nvim',
+    keys = {
+      {
+        'f',
+        function()
+          require('hop').hint_char1({
+            direction = require('hop.hint').HintDirection.AFTER_CURSOR,
+            current_line_only = true,
+          })
+        end,
+      },
+      {
+        'F',
+        function()
+          require('hop').hint_char1({
+            direction = require('hop.hint').HintDirection.BEFORE_CURSOR,
+            current_line_only = true,
+          })
+        end,
+      },
+      {
+        't',
+        function()
+          require('hop').hint_char1({
+            direction = require('hop.hint').HintDirection.AFTER_CURSOR,
+            current_line_only = true,
+            hint_offset = -1,
+          })
+        end,
+      },
+      {
+        'T',
+        function()
+          require('hop').hint_char1({
+            direction = require('hop.hint').HintDirection.BEFORE_CURSOR,
+            current_line_only = true,
+            hint_offset = 1,
+          })
+        end,
+      },
+    },
+    init = function()
       require('core.mappings').hop()
     end,
     config = function()
@@ -266,14 +320,63 @@ local plugins = {
     end,
   },
 
-  ['ThePrimeagen/harpoon'] = {
+  -- 多光标
+  {
+    'mg979/vim-visual-multi',
+    event = 'VeryLazy',
+  },
+
+  -- 浮窗
+  {
+    'voldikss/vim-floaterm',
+    cmd = { 'FloatermNew', 'FloatermToggle' },
     config = function()
-      require('plugin-configs.harpoon')
+      require('plugin-configs.floaterm')
     end,
-    setup = function()
-      require('core.mappings').harpoon()
+    init = function()
+      require('core.mappings').floaterm()
     end,
   },
-}
 
-require('core.plugin').run(plugins)
+  -- 不错的替换功能
+  -- {
+  --   'cshuaimin/ssr.nvim',
+  --   keys = {
+  --     {
+  --       '<leader>sr',
+  --       function()
+  --         require('ssr').open()
+  --       end,
+  --       mode = { 'n', 'x' },
+  --       desc = 'Structural Replace',
+  --     },
+  --   },
+  --   opts = {
+  --     border = 'single',
+  --   },
+  -- },
+
+  --  ['simrat39/symbols-outline.nvim'] = {
+  --    cmd = {
+  --      'SymbolsOutline',
+  --      'SymbolsOutlineOpen',
+  --      'SymbolsOutlineClose',
+  --    },
+  --    config = function()
+  --      require('symbols-outline').setup()
+  --    end,
+  --  },
+
+  -- Git Diff
+  -- {
+  --   'sindrets/diffview.nvim',
+  --   keys = {
+  --     { '<leader>dv', ':DiffviewOpen<CR>' },
+  --     { '<leader>dc', ':DiffviewClose<CR>' },
+  --     { '<leader>dq', ':DiffviewClose<CR>:q<CR>' },
+  --   },
+  --   cmd = { 'DiffviewOpen', 'DiffviewClose' },
+  -- },
+
+  ------------------------------ 功能组件 ----------------------------------
+})

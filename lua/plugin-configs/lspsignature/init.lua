@@ -1,6 +1,6 @@
 local present, lspsignature = pcall(require, 'lsp_signature')
 if present then
-  local default = {
+  lspsignature.setup({
     bind = true,
     doc_lines = 0,
     floating_window = true,
@@ -16,6 +16,5 @@ if present then
     },
     zindex = 200,
     padding = '',
-  }
-  lspsignature.setup(default)
+  })
 end

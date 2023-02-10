@@ -15,18 +15,18 @@ M.ui = {
 M.lsp = {
   servers = {
     tsserver = true, -- typescript
-    vuels = true, -- vue2
     cssls = true, -- css
     cssmodules_ls = true, -- css module
     jsonls = true, -- json
     html = true, -- html
     eslint = true, -- eslint
-    sumneko_lua = false, -- lua
-    tailwindcss = false, -- tailwindcss
-    rust_analyzer = false, -- rust
-    volar = false, -- vue3
+    sumneko_lua = true, -- lua
+    tailwindcss = true, -- tailwindcss
     emmet_ls = false, -- emmet
     marksman = false, -- markdown
+    volar = false, -- vue3
+    rust_analyzer = false, -- rust
+    vuels = false, -- vue2
   },
 }
 
