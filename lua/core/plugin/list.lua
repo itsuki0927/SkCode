@@ -165,9 +165,10 @@ require('lazy').setup({
   -- 注释
   {
     'numToStr/Comment.nvim',
-    -- lazy = true,
     event = 'VeryLazy',
-    -- dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    dependencies = {
+      'JoosepAlviste/nvim-ts-context-commentstring',
+    },
     config = function()
       require('plugin-configs.comment')
     end,
@@ -381,4 +382,21 @@ require('lazy').setup({
   -- },
 
   ------------------------------ 功能组件 ----------------------------------
+}, {
+
+  ui = {
+    icons = {
+      -- cmd = '⌘',
+      -- config = '🛠',
+      -- event = '📅',
+      -- ft = '📂',
+      -- init = '⚙',
+      -- keys = '🗝',
+      -- plugin = '🔌',
+      -- runtime = '💻',
+      -- source = '📄',
+      -- start = '🚀',
+      -- task = '📌',
+    },
+  },
 })
