@@ -10,7 +10,7 @@ if present then
       topdelete = { hl = 'DiffDelete', text = '‾', numhl = 'GitSignsDeleteNr' },
       changedelete = {
         hl = 'DiffChangeDelete',
-        text = '▎',
+        text = '│',
         numhl = 'GitSignsChangeNr',
       },
     },
