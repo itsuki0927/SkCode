@@ -1,3 +1,5 @@
+local default_treesitter_config = skcode.load_config().plugins.options.treesitter
+
 local present, treesitter = pcall(require, 'nvim-treesitter.configs')
 
 local swap_next, swap_prev = (function()
@@ -19,7 +21,7 @@ end)()
 if present then
   require('base46').load_highlight('treesitter')
   treesitter.setup({
-    ensure_installed = 'all',
+    ensure_installed = default_treesitter_config.ensure_installed,
     sync_install = false,
     ignore_install = { '' },
     highlight = {
@@ -43,7 +45,6 @@ if present then
     context_commentstring = {
       enable = true,
       enable_autocmd = false,
-
       config = {
         c = '// %s',
         lua = '-- %s',
@@ -79,9 +80,4 @@ if present then
       },
     },
   })
-
-  -- 开启折叠
-  vim.o.foldmethod = 'expr'
-  vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
-  vim.wo.foldenable = false
 end

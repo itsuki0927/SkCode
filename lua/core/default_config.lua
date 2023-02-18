@@ -1,9 +1,7 @@
 local M = {}
 
 -- SkCode 配置
-M.config = {
-  auto_fold = false,
-}
+M.config = {}
 
 -- UI配置
 M.ui = {
@@ -33,8 +31,45 @@ M.lsp = {
 -- 插件配置
 M.plugins = {
   options = {
-    nvimtree = {
-      lazy_load = true,
+    treesitter = {
+      ensure_installed = {
+        'bash',
+        'c',
+        'c_sharp',
+        'comment',
+        'cpp',
+        'css',
+        'diff',
+        'dockerfile',
+        'dot',
+        'fish',
+        'git_rebase',
+        'gitcommit',
+        'gitignore',
+        'go',
+        'graphql',
+        'html',
+        'markdown',
+        'pug',
+        'prisma',
+        'lua',
+        'vim',
+        'help',
+        'java',
+        'javascript',
+        'typescript',
+        'scss',
+        'tsx',
+        'vue',
+        'jsdoc',
+        'json',
+        'json5',
+        'regex',
+        'ruby',
+        'rust',
+        'sql',
+        'yaml',
+      },
     },
     statusline = {
       style = 'block', -- default, round , slant , block , arrow
