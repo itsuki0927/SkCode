@@ -72,7 +72,7 @@ M.plugins = {
       },
     },
     statusline = {
-      style = 'block', -- default, round , slant , block , arrow
+      style = 'round', -- default, round , slant , block , arrow
     },
   },
 }

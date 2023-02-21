@@ -1,3 +1,5 @@
+local statusline_style = skcode.load_config().plugins.options.statusline.style
+
 local sep_style = {
   default = {
     left = '',
@@ -20,7 +22,7 @@ local sep_style = {
   },
 }
 
-local user_sep = 'block'
+local user_sep = statusline_style or 'block'
 
 local fn = vim.fn
 local sep_l = sep_style[user_sep]['left']
