@@ -1,3 +1,5 @@
+local config = require('core.plugin.config')
+
 require('lazy').setup({
   { 'nvim-lua/plenary.nvim', lazy = true },
   { 'b0o/schemastore.nvim', lazy = true },
@@ -382,21 +384,4 @@ require('lazy').setup({
   -- },
 
   ------------------------------ 功能组件 ----------------------------------
-}, {
-
-  ui = {
-    icons = {
-      -- cmd = '⌘',
-      -- config = '🛠',
-      -- event = '📅',
-      -- ft = '📂',
-      -- init = '⚙',
-      -- keys = '🗝',
-      -- plugin = '🔌',
-      -- runtime = '💻',
-      -- source = '📄',
-      -- start = '🚀',
-      -- task = '📌',
-    },
-  },
-})
+}, config)

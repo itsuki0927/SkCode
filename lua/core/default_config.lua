@@ -1,12 +1,8 @@
 local M = {}
 
--- SkCode 配置
-M.config = {}
-
 -- UI配置
 M.ui = {
   theme = 'onedark', -- default theme
-  italic_comments = false,
 }
 
 -- Lsp 配置
