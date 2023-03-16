@@ -21,8 +21,8 @@ local install_lsp = function(lspconfig)
         opts = skcode.merge(default_opts, require('core.lsp.providers.tailwindcss'))
       elseif server == 'volar' then
         opts = skcode.merge(default_opts, require('core.lsp.providers.volar'))
-      elseif server == 'sumneko_lua' then
-        opts = skcode.merge(default_opts, require('core.lsp.providers.sumneko_lua'))
+      elseif server == 'lua_ls' then
+        opts = skcode.merge(default_opts, require('core.lsp.providers.lua_ls'))
       elseif server == 'jsonls' then
         opts = skcode.merge(default_opts, require('core.lsp.providers.jsonls'))
       else

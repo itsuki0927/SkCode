@@ -1,5 +1,4 @@
 local present, schemastore = pcall(require, 'schemastore')
-print(present)
 
 if not present then
   return {}
