@@ -3,14 +3,9 @@ local present, nvimtree = pcall(require, 'nvim-tree')
 if present then
   require('base46').load_highlight('nvimtree')
 
-  -- 新建当前文件并打开
-  -- 相对路径
-  require('nvim-tree.events').on_file_created(function(file)
+  local api = require('nvim-tree.api')
+  api.events.subscribe(api.events.Event.FileCreated, function(file)
     vim.cmd('edit ' .. file.fname)
-  end)
-  -- 绝对路径
-  require('nvim-tree.events').on_file_created(function(file)
-    vim.cmd('edit ' .. vim.fn.fnamemodify(file.fname, ':p'))
   end)
 
   local lib = require('nvim-tree.lib')
