@@ -343,6 +343,18 @@ require('lazy').setup({
     end,
   },
 
+  { -- Improve folding
+    'kevinhwang91/nvim-ufo',
+    event = 'VeryLazy',
+    dependencies = { 'kevinhwang91/promise-async' },
+    init = function()
+      require('core.mappings').ufo()
+    end,
+    config = function()
+      require('plugin-configs.ufo')
+    end,
+  },
+
   -- 不错的替换功能
   -- {
   --   'cshuaimin/ssr.nvim',

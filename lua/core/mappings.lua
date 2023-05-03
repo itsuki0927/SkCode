@@ -160,4 +160,18 @@ M.harpoon = function()
   map('n', '<C-t>', "<cmd>lua require('harpoon.ui').nav_file(4)<cr>")
 end
 
+M.ufo = function()
+  local ufo = require('ufo')
+  vim.keymap.set('n', 'zR', ufo.openAllFolds)
+  vim.keymap.set('n', 'zM', ufo.closeAllFolds)
+  vim.keymap.set('n', 'zr', ufo.openFoldsExceptKinds)
+  vim.keymap.set('n', 'zm', ufo.closeFoldsWith)
+  vim.keymap.set('n', 'Z', function()
+    local winid = ufo.peekFoldedLinesUnderCursor()
+    if not winid then
+      vim.lsp.buf.hover()
+    end
+  end)
+end
+
 return M
