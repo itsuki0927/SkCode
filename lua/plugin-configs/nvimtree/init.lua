@@ -8,22 +8,35 @@ if present then
     vim.cmd('edit ' .. file.fname)
   end)
 
-  local lib = require('nvim-tree.lib')
-
   local git_add = function()
-    local node = lib.get_node_at_cursor()
-    local gs = node.git_status
-
-    -- If the file is untracked, unstaged or partially staged, we stage it
+    local node = api.tree.get_node_under_cursor()
+    local gs = node.git_status.file
+    if gs == nil then
+      gs = (node.git_status.dir.direct ~= nil and node.git_status.dir.direct[1])
+        or (node.git_status.dir.indirect ~= nil and node.git_status.dir.indirect[1])
+    end
     if gs == '??' or gs == 'MM' or gs == 'AM' or gs == ' M' then
       vim.cmd('silent !git add ' .. node.absolute_path)
-
-      -- If the file is staged, we unstage
     elseif gs == 'M ' or gs == 'A ' then
       vim.cmd('silent !git restore --staged ' .. node.absolute_path)
     end
+    api.tree.reload()
+  end
 
-    lib.refresh_tree()
+  local function on_attach(bufnr)
+    local function opts(desc)
+      return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+    end
+    -- 使用默认的mapping
+    api.config.mappings.default_on_attach(bufnr)
+
+    -- 添加自定义的mapping
+    vim.keymap.set('n', 'l', api.node.open.edit, opts('Open'))
+    vim.keymap.set('n', 'o', api.node.open.edit, opts('Open'))
+    vim.keymap.set('n', 'h', api.node.navigate.parent_close, opts('Close Directory'))
+    vim.keymap.set('n', 'v', api.node.open.vertical, opts('Open: Vertical Split'))
+    vim.keymap.set('n', 'V', api.node.open.horizontal, opts('Open: Horizontal Split'))
+    vim.keymap.set('n', 'ga', git_add, opts('Git Add'))
   end
 
   nvimtree.setup({
@@ -36,26 +49,17 @@ if present then
       enable = true,
       update_cwd = true,
     },
+    on_attach = on_attach,
     view = {
       width = 30,
-      hide_root_folder = false,
       side = 'left',
       adaptive_size = true,
       number = false,
       relativenumber = false,
-      mappings = {
-        custom_only = false,
-        list = {
-          { key = { 'l', '<CR>', 'o' }, action = 'edit' },
-          { key = 'h', action = 'close_node' },
-          { key = 'v', action = 'vsplit' },
-          { key = 'ga', action = 'git_add', action_cb = git_add },
-        },
-      },
     },
     actions = {
       open_file = {
-        resize_window = true,
+        resize_window = false,
         quit_on_open = false,
       },
     },
@@ -65,6 +69,7 @@ if present then
       exclude = { 'node_modules' },
     },
     renderer = {
+      root_folder_label = false,
       highlight_git = true,
       indent_markers = {
         enable = true,
