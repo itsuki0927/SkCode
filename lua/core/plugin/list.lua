@@ -167,7 +167,12 @@ require('lazy').setup({
   -- 注释
   {
     'numToStr/Comment.nvim',
-    event = 'VeryLazy',
+    keys = {
+      { 'gcc', mode = 'n' },
+      { 'gc', mode = 'v' },
+      { 'gbc', mode = 'n' },
+      { 'gb', mode = 'v' },
+    },
     dependencies = {
       'JoosepAlviste/nvim-ts-context-commentstring',
     },
