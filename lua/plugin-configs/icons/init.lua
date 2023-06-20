@@ -5,7 +5,7 @@ if present then
   icons.setup({
     override = {
       default_icon = {
-        icon = '',
+        icon = '󰈚',
         name = 'Default',
       },
       c = {
@@ -29,15 +29,15 @@ if present then
         name = 'html',
       },
       jpeg = {
-        icon = '',
+        icon = '󰉏',
         name = 'jpeg',
       },
       jpg = {
-        icon = '',
+        icon = '󰉏',
         name = 'jpg',
       },
       js = {
-        icon = '',
+        icon = '󰌞',
         name = 'js',
       },
       kt = {
@@ -45,7 +45,7 @@ if present then
         name = 'kt',
       },
       lock = {
-        icon = '',
+        icon = '󰌾',
         name = 'lock',
       },
       lua = {
@@ -53,7 +53,7 @@ if present then
         name = 'lua',
       },
       mp3 = {
-        icon = '',
+        icon = '󰎆',
         name = 'mp3',
       },
       mp4 = {
@@ -65,7 +65,7 @@ if present then
         name = 'out',
       },
       png = {
-        icon = '',
+        icon = '󰉏',
         name = 'png',
       },
       py = {
@@ -73,7 +73,7 @@ if present then
         name = 'py',
       },
       ['robots.txt'] = {
-        icon = 'ﮧ',
+        icon = '󰚩',
         name = 'robots',
       },
       toml = {
@@ -81,7 +81,7 @@ if present then
         name = 'toml',
       },
       ts = {
-        icon = 'ﯤ',
+        icon = '󰛦',
         name = 'ts',
       },
       ttf = {

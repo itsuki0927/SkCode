@@ -1,6 +1,10 @@
 local M = {
   ui = {
     icons = {
+      ft = '',
+      lazy = '󰂠 ',
+      loaded = '',
+      not_loaded = '',
       -- cmd = '⌘',
       -- config = '🛠',
       -- event = '📅',
