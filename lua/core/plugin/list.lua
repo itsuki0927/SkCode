@@ -279,55 +279,44 @@ require('lazy').setup({
     build = ':call mkdp#util#install()',
   },
 
-  -- 快速跳转
   {
-    'phaazon/hop.nvim',
+    'folke/flash.nvim',
+    event = 'VeryLazy',
+    ---@type Flash.Config
+    opts = {},
     keys = {
       {
-        'f',
+        's',
+        mode = { 'n', 'x', 'o' },
         function()
-          require('hop').hint_char1({
-            direction = require('hop.hint').HintDirection.AFTER_CURSOR,
-            current_line_only = true,
+          -- default options: exact mode, multi window, all directions, with a backdrop
+          require('flash').jump({
+            search = {
+              mode = function(str)
+                return '\\<' .. str
+              end,
+            },
           })
         end,
+        desc = 'Flash',
       },
       {
-        'F',
+        'S',
+        mode = { 'n', 'o', 'x' },
         function()
-          require('hop').hint_char1({
-            direction = require('hop.hint').HintDirection.BEFORE_CURSOR,
-            current_line_only = true,
-          })
+          require('flash').treesitter()
         end,
+        desc = 'Flash Treesitter',
       },
       {
-        't',
+        'r',
+        mode = 'o',
         function()
-          require('hop').hint_char1({
-            direction = require('hop.hint').HintDirection.AFTER_CURSOR,
-            current_line_only = true,
-            hint_offset = -1,
-          })
+          require('flash').remote()
         end,
-      },
-      {
-        'T',
-        function()
-          require('hop').hint_char1({
-            direction = require('hop.hint').HintDirection.BEFORE_CURSOR,
-            current_line_only = true,
-            hint_offset = 1,
-          })
-        end,
+        desc = 'Remote Flash',
       },
     },
-    init = function()
-      require('core.mappings').hop()
-    end,
-    config = function()
-      require('hop').setup({ keys = 'etovxqpdygfblzhckisuran' })
-    end,
   },
 
   -- 多光标
