@@ -23,7 +23,7 @@ if present then
   treesitter.setup({
     ensure_installed = default_treesitter_config.ensure_installed,
     sync_install = false,
-    ignore_install = { '' },
+    ignore_install = { 'help' },
     highlight = {
       enable = true,
       disable = { '' },

@@ -65,6 +65,11 @@ M.plugins = {
         'rust',
         'sql',
         'yaml',
+        'git_config',
+        'jsdoc',
+        'make',
+        'toml',
+        'vimdoc',
       },
     },
     statusline = {
