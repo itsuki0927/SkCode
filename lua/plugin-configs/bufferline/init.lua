@@ -4,9 +4,9 @@ if present then
   require('base46').load_highlight('bufferline')
   configs.setup({
     options = {
-      buffer_close_icon = '',
+      buffer_close_icon = '',
       modified_icon = '',
-      close_icon = '',
+      close_icon = '󰅚',
       left_trunc_marker = '',
       right_trunc_marker = '',
       max_name_length = 14,

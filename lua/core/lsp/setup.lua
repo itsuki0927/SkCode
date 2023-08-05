@@ -1,14 +1,6 @@
-local function setupLspSymbol()
-  local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
-
-  local function lspSymbol(name, icon)
-    local hl = 'DiagnosticSign' .. name
-    vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
-  end
-
-  for type, icon in pairs(signs) do
-    lspSymbol(type, icon)
-  end
+local function lspSymbol(name, icon)
+  local hl = 'DiagnosticSign' .. name
+  vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
 end
 
 local function setupLspDiagnostic()
@@ -58,14 +50,14 @@ local function setupLspIcons()
     '',
     '',
     '',
-    'ﰮ',
-    '',
-    '',
+    '󰜰',
+    '󰏗',
+    '󱧕',
     '',
-    '',
+    '󰎠',
     '了',
-    ' ',
-    '﬌ ',
+    '󰌆 ',
+    '󰘍 ',
     ' ',
     ' ',
     '',
@@ -74,8 +66,8 @@ local function setupLspIcons()
     ' ',
     ' ',
     '',
-    '',
-    '<>',
+    '󰆕',
+    '󱉯',
   }
 end
 
@@ -83,4 +75,7 @@ require('base46').load_highlight('lsp')
 setupLspDiagnostic()
 setupLspHandlers()
 setupLspIcons()
-setupLspSymbol()
+lspSymbol('Error', '󰅙')
+lspSymbol('Info', '󰋼')
+lspSymbol('Hint', '󰌵')
+lspSymbol('Warn', '')

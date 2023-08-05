@@ -29,12 +29,12 @@ local header = {
   '                   ▀█▀                    ',
 }
 local buttons = {
-  button('f', '  Find file', ':Telescope find_files <CR>'),
+  button('f', '󰈞  Find file', ':Telescope find_files <CR>'),
   button('e', '  New file', ':ene <BAR> startinsert <CR>'),
-  button('r', '  Recently used files', ':Telescope oldfiles <CR>'),
-  button('F', '  Find text', ':Telescope live_grep <CR>'),
+  button('r', '󰄉  Recently used files', ':Telescope oldfiles <CR>'),
+  button('F', '󰊄  Find text', ':Telescope live_grep <CR>'),
   button('c', '  Configuration', ':e $MYVIMRC | :cd %:p:h <CR>'),
-  button('q', '  Quit Neovim', ':qa<CR>'),
+  button('q', '󰅚  Quit Neovim', ':qa<CR>'),
 }
 local footer = 'itsuki.cn'
 
