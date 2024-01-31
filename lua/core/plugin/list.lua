@@ -109,15 +109,6 @@ require('lazy').setup({
     end,
   },
 
-  -- 片段
-  {
-    'L3MON4D3/LuaSnip',
-    event = 'InsertEnter',
-    config = function()
-      require('plugin-configs.luasnip')
-    end,
-  },
-
   -- 自动完成
   {
     'hrsh7th/nvim-cmp',
@@ -126,6 +117,28 @@ require('lazy').setup({
       require('plugin-configs.cmp')
     end,
     dependencies = {
+      {
+
+        'L3MON4D3/LuaSnip',
+        dependencies = 'rafamadriz/friendly-snippets',
+        config = function()
+          require('plugin-configs.luasnip')
+        end,
+      },
+      {
+        'windwp/nvim-autopairs',
+        opts = {
+          fast_wrap = {},
+          disable_filetype = { 'TelescopePrompt', 'vim' },
+        },
+        config = function(_, opts)
+          require('nvim-autopairs').setup(opts)
+
+          -- setup cmp for autopairs
+          local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+          require('cmp').event:on('confirm_done', cmp_autopairs.on_confirm_done())
+        end,
+      },
       'saadparwaiz1/cmp_luasnip',
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-buffer',
@@ -133,16 +146,6 @@ require('lazy').setup({
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-cmdline',
     },
-  },
-
-  -- 自动补全括号
-  {
-    'windwp/nvim-autopairs',
-    event = 'InsertEnter',
-    dependencies = 'hrsh7th/nvim-cmp',
-    config = function()
-      require('plugin-configs.autopairs')
-    end,
   },
 
   -- 自动关闭标签
