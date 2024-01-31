@@ -1,6 +1,7 @@
 local g = vim.g
 local opt = vim.opt
 
+g.skip_ts_context_commentstring_module = true
 -- :help options
 g.mapleader = ' '
 g.skcode_theme = skcode.load_config().ui.theme
