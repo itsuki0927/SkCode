@@ -168,7 +168,13 @@ M.ufo = function()
   vim.keymap.set('n', 'zm', ufo.closeFoldsWith)
   vim.keymap.set('n', 'Z', function()
     local winid = ufo.peekFoldedLinesUnderCursor()
-    if not winid then
+    if winid then
+      local bufnr = vim.api.nvim_win_get_buf(winid)
+      local keys = { 'a', 'i', 'o', 'A', 'I', 'O', 'c', 's' }
+      for _, k in ipairs(keys) do
+        vim.keymap.set('n', k, '<CR>' .. k, { remap = true, buffer = bufnr, nowait = true })
+      end
+    else
       vim.lsp.buf.hover()
     end
   end)
