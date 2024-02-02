@@ -104,7 +104,6 @@ if present then
             staged = '✓',
             unmerged = '',
             renamed = '➜',
-            untracked = '★',
             deleted = '',
             untracked = 'u',
             ignored = '◌',
