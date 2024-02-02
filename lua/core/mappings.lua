@@ -66,6 +66,16 @@ M.init = function()
   map('v', '<A-k>', ':m .-2<CR>==')
   map('v', 'p', '"_dP')
 
+  --
+  map('v', 'J', ":m '>+1<CR>gv=gv")
+  map('v', 'K', ":m '<-2<CR>gv=gv")
+
+  -- pressing `n/N` for the next/prev matches in search mode, will make the matches line center
+  map('n', 'n', 'nzzzv')
+  map('n', 'N', 'Nzzzv')
+
+  map('n', '<C-[>', '<C-T>')
+
   map('n', '<leader>rn', '<cmd>lua require("ui.renamer").open()<cr>')
   map('v', '<leader>rn', '<cmd>lua require("ui.renamer").open()<cr>')
   map('n', '<leader>rt', ':lua require("plenary.test_harness").test_directory(vim.fn.expand("%:p"))<CR>')
@@ -157,7 +167,7 @@ M.harpoon = function()
   map('n', '<C-f>', "<cmd>lua require('harpoon.ui').nav_file(1)<cr>")
   map('n', '<C-p>', "<cmd>lua require('harpoon.ui').nav_file(2)<cr>")
   map('n', '<C-y>', "<cmd>lua require('harpoon.ui').nav_file(3)<cr>")
-  map('n', '<C-t>', "<cmd>lua require('harpoon.ui').nav_file(4)<cr>")
+  -- map('n', '<C-t>', "<cmd>lua require('harpoon.ui').nav_file(4)<cr>")
 end
 
 M.ufo = function()
