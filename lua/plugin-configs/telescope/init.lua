@@ -81,9 +81,12 @@ if present then
       qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
       -- Developer configurations: Not meant for general override
       buffer_previewer_maker = require('telescope.previewers').buffer_previewer_maker,
-
       mappings = {
         i = {
+          -- git 提交的循环预览器以显示完整消息
+          ['<C-s>'] = actions.cycle_previewers_next,
+          ['<C-a>'] = actions.cycle_previewers_prev,
+
           ['<C-n>'] = actions.cycle_history_next,
           ['<C-p>'] = actions.cycle_history_prev,
           ['<M-p>'] = action_layout.toggle_preview,
