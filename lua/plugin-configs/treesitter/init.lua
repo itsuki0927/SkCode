@@ -29,6 +29,9 @@ if present then
       disable = { '' },
       additional_vim_regex_highlighting = true,
     },
+    autotag = {
+      enable = true,
+    },
     indent = { enable = true, disable = { 'yaml' } },
     autopairs = {
       enable = true,
