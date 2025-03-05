@@ -28,10 +28,14 @@ return {
         vim.keymap.set('n', 'V', api.node.open.horizontal, opts('Open: Horizontal Split'))
       end
 
+      -- 创建文件后, 自动编辑该文件
+      api.events.subscribe(api.events.Event.FileCreated, function(file)
+        vim.cmd('edit ' .. file.fname)
+      end)
+
       require('nvim-tree').setup({
         filters = { dotfiles = false },
         disable_netrw = true,
-        -- disabled_filetypes = { "packer", "NvimTree" },
         hijack_cursor = true,
         sync_root_with_cwd = true,
         update_focused_file = {
@@ -40,6 +44,25 @@ return {
         },
         on_attach = on_attach,
         view = {
+          -- float = {
+          --   enable = true,
+          --   open_win_config = function()
+          --     local screen_w = vim.opt.columns:get()
+          --     local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
+          --     local w_h = 70
+          --     local s_h = 42
+          --     local center_x = (screen_w - w_h) / 2
+          --     local center_y = ((vim.opt.lines:get() - s_h) / 5) - vim.opt.cmdheight:get()
+          --     return {
+          --       border = 'single',
+          --       relative = 'editor',
+          --       row = center_y,
+          --       col = center_x,
+          --       width = w_h,
+          --       height = s_h,
+          --     }
+          --   end,
+          -- },
           width = 30,
           preserve_window_proportions = true,
         },
@@ -57,7 +80,15 @@ return {
                 open = '',
                 symlink = '',
               },
-              git = { unmerged = '' },
+              git = {
+                unstaged = '',
+                staged = '',
+                unmerged = '',
+                renamed = '',
+                untracked = '',
+                deleted = '',
+                ignored = '󰴲',
+              },
             },
           },
         },
