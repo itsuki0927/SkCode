@@ -1,3 +1,5 @@
+dofile(vim.g.base46_cache .. 'blankline')
+
 return {
   {
     'lukas-reineke/indent-blankline.nvim',
