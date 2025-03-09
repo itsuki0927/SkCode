@@ -41,6 +41,7 @@ return {
             i = {
               ['<esc>'] = actions.close,
               ['<C-[>'] = actions.close,
+              ['<C-e>'] = actions.close,
 
               -- ['<C-n>'] = actions.cycle_history_next,
               -- ['<C-p>'] = actions.cycle_history_prev,
