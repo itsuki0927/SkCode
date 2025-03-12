@@ -30,6 +30,19 @@ dofile(vim.g.base46_cache .. 'statusline')
 
 local map = vim.keymap.set
 
+-- 解决如果字符串如果太长折行的情况, 可以正常的移动
+vim.keymap.set('n', 'k', function()
+  return vim.v.count == 0 and 'gk' or 'k'
+end, { expr = true })
+
+vim.keymap.set('n', 'j', function()
+  return vim.v.count == 0 and 'gj' or 'j'
+end, { expr = true })
+
+map('v', 'p', '"_dP')
+map('i', '<C-e>', '<End>', { desc = 'move end of line' })
+map('i', '<C-b>', '<ESC>^i', { desc = 'move beginning of line' })
+
 -- window
 map('n', '<C-h>', '<C-w>h')
 map('n', '<C-l>', '<C-w>l')
