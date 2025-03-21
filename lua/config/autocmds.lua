@@ -9,7 +9,19 @@ autocmd('TextYankPost', {
   end,
 })
 
--- 定位到最后更新的地方
+local cursorGrp = vim.api.nvim_create_augroup('CursorLine', { clear = true })
+autocmd({ 'InsertLeave', 'WinEnter' }, {
+  pattern = '*',
+  command = 'set cursorline', -- 激活窗口显示光标行
+  group = cursorGrp,
+})
+autocmd({ 'InsertEnter', 'WinLeave' }, {
+  pattern = '*',
+  command = 'set nocursorline', -- 非激活窗口隐藏光标行
+  group = cursorGrp,
+})
+
+-- 恢复上次编辑位置
 autocmd('BufReadPost', {
   callback = function()
     local mark = vim.api.nvim_buf_get_mark(0, '"')
