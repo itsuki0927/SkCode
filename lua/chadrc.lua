@@ -52,7 +52,7 @@ local options = {
 
     buttons = {
       { txt = '  Find File', keys = 'ff', cmd = 'Telescope find_files' },
-      { txt = '  Recent Files', keys = 'fo', cmd = 'Telescope oldfiles' },
+      { txt = '  Restore Session', keys = 'rs', cmd = ':lua require("persistence").load()<cr>' },
       { txt = '󰈭  Find Word', keys = 'fw', cmd = 'Telescope live_grep' },
       { txt = '󱥚  Themes', keys = 'th', cmd = ":lua require('nvchad.themes').open()" },
       { txt = '  Mappings', keys = 'ch', cmd = 'NvCheatsheet' },
