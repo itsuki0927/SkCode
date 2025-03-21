@@ -7,12 +7,14 @@ return {
     dependencies = {
       'nvim-lua/plenary.nvim',
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+      'nvim-telescope/telescope-ui-select.nvim',
     },
     config = function()
       local actions = require('telescope.actions')
       local action_layout = require('telescope.actions.layout')
 
-      require('telescope').setup({
+      local telescope = require('telescope')
+      telescope.setup({
         defaults = {
           prompt_prefix = '  ',
           selection_caret = '  ',
@@ -89,7 +91,25 @@ return {
             previewer = false,
           },
         },
-        extensions = {},
+        extensions = {
+          ['ui-select'] = {
+            require('telescope.themes').get_dropdown({
+              previewer = true,
+              initial_mode = 'normal',
+              sorting_strategy = 'ascending',
+              layout_strategy = 'horizontal',
+              layout_config = {
+                horizontal = {
+                  prompt_position = 'top',
+                  width = 0.5,
+                  height = 0.4,
+                  preview_width = 0.6,
+                },
+              },
+              borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
+            }),
+          },
+        },
       })
 
       local builtin = require('telescope.builtin')
@@ -97,6 +117,10 @@ return {
       vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
       vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
       vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+      vim.keymap.set('n', '<leader>fq', builtin.quickfix, { desc = 'Telescope quickfix' })
+
+      telescope.load_extension('fzf')
+      telescope.load_extension('ui-select')
     end,
   },
 }
