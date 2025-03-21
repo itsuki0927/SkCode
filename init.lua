@@ -32,6 +32,8 @@ vim.keymap.set('n', 'j', function()
   return vim.v.count == 0 and 'gj' or 'j'
 end, { expr = true })
 
+local opts = { noremap = true, silent = true }
+map('n', 'YY', 'va{Vy', opts)
 map('v', 'p', '"_dP')
 map('i', '<C-e>', '<End>', { desc = 'move end of line' })
 map('i', '<C-b>', '<ESC>^i', { desc = 'move beginning of line' })
