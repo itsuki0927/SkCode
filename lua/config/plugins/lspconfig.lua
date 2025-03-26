@@ -1,3 +1,37 @@
+local function organize_imports()
+  -- 获取当前 buffer 的客户端列表
+  local clients = vim.lsp.get_clients({ bufnr = 0 })
+
+  -- 寻找可用的 TypeScript 语言服务器
+  for _, client in ipairs(clients) do
+    if client.name == 'ts_ls' then
+      -- 构造请求参数
+      local params = {
+        command = '_typescript.organizeImports',
+        arguments = { vim.api.nvim_buf_get_name(0) },
+      }
+
+      -- 发送 LSP 请求
+      client.request('workspace/executeCommand', params, function(err, result)
+        if err then
+          vim.notify('整理导入失败: ' .. err.message, vim.log.levels.ERROR)
+          return
+        end
+
+        -- 处理响应结果（可选）
+        if result then
+          vim.notify('整理导入完成', vim.log.levels.INFO)
+        end
+      end, 0) -- 最后的 0 表示当前 buffer
+
+      return
+    end
+  end
+
+  -- 如果没有找到 tsserver
+  vim.notify('未找到 TypeScript 语言服务器', vim.log.levels.WARN)
+end
+
 return {
   {
     'neovim/nvim-lspconfig',
@@ -6,9 +40,51 @@ return {
     },
     opts = {
       servers = {
-        lua_ls = {},
-        tailwindcss = {},
-        ts_ls = {},
+        lua_ls = {
+          settings = {
+            Lua = {
+              diagnostics = {
+                enable = true,
+                globals = {
+                  'vim',
+                  'describe',
+                  'it',
+                  'before_each',
+                  'after_each',
+                },
+              },
+              workspace = {
+                library = {
+                  [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+                  [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+                  [vim.fn.stdpath('config') .. '/lua'] = true,
+                },
+                maxPreload = 10000,
+              },
+            },
+          },
+        },
+        tailwindcss = {
+          filetypes = {
+            'less',
+            'scss',
+            'css',
+            'stylus',
+            'javascript',
+            'javascriptreact',
+            'typescript',
+            'typescriptreact',
+            'vue',
+          },
+        },
+        ts_ls = {
+          commands = {
+            OrganizeImports = {
+              organize_imports,
+              description = 'Organize Imports',
+            },
+          },
+        },
         jsonls = {},
       },
     },
