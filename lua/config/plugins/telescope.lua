@@ -95,7 +95,7 @@ return {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown({
               previewer = true,
-              initial_mode = 'normal',
+              initial_mode = 'insert',
               sorting_strategy = 'ascending',
               layout_strategy = 'horizontal',
               layout_config = {
