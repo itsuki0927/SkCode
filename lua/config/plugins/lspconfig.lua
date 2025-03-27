@@ -40,6 +40,12 @@ return {
     },
     opts = {
       servers = {
+        eslint = {
+          flags = {
+            allow_incremental_sync = false,
+            debounce_text_changes = 1000,
+          },
+        },
         lua_ls = {
           settings = {
             Lua = {
@@ -65,6 +71,9 @@ return {
           },
         },
         tailwindcss = {
+          flags = {
+            debounce_text_changes = 1000,
+          },
           filetypes = {
             'less',
             'scss',
