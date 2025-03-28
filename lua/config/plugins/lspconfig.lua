@@ -118,7 +118,7 @@ return {
       end)
       map({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action)
       map('n', '[d', '<cmd>lua vim.diagnostic.goto_prev({ border = "single" })<CR>')
-      map('n', ']d', '<cmd>lua vim.diagnostic.goto_prev({ border = "single" })<CR>')
+      map('n', ']d', '<cmd>lua vim.diagnostic.goto_next({ border = "single" })<CR>')
 
       -- buf_map(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "single" })<CR>')
       -- buf_map(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "single" })<CR>')
