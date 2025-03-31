@@ -2,7 +2,7 @@
 return {
   'akinsho/nvim-toggleterm.lua',
   version = '*',
-  keys = { '<leader>tg', '<C-\\>' },
+  keys = { '<C-\\>' },
   opts = {
     size = 100,
     shell = vim.o.shell == '/bin/fish' and '/bin/zsh' or vim.o.shell,
