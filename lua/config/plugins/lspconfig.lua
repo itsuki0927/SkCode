@@ -40,6 +40,16 @@ return {
     },
     opts = {
       servers = {
+        html = {},
+        cssls = {},
+        stylelint_lsp = {
+          settings = {
+            stylelintplus = {
+              autoFixOnFormat = true,
+              autoFixOnSave = true,
+            },
+          },
+        },
         eslint = {
           flags = {
             allow_incremental_sync = false,
