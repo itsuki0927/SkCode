@@ -64,6 +64,7 @@ return {
           --   end,
           -- },
           width = 30,
+          adaptive_size = true,
           preserve_window_proportions = true,
         },
         renderer = {
