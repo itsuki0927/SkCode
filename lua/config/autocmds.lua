@@ -68,3 +68,35 @@ autocmd({ 'UIEnter', 'BufReadPost', 'BufNewFile' }, {
     end
   end,
 })
+
+local function highlight_symbol(event)
+  vim.opt.updatetime = 400
+
+  local client_id = vim.tbl_get(event, 'data', 'client_id')
+  local client = client_id and vim.lsp.get_client_by_id(client_id)
+
+  if client == nil or not client.supports_method('textDocument/documentHighlight') then
+    return
+  end
+
+  local group = vim.api.nvim_create_augroup('highlight_symbol', { clear = false })
+
+  vim.api.nvim_clear_autocmds({ buffer = event.buf, group = group })
+
+  autocmd({ 'CursorHold', 'CursorHoldI' }, {
+    group = group,
+    buffer = event.buf,
+    callback = vim.lsp.buf.document_highlight,
+  })
+
+  autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+    group = group,
+    buffer = event.buf,
+    callback = vim.lsp.buf.clear_references,
+  })
+end
+
+autocmd('LspAttach', {
+  desc = 'Setup highlight symbol',
+  callback = highlight_symbol,
+})
