@@ -41,11 +41,23 @@ return {
     opts = {
       servers = {
         html = {},
-        cssls = {},
+        cssls = {
+          settings = {
+            css = {
+              validate = false,
+            },
+            less = {
+              validate = false,
+            },
+            scss = {
+              validate = false,
+            },
+          },
+        },
         stylelint_lsp = {
           settings = {
             stylelintplus = {
-              autoFixOnFormat = true,
+              autoFixOnFormat = false,
               autoFixOnSave = true,
             },
           },
@@ -115,6 +127,13 @@ return {
       --   focusable = false,
       -- })
 
+      -- 如果有 diagnostic 的话，不展示 virtual text、underline，防止报错太多造成干扰
+      vim.diagnostic.config({
+        virtual_text = false,
+        underline = true,
+        float = { border = 'single' },
+      })
+
       local lspconfig = require('lspconfig')
       for server, config in pairs(opts.servers) do
         config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
@@ -123,10 +142,10 @@ return {
 
       local map = vim.keymap.set
 
-      map('n', '<leader>rn', function()
+      map('n', 'grn', function()
         require('nvchad.lsp.renamer')()
       end)
-      map({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action)
+      -- map({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action)
       map('n', '[d', '<cmd>lua vim.diagnostic.goto_prev({ border = "single" })<CR>')
       map('n', ']d', '<cmd>lua vim.diagnostic.goto_next({ border = "single" })<CR>')
 
