@@ -12,7 +12,7 @@ local function organize_imports()
       }
 
       -- 发送 LSP 请求
-      client.request('workspace/executeCommand', params, function(err, result)
+      client:request('workspace/executeCommand', params, function(err, result)
         if err then
           vim.notify('整理导入失败: ' .. err.message, vim.log.levels.ERROR)
           return

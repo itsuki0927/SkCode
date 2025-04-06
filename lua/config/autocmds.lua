@@ -75,7 +75,7 @@ local function highlight_symbol(event)
   local client_id = vim.tbl_get(event, 'data', 'client_id')
   local client = client_id and vim.lsp.get_client_by_id(client_id)
 
-  if client == nil or not client.supports_method('textDocument/documentHighlight') then
+  if client == nil or not client:supports_method('textDocument/documentHighlight') then
     return
   end
 
