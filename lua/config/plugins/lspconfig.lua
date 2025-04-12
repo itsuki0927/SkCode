@@ -1,3 +1,21 @@
+local function diagnostic_config()
+  local x = vim.diagnostic.severity
+
+  -- 如果有 diagnostic 的话，不展示 virtual text，防止报错太多造成干扰
+  vim.diagnostic.config({
+    virtual_text = false,
+    signs = { text = { [x.ERROR] = '󰅙', [x.WARN] = '', [x.INFO] = '󰋼', [x.HINT] = '󰌵' } },
+    underline = true,
+    float = { border = 'single' },
+  })
+  local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+  function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+    opts = opts or {}
+    opts.border = 'single'
+    return orig_util_open_floating_preview(contents, syntax, opts, ...)
+  end
+end
+
 local function organize_imports()
   -- 获取当前 buffer 的客户端列表
   local clients = vim.lsp.get_clients({ bufnr = 0 })
@@ -121,18 +139,7 @@ return {
     },
     config = function(_, opts)
       dofile(vim.g.base46_cache .. 'lsp')
-      require('nvchad.lsp').diagnostic_config()
-
-      -- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-      --   focusable = false,
-      -- })
-
-      -- 如果有 diagnostic 的话，不展示 virtual text、underline，防止报错太多造成干扰
-      vim.diagnostic.config({
-        virtual_text = false,
-        underline = true,
-        float = { border = 'single' },
-      })
+      diagnostic_config()
 
       local lspconfig = require('lspconfig')
       for server, config in pairs(opts.servers) do
@@ -145,27 +152,11 @@ return {
       map('n', 'grn', function()
         require('nvchad.lsp.renamer')()
       end)
-      -- map({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action)
-      map('n', '[d', '<cmd>lua vim.diagnostic.goto_prev({ border = "single" })<CR>')
-      map('n', ']d', '<cmd>lua vim.diagnostic.goto_next({ border = "single" })<CR>')
+      map('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
+      map('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>')
 
       -- buf_map(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "single" })<CR>')
       -- buf_map(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "single" })<CR>')
-
-      -- vim.api.nvim_create_autocmd('LspAttach', {
-      --   callback = function(args)
-      --     local client = vim.lsp.get_client_by_id(args.data.client_id)
-      --
-      --     if client.supports_method('textDocument/formatting') then
-      --       vim.api.nvim_create_autocmd('BufWritePre', {
-      --         buffer = args.buf,
-      --         callback = function()
-      --           vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
-      --         end
-      --       })
-      --     end
-      --   end
-      -- })
     end,
   },
 }
