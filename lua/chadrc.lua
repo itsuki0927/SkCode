@@ -1,13 +1,13 @@
 ---@type ChadrcConfig
 local options = {
   base46 = {
-    theme = 'tokyonight', -- default theme
+    theme = 'onedark', -- default theme
     hl_add = {},
     hl_override = {},
     integrations = {},
     changed_themes = {},
     transparency = false,
-    theme_toggle = { 'tokyonight', 'one_light' },
+    theme_toggle = { 'onedark', 'one_light' },
   },
 
   ui = {
@@ -25,7 +25,7 @@ local options = {
 
     -- lazyload it when there are 1+ buffers
     tabufline = {
-      enabled = true,
+      enabled = false,
       lazyload = true,
       order = { 'treeOffset', 'buffers', 'tabs', 'btns' },
       modules = nil,
