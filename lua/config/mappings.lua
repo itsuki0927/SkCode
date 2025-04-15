@@ -20,6 +20,8 @@ map('n', '<C-h>', '<C-w>h')
 map('n', '<C-l>', '<C-w>l')
 map('n', '<C-k>', '<C-w>k')
 map('n', '<C-j>', '<C-w>j')
+-- remap C-T
+map('n', '<C-[>', '<C-T>')
 
 map('n', '<leader>q', '<cmd>q!<CR>')
 map('n', '<leader>w', '<cmd>w!<CR>')
