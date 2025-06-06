@@ -7,7 +7,7 @@ local options = {
     integrations = {},
     changed_themes = {},
     transparency = false,
-    theme_toggle = { 'onedark', 'one_light' },
+    theme_toggle = { 'one_light', 'onedark' },
   },
 
   ui = {
@@ -25,7 +25,7 @@ local options = {
 
     -- lazyload it when there are 1+ buffers
     tabufline = {
-      enabled = false,
+      enabled = true,
       lazyload = true,
       order = { 'treeOffset', 'buffers', 'tabs', 'btns' },
       modules = nil,
@@ -51,8 +51,8 @@ local options = {
     },
 
     buttons = {
-      { txt = '  Find File', keys = 'ff', cmd = 'Telescope find_files' },
       { txt = '  Restore Session', keys = 'rs', cmd = ':lua require("persistence").load()<cr>' },
+      { txt = '  Find File', keys = 'ff', cmd = 'Telescope find_files' },
       { txt = '󰈭  Find Word', keys = 'fw', cmd = 'Telescope live_grep' },
       { txt = '󱥚  Themes', keys = 'th', cmd = ":lua require('nvchad.themes').open()" },
       { txt = '  Mappings', keys = 'ch', cmd = 'NvCheatsheet' },
