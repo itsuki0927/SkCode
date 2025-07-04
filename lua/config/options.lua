@@ -9,3 +9,5 @@ vim.opt.clipboard = 'unnamedplus'
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = '\\'
+-- views can only be fully collapsed with the global statusline
+vim.opt.laststatus = 3

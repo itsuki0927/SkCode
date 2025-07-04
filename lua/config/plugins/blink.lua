@@ -26,10 +26,12 @@ local kind_icons = {
   TypeParameter = '  ',
 }
 
+dofile(vim.g.base46_cache .. 'blink')
+
 return {
   {
     'saghen/blink.cmp',
-    version = '*',
+    version = '1.*',
     dependencies = {
       {
         'folke/lazydev.nvim',
