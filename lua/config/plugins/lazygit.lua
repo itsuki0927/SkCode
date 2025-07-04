@@ -1,3 +1,5 @@
+vim.g.lazygit_floating_window_scaling_factor = 1 -- scaling factor for floating window
+
 return {
   'kdheepak/lazygit.nvim',
   lazy = true,
