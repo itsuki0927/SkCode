@@ -1,5 +1,4 @@
 return {
-
   {
     'saghen/blink.cmp',
     version = '1.*',
@@ -39,10 +38,20 @@ return {
       },
 
       {
-        'windwp/nvim-autopairs',
+        'saghen/blink.pairs',
+        version = '*',
+
+        dependencies = 'saghen/blink.download',
+
+        --- @module 'blink.pairs'
+        --- @type blink.pairs.Config
         opts = {
-          fast_wrap = {},
-          disable_filetype = { 'TelescopePrompt', 'vim' },
+          mappings = {
+            enabled = true,
+            disabled_filetypes = { 'TelescopePrompt', 'vim' },
+            pairs = {},
+          },
+          debug = false,
         },
       },
     },
