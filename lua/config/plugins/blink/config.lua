@@ -46,6 +46,33 @@ local opts = {
         -- make lazydev completions top priority (see `:h blink.cmp`)
         score_offset = 100,
       },
+
+      -- 从自动完成中排除关键字/常量
+      lsp = {
+        name = 'LSP',
+        module = 'blink.cmp.sources.lsp',
+        transform_items = function(_, items)
+          return vim.tbl_filter(function(item)
+            return item.kind ~= require('blink.cmp.types').CompletionItemKind.Keyword
+          end, items)
+        end,
+      },
+
+      -- 路径补全来自cwd当前缓冲区的目录
+      path = {
+        opts = {
+          get_cwd = function(_)
+            return vim.fn.getcwd()
+          end,
+        },
+      },
+
+      -- cmdline = {
+      --   -- ignores cmdline completions when executing shell commands
+      --   enabled = function()
+      --     return vim.fn.getcmdtype() ~= ':' or not vim.fn.getcmdline():match("^[%%0-9,'<>%-]*!")
+      --   end,
+      -- },
     },
   },
 
