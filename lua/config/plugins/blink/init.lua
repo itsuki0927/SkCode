@@ -5,6 +5,7 @@ return {
     event = { 'InsertEnter', 'CmdLineEnter' },
 
     dependencies = {
+      { 'fang2hou/blink-copilot' },
       {
         'folke/lazydev.nvim',
         ft = 'lua', -- only load on lua files
