@@ -2,7 +2,7 @@ return {
   'folke/snacks.nvim',
   priority = 1000,
   lazy = false,
-  enabled = false,
+  enabled = true,
   ---@type snacks.Config
   opts = {
     bigfile = { enabled = false },
@@ -14,7 +14,6 @@ return {
       enabled = true,
       timeout = 3000,
     },
-    picker = { enabled = false },
     quickfile = { enabled = false },
     scope = { enabled = false },
     scroll = { enabled = false },
@@ -23,6 +22,23 @@ return {
     styles = {
       notification = {
         -- wo = { wrap = true } -- Wrap notifications
+      },
+    },
+    picker = {
+      actions = {
+        sidekick_send = function(...)
+          return require('sidekick.cli.picker.snacks').send(...)
+        end,
+      },
+      win = {
+        input = {
+          keys = {
+            ['<a-a>'] = {
+              'sidekick_send',
+              mode = { 'n', 'i' },
+            },
+          },
+        },
       },
     },
   },
