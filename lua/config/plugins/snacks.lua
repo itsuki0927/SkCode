@@ -5,18 +5,18 @@ return {
   enabled = true,
   ---@type snacks.Config
   opts = {
+    notifier = {
+      enabled = true,
+      timeout = 3000,
+    },
     bigfile = { enabled = false },
     dashboard = { enabled = false },
     explorer = { enabled = false },
     indent = { enabled = false },
     input = { enabled = false },
-    notifier = {
-      enabled = true,
-      timeout = 3000,
-    },
     quickfile = { enabled = false },
     scope = { enabled = false },
-    scroll = { enabled = false },
+    scroll = { enabled = true },
     statuscolumn = { enabled = false },
     words = { enabled = false },
     styles = {
@@ -25,21 +25,22 @@ return {
       },
     },
     picker = {
-      actions = {
-        sidekick_send = function(...)
-          return require('sidekick.cli.picker.snacks').send(...)
-        end,
-      },
-      win = {
-        input = {
-          keys = {
-            ['<a-a>'] = {
-              'sidekick_send',
-              mode = { 'n', 'i' },
-            },
-          },
-        },
-      },
+      enabled = false,
+      -- actions = {
+      --   sidekick_send = function(...)
+      --     return require('sidekick.cli.picker.snacks').send(...)
+      --   end,
+      -- },
+      -- win = {
+      --   input = {
+      --     keys = {
+      --       ['<a-a>'] = {
+      --         'sidekick_send',
+      --         mode = { 'n', 'i' },
+      --       },
+      --     },
+      --   },
+      -- },
     },
   },
   keys = {
