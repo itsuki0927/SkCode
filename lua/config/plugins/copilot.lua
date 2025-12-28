@@ -7,8 +7,9 @@ return {
     cmd = 'Copilot',
     event = 'InsertEnter',
     build = ':Copilot auth',
+    enabled = false,
     config = function()
-      vim.g.copilot_nes_debounce = 500
+      vim.g.copilot_nes_debounce = 100
       require('copilot').setup({
         suggestion = { enabled = true, keymap = { accept = false } },
         panel = { enabled = false },
