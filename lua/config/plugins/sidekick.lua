@@ -2,7 +2,7 @@ return {
   {
     'folke/sidekick.nvim',
     opts = {
-      nes = { enabled = false },
+      -- nes = { enabled = false },
       cli = {
         mux = {
           backend = 'tmux',

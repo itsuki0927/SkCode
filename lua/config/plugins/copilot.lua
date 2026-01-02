@@ -7,7 +7,6 @@ return {
     cmd = 'Copilot',
     event = 'InsertEnter',
     build = ':Copilot auth',
-    enabled = false,
     config = function()
       vim.g.copilot_nes_debounce = 100
       require('copilot').setup({
