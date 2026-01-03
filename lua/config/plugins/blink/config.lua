@@ -38,8 +38,10 @@ local opts = {
   },
 
   sources = {
-    default = { 'copilot', 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
+    default = { 'codeium', 'copilot', 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
     providers = {
+      codeium = { name = 'Codeium', module = 'codeium.blink', async = true },
+
       copilot = {
         name = 'Copilot',
         module = 'blink-copilot',
