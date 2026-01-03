@@ -38,16 +38,18 @@ local opts = {
   },
 
   sources = {
-    default = { 'codeium', 'copilot', 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
+    default = { 'avante', 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
+    -- default = { 'avante', 'codeium', 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
     providers = {
-      codeium = { name = 'Codeium', module = 'codeium.blink', async = true },
-
-      copilot = {
-        name = 'Copilot',
-        module = 'blink-copilot',
-        score_offset = 100,
-        async = true,
+      avante = {
+        module = 'blink-cmp-avante',
+        name = 'Avante',
+        opts = {
+          -- options for blink-cmp-avante
+        },
       },
+
+      -- codeium = { name = 'Codeium', module = 'codeium.blink', async = true },
 
       lazydev = {
         name = 'LazyDev',

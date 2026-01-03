@@ -5,6 +5,7 @@ return {
     event = { 'InsertEnter', 'CmdLineEnter' },
 
     dependencies = {
+      { 'Kaiser-Yang/blink-cmp-avante' },
       {
         'Exafunction/codeium.nvim',
       },
