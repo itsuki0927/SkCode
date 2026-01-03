@@ -50,6 +50,40 @@ local function organize_imports()
   vim.notify('未找到 TypeScript 语言服务器', vim.log.levels.WARN)
 end
 
+local function getCreativeMonorepoDir(bufnr)
+  local current_file = vim.api.nvim_buf_get_name(bufnr)
+
+  -- 检查是否包含 creative-tool-emo（对连字符进行转义）
+  if current_file:find('creative%-tool%-emo') then
+    -- 使用 gsub 获取项目根目录（对连字符进行转义）
+    local repo_root = current_file:gsub('(creative%-tool%-emo).*', '%1')
+    return repo_root .. '/infra'
+  end
+
+  -- 检查是否包含 creative_one_monorepo
+  if current_file:find('creative_one_monorepo') then
+    local repo_root = current_file:gsub('(creative_one_monorepo).*', '%1')
+    return repo_root .. '/infra'
+  end
+
+  return nil
+end
+
+local eslint_config_files = {
+  '.eslintrc',
+  '.eslintrc.js',
+  '.eslintrc.cjs',
+  '.eslintrc.yaml',
+  '.eslintrc.yml',
+  '.eslintrc.json',
+  'eslint.config.js',
+  'eslint.config.mjs',
+  'eslint.config.cjs',
+  'eslint.config.ts',
+  'eslint.config.mts',
+  'eslint.config.cts',
+}
+
 return {
   {
     'neovim/nvim-lspconfig',
@@ -98,6 +132,36 @@ return {
             allow_incremental_sync = false,
             debounce_text_changes = 1000,
           },
+          root_dir = function(bufnr, on_dir)
+            local util = require('lspconfig.util')
+            local project_root_markers = { 'package-lock.json', 'yarn.lock', 'pnpm-lock.yaml', 'bun.lockb' }
+            local project_root = vim.fs.root(bufnr, project_root_markers)
+
+            if not project_root then
+              project_root = getCreativeMonorepoDir(bufnr)
+            end
+
+            if not project_root then
+              return nil
+            end
+
+            local filename = vim.api.nvim_buf_get_name(bufnr)
+            local eslint_config_files_with_package_json =
+              util.insert_package_json(eslint_config_files, 'eslintConfig', filename)
+            local is_buffer_using_eslint = vim.fs.find(eslint_config_files_with_package_json, {
+              path = filename,
+              type = 'file',
+              limit = 1,
+              upward = true,
+              stop = vim.fs.dirname(project_root),
+            })[1]
+
+            if not is_buffer_using_eslint then
+              return nil
+            end
+
+            on_dir(project_root)
+          end,
         },
         lua_ls = {
           settings = {
@@ -124,9 +188,9 @@ return {
           },
         },
         tailwindcss = {
-          flags = {
-            debounce_text_changes = 1000,
-          },
+          -- flags = {
+          --   debounce_text_changes = 1000,
+          -- },
           filetypes = {
             'less',
             'scss',
@@ -139,15 +203,30 @@ return {
             'vue',
           },
         },
+        -- ts_go = {},
         ts_ls = {
+          root_dir = function(bufnr, on_dir)
+            local root_markers = { 'package-lock.json', 'yarn.lock', 'pnpm-lock.yaml', 'bun.lockb', 'bun.lock' }
+            root_markers = vim.fn.has('nvim-0.11.3') == 1 and { root_markers } or root_markers
+            local project_root = vim.fs.root(bufnr, root_markers)
+
+            if not project_root then
+              project_root = getCreativeMonorepoDir(bufnr)
+            end
+
+            if not project_root then
+              return nil
+            end
+
+            on_dir(project_root)
+          end,
           commands = {
-            OrganizeImports = {
-              organize_imports,
-              description = 'Organize Imports',
-            },
+            ['_typescript.organizeImports'] = organize_imports,
           },
         },
         jsonls = {},
+        -- codebook = {},
+        -- oxlint = {},
       },
     },
     config = function(_, opts)
